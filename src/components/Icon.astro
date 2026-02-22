@@ -1,0 +1,49 @@
+---
+import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+
+interface Props {
+  name: string;
+  weight?: 'light' | 'regular' | 'bold' | 'fill' | 'thin' | 'duotone';
+  size?: number;
+  class?: string;
+}
+
+const { name, weight = 'light', size = 24, class: className } = Astro.props;
+
+const require = createRequire(import.meta.url);
+
+let svgPath: string;
+try {
+  svgPath = require.resolve(`@phosphor-icons/core/assets/${weight}/${name}-${weight}.svg`);
+} catch {
+  throw new Error(
+    `[Icon] Icon "${name}" with weight "${weight}" not found.\n` +
+    `  Check the icon name at https://phosphoricons.com/`
+  );
+}
+
+const svgContent = readFileSync(svgPath, 'utf-8');
+
+// Extract inner content from the SVG wrapper so we can re-wrap it
+// with our own <svg> element that controls size and fill.
+const inner = svgContent.replace(/<svg[^>]*>/, '').replace(/<\/svg>/, '');
+
+if (!inner.trim()) {
+  throw new Error(
+    `[Icon] Icon "${name}" (weight: "${weight}") produced empty SVG content.\n` +
+    `  File: ${svgPath}`
+  );
+}
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width={size}
+  height={size}
+  viewBox="0 0 256 256"
+  fill="currentColor"
+  class={className}
+  aria-hidden="true"
+  set:html={inner}
+/>

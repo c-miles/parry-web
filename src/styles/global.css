@@ -1,0 +1,348 @@
+@import "tailwindcss";
+
+/* Tailwind v4 theme configuration */
+@theme {
+  /* Colors */
+  --color-accent: #E8734A;
+  --color-accent-focus: rgba(232, 115, 74, 0.4);
+  --color-accent-mid: #D4556B;
+  --color-accent-deep: #B8426E;
+  --color-warm-gold: #D4A86A;
+  --color-warm-gold-disabled: rgba(212, 168, 106, 0.4);
+  --color-success: #6BAF8D;
+  --color-error: #D4645A;
+
+  --color-surface: rgba(255, 255, 255, 0.08);
+  --color-surface-border: rgba(255, 255, 255, 0.12);
+  --color-surface-hover: rgba(255, 255, 255, 0.12);
+
+  --color-text-primary: #FFFFFF;
+  /* Bumped from mobile's 0.65 to 0.72 for WCAG AA contrast on dark backgrounds */
+  --color-text-secondary: rgba(255, 255, 255, 0.72);
+  --color-text-tertiary: rgba(255, 255, 255, 0.40);
+  --color-text-label: rgba(255, 255, 255, 0.50);
+  --color-text-placeholder: rgba(255, 255, 255, 0.35);
+
+  /* Background gradient stops */
+  --color-bg-1: #1A0A1E;
+  --color-bg-2: #2D1528;
+  --color-bg-3: #4A1A2E;
+  --color-bg-4: #2E1A30;
+  --color-bg-5: #151218;
+
+  /* Fonts */
+  --font-sora: "Sora", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+  --radius-pill: 999px;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-outfit);
+  color: var(--color-text-primary);
+  background: var(--color-bg-5);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Skip to content link */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  padding: 8px 24px;
+  background: var(--color-accent);
+  color: white;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.skip-to-content:focus {
+  top: 12px;
+}
+
+/* Focus indicators */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Page background gradient */
+.page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-1) 0%,
+    var(--color-bg-2) 25%,
+    var(--color-bg-3) 50%,
+    var(--color-bg-4) 75%,
+    var(--color-bg-5) 100%
+  );
+}
+
+/* Ambient glow orbs for glassmorphism refraction */
+.ambient-orbs {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  contain: paint;
+}
+
+.ambient-orbs::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: -10%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 115, 74, 0.12) 0%, transparent 70%);
+  filter: blur(40px);
+}
+
+.ambient-orbs::after {
+  content: "";
+  position: absolute;
+  bottom: 20%;
+  right: -5%;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184, 66, 110, 0.10) 0%, transparent 70%);
+  filter: blur(40px);
+}
+
+@media (min-width: 768px) {
+  .ambient-orbs::before {
+    width: 600px;
+    height: 600px;
+    filter: blur(80px);
+  }
+
+  .ambient-orbs::after {
+    width: 500px;
+    height: 500px;
+    filter: blur(80px);
+  }
+}
+
+/* Glassmorphism card — includes backdrop-filter: blur(), which is expensive on
+   mobile. Prefer .glass-card-lite for cards that don't overlay dynamic content. */
+.glass-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Lite glass card — same look, no backdrop-filter (better perf on mobile) */
+.glass-card-lite {
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-border);
+  border-radius: var(--radius-lg);
+}
+
+.glass-card-hover {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(255, 255, 255, 0.20);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* Gradient button */
+.gradient-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-mid), var(--color-accent-deep));
+  border: none;
+  border-radius: var(--radius-pill);
+  color: white;
+  font-family: var(--font-outfit);
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: filter 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+}
+
+.gradient-button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+/* Section fade-in animation (progressive enhancement) */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-scroll {
+  animation: fade-in-up 0.6s ease both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+}
+
+/* Fallback for browsers without scroll-driven animations:
+   plays fade-in-up once on page load instead of on scroll into view */
+@supports not (animation-timeline: view()) {
+  .animate-on-scroll {
+    animation: fade-in-up 0.6s ease both;
+  }
+}
+
+/* Phone mockup float animation — disabled on mobile for performance */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: none;
+}
+
+@media (min-width: 768px) {
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+}
+
+/* FAQ accordion styles */
+details summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary::marker {
+  display: none;
+}
+
+details[open] .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.faq-chevron {
+  transition: transform 0.3s ease;
+}
+
+/* Reduced motion: suppress animations, transitions, smooth scroll,
+   and backdrop-filter for users who prefer minimal motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .glass-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .animate-float {
+    animation: none !important;
+  }
+}
+
+/* Legal page prose styling */
+.prose-legal h2 {
+  font-family: var(--font-sora);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--color-text-primary);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-legal h3 {
+  font-family: var(--font-sora);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--color-text-primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose-legal p {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.prose-legal ul,
+.prose-legal ol {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.prose-legal li {
+  margin-bottom: 0.25rem;
+}
+
+.prose-legal ul {
+  list-style-type: disc;
+}
+
+.prose-legal ol {
+  list-style-type: decimal;
+}
+
+.prose-legal a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose-legal a:hover {
+  color: var(--color-warm-gold);
+}
+
+.prose-legal strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}

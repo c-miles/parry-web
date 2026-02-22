@@ -1,0 +1,33 @@
+---
+import PhoneMockup from './PhoneMockup.astro';
+---
+
+<section class="px-5 py-12 md:px-8 md:py-20 lg:py-24">
+  <div class="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
+    <!-- Text content -->
+    <div class="text-center lg:text-left">
+      <h1 class="mb-4 font-[var(--font-sora)] text-3xl font-bold leading-tight sm:text-4xl md:text-5xl lg:text-[3.25rem]">
+        Reply like you mean it
+      </h1>
+      <p class="mx-auto mb-6 max-w-lg text-base text-text-secondary sm:text-lg lg:mx-0">
+        AI-powered suggestions that match your tone, your vibe, and your conversation.
+      </p>
+      <div class="flex items-center justify-center gap-3 sm:gap-4 lg:justify-start">
+        <a href="#download" class="inline-block transition-transform duration-200 hover:scale-105">
+          <img src="/app-store-badge.svg" alt="Download on the App Store" width="150" height="50" />
+        </a>
+        <a href="#download" class="inline-block transition-transform duration-200 hover:scale-105">
+          <img src="/google-play-badge.svg" alt="Get it on Google Play" width="168" height="50" />
+        </a>
+      </div>
+      <p class="mt-4 text-sm text-text-tertiary">
+        Free — 3 replies/day. No account needed.
+      </p>
+    </div>
+
+    <!-- Phone mockup -->
+    <div class="flex justify-center">
+      <PhoneMockup />
+    </div>
+  </div>
+</section>

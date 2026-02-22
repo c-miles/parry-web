@@ -1,0 +1,19 @@
+# Parry
+
+> AI-powered reply suggestions for text messages
+
+Parry is a mobile app that helps you respond to texts with AI-generated replies. Paste a message, pick a tone, get 3-5 crafted responses in seconds.
+
+## Features
+- 5 tones: Casual, Professional, Witty, Flirty, Direct
+- Custom tone presets (Pro)
+- Voice input with transcription
+- Privacy-first: messages processed and immediately discarded
+- Powered by Anthropic's Claude AI
+- Free: 3 generations/day | Pro: unlimited ($9.99/mo)
+
+## Links
+- Website: https://parry.app
+- Privacy Policy: https://parry.app/privacy
+- Terms of Service: https://parry.app/terms
+- Support: support@parry.app

@@ -1,0 +1,58 @@
+---
+import Icon from './Icon.astro';
+
+const faqs = [
+  {
+    question: "Is Parry free?",
+    answer: "Yes! Parry offers 3 free reply generations per day — no account needed. If you need unlimited replies and custom tones, you can upgrade to Parry Pro with a monthly or annual subscription."
+  },
+  {
+    question: "How much does Parry Pro cost?",
+    answer: "Parry Pro is $9.99/month or $79.99/year. Pro gives you unlimited reply generations, custom tone presets, and priority processing."
+  },
+  {
+    question: "How does the AI work?",
+    answer: "Parry uses Anthropic's Claude AI to analyze the message you've received and generate contextually appropriate replies in your chosen tone. Your messages are processed in real-time and never stored."
+  },
+  {
+    question: "Is my data safe?",
+    answer: "Absolutely. Your messages are sent to our AI for processing and immediately discarded — they're never saved or stored on any server. We don't collect personal information, and your data is never used to train AI models. Read our full <a href='/privacy' class='text-accent underline underline-offset-2 hover:text-warm-gold'>privacy policy</a> for details."
+  },
+  {
+    question: "What tones are available?",
+    answer: "Parry includes five built-in tones: Casual, Professional, Witty, Flirty, and Direct. Pro subscribers can also create up to three custom tone presets that match their unique communication style."
+  },
+  {
+    question: "What makes Parry different from ChatGPT?",
+    answer: "Parry is purpose-built for text message replies. No prompt engineering, no blank text box — just paste a message, pick a tone, and get three ready-to-send responses. It's designed to be faster and simpler than a general-purpose chatbot."
+  },
+  {
+    question: "Can I use Parry for work?",
+    answer: "Definitely. The Professional tone is specifically designed for workplace communication — emails, Slack messages, client responses, and more. It helps you sound polished and articulate without spending time crafting the perfect reply."
+  }
+];
+---
+
+<section class="px-5 py-16 md:px-8 md:py-20">
+  <div class="mx-auto max-w-2xl">
+    <h2 class="mb-10 text-center font-[var(--font-sora)] text-2xl font-semibold md:text-3xl">
+      Frequently asked questions
+    </h2>
+
+    <div class="flex flex-col gap-3">
+      {faqs.map((faq) => (
+        <details class="glass-card-lite group">
+          <summary class="flex cursor-pointer items-center justify-between p-5">
+            <span class="pr-4 font-[var(--font-sora)] text-sm font-semibold md:text-base">{faq.question}</span>
+            <span class="faq-chevron shrink-0">
+              <Icon name="caret-down" size={18} class="text-text-tertiary" />
+            </span>
+          </summary>
+          <div class="border-t border-surface-border px-5 pb-5 pt-4">
+            <p class="text-sm leading-relaxed text-text-secondary" set:html={faq.answer} />
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

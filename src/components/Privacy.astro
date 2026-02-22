@@ -1,0 +1,55 @@
+---
+import Icon from './Icon.astro';
+---
+
+<section class="px-5 py-16 md:px-8 md:py-20">
+  <div class="mx-auto max-w-4xl text-center">
+    <div class="animate-on-scroll">
+      <div class="mb-6 flex justify-center">
+        <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-success/10">
+          <Icon name="shield-check" size={36} class="text-success" />
+        </div>
+      </div>
+
+      <h2 class="mb-4 font-[var(--font-sora)] text-2xl font-semibold md:text-3xl">
+        Your messages are yours
+      </h2>
+      <p class="mb-8 text-text-secondary">
+        Your messages are processed and immediately discarded. Nothing stored. Nothing trained on. Ever.
+      </p>
+    </div>
+
+    <div class="grid gap-4 text-left sm:grid-cols-2 lg:grid-cols-4">
+      <div class="glass-card-lite animate-on-scroll p-5 text-center">
+        <p class="mb-1 font-[var(--font-sora)] text-sm font-semibold">Never Stored</p>
+        <p class="text-sm text-text-secondary">
+          Messages are processed in real-time and immediately discarded. Nothing is saved.
+        </p>
+      </div>
+      <div class="glass-card-lite animate-on-scroll p-5 text-center">
+        <p class="mb-1 font-[var(--font-sora)] text-sm font-semibold">Never Trained On</p>
+        <p class="text-sm text-text-secondary">
+          Your conversations are never used to train AI models. Your words stay yours.
+        </p>
+      </div>
+      <div class="glass-card-lite animate-on-scroll p-5 text-center">
+        <p class="mb-1 font-[var(--font-sora)] text-sm font-semibold">Anonymous by Default</p>
+        <p class="text-sm text-text-secondary">
+          No account required. No email, no phone number, no personal data collected.
+        </p>
+      </div>
+      <div class="glass-card-lite animate-on-scroll p-5 text-center">
+        <p class="mb-1 font-[var(--font-sora)] text-sm font-semibold">Powered by Claude AI</p>
+        <p class="text-sm text-text-secondary">
+          Built on Anthropic's Claude, the industry leader in AI safety.
+        </p>
+      </div>
+    </div>
+
+    <p class="mt-6 animate-on-scroll">
+      <a href="/privacy" class="text-sm text-accent underline underline-offset-2 transition-colors hover:text-warm-gold">
+        Read our full privacy policy &rarr;
+      </a>
+    </p>
+  </div>
+</section>

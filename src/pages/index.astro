@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SocialProof from '../components/SocialProof.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Features from '../components/Features.astro';
+import Privacy from '../components/Privacy.astro';
+import FAQ from '../components/FAQ.astro';
+import DownloadCTA from '../components/DownloadCTA.astro';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Parry",
+  "description": "AI-powered reply suggestions for text messages. Paste a message, pick a tone, get the perfect response.",
+  "url": "https://parry.app",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "iOS, Android",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Free — 3 replies per day"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Parry",
+    "url": "https://parry.app"
+  }
+};
+---
+
+<BaseLayout
+  title="Parry — AI-Powered Reply Suggestions"
+  description="Reply like you mean it. Parry gives you AI-powered reply suggestions that match your tone, your vibe, and your conversation. Free on iOS and Android."
+  canonicalPath=""
+
+  jsonLd={jsonLd}
+>
+  <Hero />
+  <SocialProof />
+  <HowItWorks />
+  <Features />
+  <Privacy />
+  <FAQ />
+  <DownloadCTA />
+</BaseLayout>
