@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://parry.app',
+  site: 'https://parryai.app',
   integrations: [sitemap()],
   devToolbar: { enabled: false },
   vite: {
