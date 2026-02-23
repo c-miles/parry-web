@@ -33,9 +33,9 @@ const faqs = [
 ];
 ---
 
-<section class="px-5 py-16 md:px-8 md:py-20">
+<section class="px-5 py-16 md:px-8 lg:px-12 md:py-20">
   <div class="mx-auto max-w-2xl">
-    <h2 class="mb-10 text-center font-[var(--font-sora)] text-2xl font-semibold md:text-3xl">
+    <h2 class="mb-12 text-center font-[var(--font-sora)] text-2xl font-semibold md:text-4xl">
       Frequently asked questions
     </h2>
 
@@ -43,13 +43,13 @@ const faqs = [
       {faqs.map((faq) => (
         <details class="glass-card-lite group">
           <summary class="flex cursor-pointer items-center justify-between p-5">
-            <span class="pr-4 font-[var(--font-sora)] text-sm font-semibold md:text-base">{faq.question}</span>
+            <span class="pr-4 font-[var(--font-sora)] text-base font-semibold">{faq.question}</span>
             <span class="faq-chevron shrink-0">
               <Icon name="caret-down" size={18} class="text-text-tertiary" />
             </span>
           </summary>
           <div class="border-t border-surface-border px-5 pb-5 pt-4">
-            <p class="text-sm leading-relaxed text-text-secondary" set:html={faq.answer} />
+            <p class="text-base leading-relaxed text-text-secondary" set:html={faq.answer} />
           </div>
         </details>
       ))}
