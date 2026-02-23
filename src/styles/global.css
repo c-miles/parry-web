@@ -146,6 +146,22 @@ body {
   }
 }
 
+/* Header blur — mimics mobile app's MaskedView + BlurView(intensity=80, tint="dark").
+   A ::before pseudo-element extends 24px below the nav to create a fade-out zone.
+   mask-image keeps blur solid through the nav area, then feathers to transparent. */
+.header-blur::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  bottom: -24px;
+  background: rgba(21, 18, 24, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
+  z-index: -1;
+}
+
 /* Glassmorphism card — includes backdrop-filter: blur(), which is expensive on
    mobile. Prefer .glass-card-lite for cards that don't overlay dynamic content. */
 .glass-card {
@@ -277,7 +293,8 @@ details[open] .faq-chevron {
     scroll-behavior: auto;
   }
 
-  .glass-card {
+  .glass-card,
+  .header-blur::before {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
