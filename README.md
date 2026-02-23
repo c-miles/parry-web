@@ -1,6 +1,6 @@
 # Parry Web
 
-Marketing and landing page for [Parry](https://parry.app), an AI-powered mobile app that suggests text message replies. Built as a static site with Astro. Also hosts the privacy policy and terms of service pages linked directly from the mobile app.
+Marketing and landing page for [Parry](https://parryai.app), an AI-powered mobile app that suggests text message replies. Built as a static site with Astro. Also hosts the privacy policy and terms of service pages linked directly from the mobile app.
 
 ## Tech Stack
 
