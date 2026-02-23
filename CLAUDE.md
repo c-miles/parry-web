@@ -10,8 +10,8 @@ Marketing website for Parry, an AI-powered mobile app for text message reply sug
 | Styling | Tailwind CSS v4 (CSS-based `@theme` config) |
 | Icons | `@phosphor-icons/core` via `<Icon>` component |
 | Fonts | Google Fonts: Sora (headings), Outfit (body) |
-| Hosting | Cloudflare Pages (planned) |
-| Domain | parry.app |
+| Hosting | Render (static site) |
+| Domain | parryai.app |
 
 ## Commands
 
@@ -66,7 +66,8 @@ All color, font, and radius tokens are defined in `src/styles/global.css` inside
 
 Web-specific notes:
 - **text-secondary** was bumped from the mobile app's `0.65` opacity to `0.72` for WCAG AA on dark backgrounds.
-- **glass-card** (Header, PhoneMockup) includes `backdrop-filter: blur()`. Expensive on mobile.
+- **glass-card** (PhoneMockup) includes `backdrop-filter: blur()`. Expensive on mobile.
+- **header-blur** (Header) uses a `::before` pseudo-element with `backdrop-filter: blur()` and a mask-image fade.
 - **glass-card-lite** (all other cards) has the same look but skips `backdrop-filter` for performance.
 
 ## Conventions
@@ -80,8 +81,8 @@ Web-specific notes:
 ## Critical URLs
 
 The Parry mobile app links to these from its settings screen:
-- `https://parry.app/privacy` -- Privacy Policy
-- `https://parry.app/terms` -- Terms of Service
+- `https://parryai.app/privacy` -- Privacy Policy
+- `https://parryai.app/terms` -- Terms of Service
 
 **These routes MUST work and contain the correct legal text.**
 
