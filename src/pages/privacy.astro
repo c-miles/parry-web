@@ -1,20 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-
+<!-- TODO: update entity name when LLC is formed -->
 <BaseLayout
-  title="Privacy Policy — Parry"
-  description="Parry's privacy policy. Learn how we handle your data, what we collect, and how your messages are processed."
+  title="Privacy Policy — parry"
+  description="parry's privacy policy. Learn how we handle your data, what we collect, and how your messages are processed."
   canonicalPath="/privacy"
 >
   <section class="px-5 py-16 md:px-8 md:py-20">
     <div class="prose-legal mx-auto max-w-3xl">
       <h1 class="mb-2 font-[var(--font-sora)] text-3xl font-bold md:text-4xl">Privacy Policy</h1>
-      <p class="mb-8 text-sm text-text-tertiary">Last updated: February 2026</p>
+      <p class="mb-8 text-sm text-text-tertiary">Last updated: March 2026</p>
 
       <h2>Introduction</h2>
       <p>
-        Parry ("we", "our", "us") operates the Parry mobile application. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our app.
+        parry ("we", "our", "us") operates the parry mobile application. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our app.
       </p>
 
       <h2>Information Collection and Use</h2>
@@ -23,18 +23,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p><strong>Usage Data:</strong></p>
       <ul>
         <li>Anonymous user identifier (for subscription management)</li>
-        <li>App usage analytics (screens viewed, features used)</li>
         <li>Crash reports and error logs</li>
       </ul>
 
-      <p><strong>Message Content:</strong></p>
+      <p><strong>Message Content and Images:</strong></p>
       <ul>
-        <li>Messages you input are sent to Anthropic (our AI provider) for processing via their Claude API</li>
-        <li>We do <strong>NOT</strong> store your message content on our servers</li>
-        <li>Anthropic may retain message data for up to 30 days for safety monitoring purposes</li>
-        <li>Your message data is <strong>NOT</strong> used to train AI models</li>
-        <li>After the 30-day safety window, message data is deleted by Anthropic</li>
+        <li>Text and images you submit are sent to Anthropic (our AI provider) for processing via their Claude API</li>
+        <li>We do <strong>NOT</strong> store your message content or images on our servers</li>
+        <li>Anthropic may retain this data for up to 7 days for safety monitoring purposes</li>
+        <li>Your data is <strong>NOT</strong> used to train AI models</li>
+        <li>After the 7-day safety window, data is deleted by Anthropic</li>
       </ul>
+
+      <p><strong>Generation Metadata:</strong></p>
+      <p>
+        When you generate a reply suggestion, we log the following metadata to improve the Service:
+      </p>
+      <ul>
+        <li>Anonymous user identifier</li>
+        <li>Tone selection and whether a custom tone was used</li>
+        <li>Input length (character count only — not the content itself)</li>
+        <li>Number of responses generated</li>
+        <li>Response latency</li>
+        <li>AI model used</li>
+        <li>Whether an image was attached (yes/no — not the image itself)</li>
+      </ul>
+      <p>
+        Generation metadata does <strong>NOT</strong> include your message content or images.
+      </p>
+
+      <p><strong>Voice Input:</strong></p>
+      <p>
+        If you use voice input, speech recognition is handled on-device by your operating system (Apple Speech or Google Speech Services). Audio is never transmitted to parry's servers. Only the resulting text is sent to Anthropic for AI processing, subject to the same policies described under "Message Content and Images" above. Voice input is also subject to your device manufacturer's privacy policy.
+      </p>
 
       <p><strong>Data We Do NOT Collect:</strong></p>
       <ul>
@@ -42,45 +63,71 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <li>Your phone number</li>
         <li>Your contacts</li>
         <li>Your location</li>
-        <li>Your messages outside of what you explicitly input</li>
+        <li>Your messages outside of what you explicitly submit</li>
       </ul>
 
       <h3>How We Use Your Data</h3>
       <ul>
         <li>To provide AI-generated response suggestions</li>
         <li>To manage your subscription</li>
-        <li>To improve our app through anonymous analytics</li>
+        <li>To improve our app through generation metadata analysis</li>
         <li>To fix bugs and improve performance</li>
       </ul>
 
       <h2>Third-Party Services</h2>
       <p>We use the following services that may collect data:</p>
       <ul>
-        <li><strong>Anthropic (Claude AI)</strong> — Processes your message input to generate responses. <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
-        <li><strong>Supabase</strong> — Stores anonymous user preferences. <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+        <li><strong>Anthropic (Claude AI)</strong> — Processes your text and image input to generate responses. <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+        <li><strong>Supabase</strong> — Stores anonymous user profiles, generation metadata (see above), and custom tone presets. Does not store message content or images. <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
         <li><strong>RevenueCat</strong> — Manages subscriptions and purchases. <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
         <li><strong>Sentry</strong> — Error tracking and crash reporting. <a href="https://sentry.io/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
-        <li><strong>PostHog</strong> — Product analytics. <a href="https://posthog.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
       </ul>
 
       <h2>Data Retention</h2>
       <ul>
         <li><strong>Anonymous user data:</strong> Retained while you use the app</li>
-        <li><strong>AI processing data:</strong> Retained by Anthropic for up to 30 days for safety monitoring; not used for model training</li>
-        <li><strong>Analytics data:</strong> Aggregated and anonymized</li>
+        <li><strong>AI processing data:</strong> Retained by Anthropic for up to 7 days for safety monitoring; not used for model training</li>
+        <li><strong>Generation metadata:</strong> Retained indefinitely in anonymized form for service improvement</li>
         <li><strong>Crash reports:</strong> Retained for 90 days</li>
       </ul>
 
       <h2>Your Rights</h2>
       <p>You can:</p>
       <ul>
-        <li>Request deletion of your data by contacting us</li>
-        <li>Opt out of analytics by uninstalling the app</li>
+        <li>Request a copy of the data we hold about you by emailing <a href="mailto:support@parryai.app">support@parryai.app</a></li>
+        <li>Request deletion of your data by contacting us at <a href="mailto:support@parryai.app">support@parryai.app</a></li>
       </ul>
+      <p>
+        We will respond to data requests within 30 days.
+      </p>
+
+      <h2>California Privacy Rights (CCPA)</h2>
+      <p>
+        If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA):
+      </p>
+      <ul>
+        <li><strong>Right to Know:</strong> You may request the categories and specific pieces of personal information we have collected about you.</li>
+        <li><strong>Right to Delete:</strong> You may request that we delete personal information we have collected from you, subject to certain exceptions.</li>
+        <li><strong>Right to Non-Discrimination:</strong> We will not discriminate against you for exercising your CCPA rights.</li>
+      </ul>
+      <p><strong>Categories of personal information we collect:</strong></p>
+      <ul>
+        <li>Identifiers (anonymous user ID)</li>
+        <li>Internet or other electronic network activity information (generation metadata)</li>
+        <li>Inferences drawn from the above (service improvement)</li>
+      </ul>
+      <p>
+        <strong>We do not sell your personal information.</strong> To exercise your rights, contact us at <a href="mailto:support@parryai.app">support@parryai.app</a>.
+      </p>
+
+      <h2>International Users</h2>
+      <p>
+        If you are accessing the Service from outside the United States, please be aware that your data may be transferred to, stored, and processed in the United States, where our servers and service providers are located. Data protection laws in the United States may differ from those in your jurisdiction.
+      </p>
 
       <h2>Children's Privacy</h2>
       <p>
-        Our app is not intended for children under 13. We do not knowingly collect data from children under 13.
+        Our app is intended for users who are at least 13 years of age. We do not knowingly collect personal data from anyone under 13. If we learn that we have collected personal data from a user under 13, we will take steps to delete that information promptly.
       </p>
 
       <h2>Changes to This Policy</h2>
@@ -94,7 +141,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         Email: <a href="mailto:support@parryai.app">support@parryai.app</a>
       </p>
 
-      <p class="mt-8 text-sm text-text-tertiary">&copy; 2026 Parry. All rights reserved.</p>
+      <p class="mt-8 text-sm text-text-tertiary">&copy; 2026 parry. All rights reserved.</p>
     </div>
   </section>
 </BaseLayout>
