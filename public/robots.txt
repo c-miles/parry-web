@@ -1,5 +1,5 @@
 # =================================
-# Parry (parryai.app) robots.txt
+# parry (parryai.app) robots.txt
 # =================================
 
 # Standard search engine crawlers

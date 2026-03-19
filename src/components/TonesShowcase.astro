@@ -1,0 +1,76 @@
+---
+import Icon from './Icon.astro';
+
+const scenarios = [
+  {
+    label: "The Love Interest",
+    icon: "heart",
+    incoming: "had a really great time last night :)",
+    tone: "the rizler",
+    reply: "me too honestly. already thinking about what excuse I can come up with to see you again"
+  },
+  {
+    label: "The Tricky Boss",
+    icon: "briefcase",
+    incoming: "Can you take on the Henderson project too? I know you're swamped but you're the only one I trust with it",
+    tone: "corporate robot",
+    reply: "Thanks for the trust, I'd love to help. Let me look at my current workload and circle back with a realistic timeline by EOD."
+  },
+  {
+    label: "The Friend in Need",
+    icon: "hand-heart",
+    incoming: "I don't think I got the job. They said they went with someone else",
+    tone: "the 3am friend",
+    reply: "that really sucks and I'm sorry. their loss genuinely. want to grab food later and talk about it? or not talk about it. either way I'm coming over"
+  },
+  {
+    label: "The Group Chat",
+    icon: "users-three",
+    incoming: "bro did you see what Jake posted",
+    tone: "nonchalant",
+    reply: "lmaooo I cannot. that man has zero self awareness and honestly it's iconic at this point"
+  }
+];
+---
+
+<section class="px-5 py-16 md:px-8 lg:px-12 md:py-20">
+  <div class="mx-auto max-w-6xl">
+    <div class="mb-12 text-center">
+      <h2 class="mb-3 font-[var(--font-sora)] text-2xl font-semibold md:text-4xl">
+        The right tone for every situation
+      </h2>
+      <p class="text-text-secondary">
+        From dating to damage control, parry matches the vibe you need.
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {scenarios.map((scenario) => (
+        <div class="glass-card-lite glass-card-hover animate-on-scroll p-6">
+          <div class="mb-4 flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-surface">
+              <Icon name={scenario.icon} size={20} class="text-warm-gold" />
+            </div>
+            <h3 class="font-[var(--font-sora)] text-base font-semibold">{scenario.label}</h3>
+          </div>
+
+          <div class="mb-3 rounded-xl bg-surface/50 p-3">
+            <p class="mb-1 text-[10px] font-medium uppercase tracking-wider text-text-label">They said</p>
+            <p class="text-sm leading-relaxed text-text-secondary">"{scenario.incoming}"</p>
+          </div>
+
+          <div class="mb-3">
+            <span class="inline-block rounded-full bg-accent/20 px-3 py-1 text-xs font-medium text-accent">
+              {scenario.tone}
+            </span>
+          </div>
+
+          <div class="rounded-xl bg-surface/50 p-3">
+            <p class="mb-1 text-[10px] font-medium uppercase tracking-wider text-text-label">parry says</p>
+            <p class="text-sm leading-relaxed text-text-primary">"{scenario.reply}"</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
