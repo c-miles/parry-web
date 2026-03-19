@@ -1,6 +1,6 @@
-# Parry Web
+# parry web
 
-Marketing and landing page for [Parry](https://parryai.app), an AI-powered mobile app that suggests text message replies. Built as a static site with Astro. Also hosts the privacy policy and terms of service pages linked directly from the mobile app.
+Marketing and landing page for [parry](https://parryai.app), an AI-powered mobile app that suggests text message replies. Built as a static site with Astro. Also hosts the privacy policy and terms of service pages linked directly from the mobile app.
 
 ## Tech Stack
 
@@ -25,8 +25,8 @@ npm run preview     # Preview the production build
 | Route | Description |
 |-------|-------------|
 | `/` | Landing page with hero, features, how it works, FAQ, and download CTAs |
-| `/privacy` | Privacy policy (linked from the Parry mobile app) |
-| `/terms` | Terms of service (linked from the Parry mobile app) |
+| `/privacy` | Privacy policy (linked from the parry mobile app) |
+| `/terms` | Terms of service (linked from the parry mobile app) |
 | `/404` | Custom 404 error page |
 
 ## Project Structure
@@ -42,4 +42,4 @@ public/             # Static assets (favicons, badges, robots.txt, llms.txt)
 
 ## Design
 
-The visual design matches the Parry mobile app, using the same color palette, glassmorphism cards, and typography. Design tokens originate from the mobile app's theme files in the sibling repo at `~/Documents/parry/`.
+The visual design matches the parry mobile app, using the same color palette, glassmorphism cards, and typography. Design tokens originate from the mobile app's theme files in the sibling repo at `~/Documents/parry/`.
