@@ -2,7 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import SocialProof from '../components/SocialProof.astro';
+import PainPoint from '../components/PainPoint.astro';
 import HowItWorks from '../components/HowItWorks.astro';
+import TonesShowcase from '../components/TonesShowcase.astro';
 import Features from '../components/Features.astro';
 import Privacy from '../components/Privacy.astro';
 import FAQ from '../components/FAQ.astro';
@@ -11,35 +13,36 @@ import DownloadCTA from '../components/DownloadCTA.astro';
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "MobileApplication",
-  "name": "Parry",
-  "description": "AI-powered reply suggestions for text messages. Paste a message, pick a tone, get the perfect response.",
+  "name": "parry",
+  "description": "Paste a message, pick a tone, get three ready-to-send replies. parry is the fastest way to respond to any message.",
   "url": "https://parryai.app",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "iOS, Android",
   "offers": {
     "@type": "Offer",
     "price": "0",
-    "priceCurrency": "USD",
-    "description": "Free — 3 replies per day"
+    "priceCurrency": "USD"
   },
   "author": {
     "@type": "Organization",
-    "name": "Parry",
+    "name": "parry",
     "url": "https://parryai.app"
   }
 };
 ---
 
 <BaseLayout
-  title="Parry — AI-Powered Reply Suggestions"
-  description="Reply like you mean it. Parry gives you AI-powered reply suggestions that match your tone, your vibe, and your conversation. Free on iOS and Android."
+  title="parry — Never Overthink a Message Again"
+  description="parry gives you the perfect reply for any message. Paste a message, pick a tone, get three ready-to-send responses. Free on iOS and Android."
   canonicalPath=""
 
   jsonLd={jsonLd}
 >
   <Hero />
   <SocialProof />
+  <PainPoint />
   <HowItWorks />
+  <TonesShowcase />
   <Features />
   <Privacy />
   <FAQ />
