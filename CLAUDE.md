@@ -1,6 +1,6 @@
-# CLAUDE.md - Parry Marketing Website
+# CLAUDE.md - parry Marketing Website
 
-Marketing website for Parry, an AI-powered mobile app for text message reply suggestions.
+Marketing website for parry, an AI-powered mobile app for text message reply suggestions.
 
 ## Tech Stack
 
@@ -38,7 +38,9 @@ src/
 │   ├── Hero.astro              # Headline, CTA, phone mockup
 │   ├── HowItWorks.astro        # 3-step section
 │   ├── Features.astro          # Feature cards
-│   ├── SocialProof.astro       # Ratings/press section
+│   ├── SocialProof.astro       # Claude AI attribution badge
+│   ├── PainPoint.astro         # "Sound familiar?" empathy/pain-point section
+│   ├── TonesShowcase.astro     # Scenario cards showing tones in action
 │   ├── Privacy.astro           # Trust/privacy section
 │   ├── DownloadCTA.astro       # App Store/Play Store badges
 │   ├── FAQ.astro               # <details>/<summary> accordion
@@ -80,7 +82,7 @@ Web-specific notes:
 
 ## Critical URLs
 
-The Parry mobile app links to these from its settings screen:
+The parry mobile app links to these from its settings screen:
 - `https://parryai.app/privacy` -- Privacy Policy
 - `https://parryai.app/terms` -- Terms of Service
 

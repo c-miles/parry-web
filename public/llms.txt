@@ -1,14 +1,14 @@
-# Parry
+# parry
 
 > AI-powered reply suggestions for text messages. A mobile app that helps you craft the perfect response.
 
-Parry lets you paste a text message, pick a tone, and get three AI-crafted replies in seconds. Powered by Anthropic's Claude AI. Available on iOS and Android.
+parry lets you paste a text message, pick a tone, and get three ready-to-send replies in seconds. Available on iOS and Android.
 
 ## Features
-- 5 built-in tones: Casual, Professional, Witty, Flirty, Direct
+- 5 built-in tones: Casual, Professional, Supportive, Witty, Assertive
 - Custom tone presets (Pro)
 - Voice input with transcription
-- Instant results — three replies in under two seconds
+- Image and screenshot input (Pro)
 
 ## Privacy
 - Messages are processed in real-time and immediately discarded
@@ -17,13 +17,13 @@ Parry lets you paste a text message, pick a tone, and get three AI-crafted repli
 - Your data is never used to train AI models
 
 ## Pricing
-- Free: 3 reply generations per day, no account needed
-- Pro: $9.99/month or $79.99/year — unlimited generations, custom tones, priority processing
+- Free: reply generations every day, no account needed
+- Pro: monthly or annual subscription — more generations, custom tones, priority processing
 
 ## Pages
 - [Home](https://parryai.app): Landing page with features and download links
-- [Privacy Policy](https://parryai.app/privacy): How Parry handles user data
-- [Terms of Service](https://parryai.app/terms): Terms governing use of Parry
+- [Privacy Policy](https://parryai.app/privacy): How parry handles user data
+- [Terms of Service](https://parryai.app/terms): Terms governing use of parry
 
 ## Contact
 - Support: support@parryai.app
