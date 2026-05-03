@@ -1,12 +1,13 @@
----
-import Icon from './Icon.astro';
----
-
 <header class="site-header fixed top-0 left-0 right-0 z-50">
   <nav aria-label="Primary" class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10 lg:px-14">
-    <a href="/" class="flex items-center gap-2.5 text-text-primary no-underline">
-      <Icon name="shield" size={26} class="text-text-primary" />
-      <span class="font-display text-lg font-semibold tracking-tight">parry</span>
+    <a href="/" class="inline-flex items-center text-text-primary no-underline" aria-label="parry, home">
+      <img
+        src="/brand/parry-wordmark-white.svg"
+        alt="parry"
+        height="26"
+        width="111"
+        class="h-[26px] w-auto"
+      />
     </a>
   </nav>
 </header>

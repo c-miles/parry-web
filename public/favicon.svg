@@ -1,11 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#E8734A"/>
-      <stop offset="50%" stop-color="#D4556B"/>
-      <stop offset="100%" stop-color="#B8426E"/>
-    </linearGradient>
-  </defs>
-  <rect width="32" height="32" rx="8" fill="#1A0A1E"/>
-  <text x="16" y="22" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="url(#g)">P</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#1a0a1e"/>
+  <svg viewBox="0 0 488.4 312.7" x="5" y="9" width="22" height="14" preserveAspectRatio="xMidYMid meet">
+    <path fill="#fff" d="M25.9,39.3S698.3-10.8,385.4,206.5c0,0,85.9-144.9-359.5-167.3Z"/>
+    <path fill="#fff" d="M200.1,102.5c.6.2,121.4,41.2,83.5,154.2-2,7.9-4.8,12.6-4.8,12.6,163-113.2,58.7-153.8-78.7-166.8Z"/>
+    <path fill="#fff" d="M200.1,185.9c.3.2,51.5,33.7,23.3,98.5-1.7,4.6-3.4,7.2-3.4,7.2,85.6-55.7,41.8-87.7-19.9-105.7Z"/>
+  </svg>
 </svg>

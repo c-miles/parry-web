@@ -8,15 +8,20 @@
 ---
 
 <div class="phone-frame" role="img" aria-label="parry app preview showing a witty reply suggestion">
-  <!-- Outer frame (titanium-ish bezel) -->
-  <div class="relative mx-auto w-[280px] sm:w-[320px] md:w-[360px] lg:w-[380px]">
+  <!-- Outer frame (titanium-ish bezel). Height-driven sizing so the phone always
+       fits the viewport on laptop screens (1280x800, 1440x900, etc.). Width
+       derives from the 9/19.5 aspect ratio. -->
+  <div
+    class="relative mx-auto aspect-[9/19.5] w-auto"
+    style="height: clamp(440px, 62dvh, 640px);"
+  >
     <div
-      class="relative rounded-[44px] p-[3px]"
+      class="relative h-full w-full rounded-[44px] p-[3px]"
       style="background: linear-gradient(155deg, #2a2530 0%, #1a1620 50%, #2a2530 100%); box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);"
     >
       <div
-        class="relative overflow-hidden rounded-[42px]"
-        style="background: #0a070d; aspect-ratio: 9/19.5;"
+        class="relative h-full w-full overflow-hidden rounded-[42px]"
+        style="background: #0a070d;"
       >
         <!-- Notch -->
         <div class="absolute left-1/2 top-2.5 z-10 h-6 w-28 -translate-x-1/2 rounded-full bg-black"></div>
