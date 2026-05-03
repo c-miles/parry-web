@@ -1,68 +1,67 @@
 ---
-// CSS-only phone frame with mock app UI
+/*
+  Phone preview frame. Currently renders a static "screenshot-like" composition
+  in CSS as a placeholder. When real app screenshots are ready (see issue #4),
+  replace the entire <div class="phone-screen-content"> with an <img> tag —
+  the frame, dimensions, and shadow stay the same.
+*/
 ---
 
-<div class="animate-float" role="img" aria-label="parry app showing a witty reply suggestion for a text message">
-  <div class="relative mx-auto w-[220px] md:w-[260px] lg:w-[280px]">
-    <!-- Phone outer frame -->
-    <div class="rounded-[36px] border-2 border-surface-border bg-bg-5 p-2 shadow-2xl">
-      <!-- Notch -->
-      <div class="absolute left-1/2 top-3 z-10 h-5 w-24 -translate-x-1/2 rounded-full bg-bg-5"></div>
+<div class="phone-frame" role="img" aria-label="parry app preview showing a witty reply suggestion">
+  <!-- Outer frame (titanium-ish bezel) -->
+  <div class="relative mx-auto w-[280px] sm:w-[320px] md:w-[360px] lg:w-[380px]">
+    <div
+      class="relative rounded-[44px] p-[3px]"
+      style="background: linear-gradient(155deg, #2a2530 0%, #1a1620 50%, #2a2530 100%); box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);"
+    >
+      <div
+        class="relative overflow-hidden rounded-[42px]"
+        style="background: #0a070d; aspect-ratio: 9/19.5;"
+      >
+        <!-- Notch -->
+        <div class="absolute left-1/2 top-2.5 z-10 h-6 w-28 -translate-x-1/2 rounded-full bg-black"></div>
 
-      <!-- Screen area -->
-      <div class="relative overflow-hidden rounded-[28px]" style="background: linear-gradient(165deg, var(--color-bg-1), var(--color-bg-3), var(--color-bg-4)); aspect-ratio: 9/19.5;">
-        <!-- Inner ambient orb -->
-        <div class="absolute -right-10 -top-10 h-40 w-40 rounded-full opacity-30" style="background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%); filter: blur(30px);"></div>
-
-        <!-- Mock app content -->
-        <div class="flex h-full flex-col px-4 pt-10 pb-4">
-          <!-- Status bar mock -->
-          <div class="mb-4 flex items-center justify-between text-[10px] text-text-tertiary">
+        <!-- TODO(issue #4): replace this entire block with <img src="/screenshots/hero.png" alt="..." class="h-full w-full object-cover" /> -->
+        <div class="phone-screen-content flex h-full flex-col px-5 pt-12 pb-6">
+          <!-- Status bar -->
+          <div class="mb-6 flex items-center justify-between text-[11px] font-medium text-text-tertiary">
             <span>9:41</span>
-            <div class="flex gap-1">
-              <div class="h-2 w-4 rounded-sm bg-text-tertiary"></div>
-              <div class="h-2 w-2 rounded-sm bg-text-tertiary"></div>
+            <div class="flex items-center gap-1">
+              <div class="h-2.5 w-4 rounded-sm bg-text-tertiary"></div>
+              <div class="h-2.5 w-2.5 rounded-sm bg-text-tertiary"></div>
             </div>
           </div>
 
-          <!-- App title mock -->
-          <p class="mb-4 text-center font-[var(--font-sora)] text-xs font-semibold text-text-secondary">
-            parry
-          </p>
+          <!-- App brand -->
+          <div class="mb-7 flex items-center justify-center gap-1.5">
+            <span class="font-display text-sm font-semibold text-text-primary">parry</span>
+          </div>
 
-          <!-- Mock input card -->
-          <div class="glass-card mb-3 p-3">
-            <p class="mb-2 text-[9px] font-medium uppercase tracking-wider text-text-label">Message</p>
-            <p class="text-[11px] leading-relaxed text-text-secondary">
+          <!-- Incoming message label -->
+          <p class="eyebrow mb-2 text-[10px]">Their message</p>
+          <div class="mb-5 rounded-2xl border border-hairline bg-bg-elevated p-3.5">
+            <p class="text-[13px] leading-relaxed text-text-secondary">
               hey, I had a really great time last night :)
             </p>
           </div>
 
-          <!-- Mock tone selector -->
-          <div class="mb-3 flex gap-1.5">
-            <div class="rounded-full bg-surface px-2.5 py-1 text-[9px] text-text-tertiary">Casual</div>
-            <div class="rounded-full px-2.5 py-1 text-[9px] font-medium text-text-primary" style="background: linear-gradient(135deg, var(--color-accent), var(--color-accent-deep));">Witty</div>
-            <div class="rounded-full bg-surface px-2.5 py-1 text-[9px] text-text-tertiary">Assertive</div>
+          <!-- Tone selector -->
+          <p class="eyebrow mb-2 text-[10px]">Tone</p>
+          <div class="mb-5 flex flex-wrap gap-1.5">
+            <span class="rounded-full border border-hairline px-2.5 py-1 text-[11px] text-text-tertiary">Casual</span>
+            <span class="rounded-full px-2.5 py-1 text-[11px] font-medium text-white" style="background: var(--color-accent);">Witty</span>
+            <span class="rounded-full border border-hairline px-2.5 py-1 text-[11px] text-text-tertiary">Assertive</span>
           </div>
 
-          <!-- Mock reply cards -->
-          <div class="flex flex-1 flex-col gap-2">
-            <div class="glass-card p-2.5">
-              <p class="text-[10px] leading-relaxed text-text-primary">
-                same here! fair warning though, I'm already mentally ranking our next date spot options
-              </p>
-            </div>
-            <div class="glass-card p-2.5">
-              <p class="text-[10px] leading-relaxed text-text-primary">
-                honestly if the vibe was any better we'd have to start charging admission
-              </p>
-            </div>
+          <!-- Reply -->
+          <p class="eyebrow mb-2 text-[10px]">parry says</p>
+          <div class="rounded-2xl border border-hairline bg-bg-elevated p-3.5">
+            <p class="text-[13px] leading-relaxed text-text-primary">
+              same here. fair warning though — I'm already mentally ranking our next date spot options
+            </p>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Reflection/glow under phone -->
-    <div class="absolute -bottom-4 left-1/2 h-8 w-3/4 -translate-x-1/2 rounded-full opacity-20" style="background: radial-gradient(ellipse, var(--color-accent) 0%, transparent 70%); filter: blur(16px);"></div>
   </div>
 </div>

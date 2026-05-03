@@ -2,16 +2,11 @@
 import Icon from './Icon.astro';
 ---
 
-<section class="px-5 py-8 md:px-8 lg:px-12 md:py-12">
-  <div class="mx-auto max-w-3xl text-center">
-    <div class="glass-card-lite animate-on-scroll inline-flex items-center gap-3 px-6 py-5">
-      <!-- Claude AI attribution -->
-      <div class="flex items-center gap-2">
-        <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-surface">
-          <Icon name="brain" size={18} class="text-warm-gold" />
-        </div>
-        <span class="text-sm font-medium text-text-primary">Powered by Claude AI</span>
-      </div>
+<section class="px-6 py-12 md:px-10 lg:px-14">
+  <div class="mx-auto max-w-7xl">
+    <div class="hairline-top hairline-bottom flex items-center justify-center gap-3 py-5 animate-on-scroll">
+      <Icon name="brain" size={16} class="text-text-tertiary" />
+      <span class="eyebrow text-text-secondary">Powered by Claude AI</span>
     </div>
   </div>
 </section>

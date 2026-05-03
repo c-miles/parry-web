@@ -4,7 +4,7 @@ import Icon from './Icon.astro';
 const faqs = [
   {
     question: "Is parry free?",
-    answer: "Yes! parry is free to download and use every day, no account needed. If you want more replies and custom tones, you can upgrade to parry Pro."
+    answer: "Yes. parry is free to download and use every day, no account needed. If you want more replies and custom tones, you can upgrade to parry Pro."
   },
   {
     question: "How much does parry Pro cost?",
@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     question: "Is my data safe?",
-    answer: "Absolutely. Your messages are sent for processing and immediately discarded. They're never saved or stored on any server. We don't collect personal information, and your data is never used to train AI models. Read our full <a href='/privacy' class='text-accent underline underline-offset-2 hover:text-warm-gold'>privacy policy</a> for details."
+    answer: "Absolutely. Your messages are sent for processing and immediately discarded. They're never saved or stored on any server. We don't collect personal information, and your data is never used to train AI models. Read our full <a href='/privacy' class='text-accent-text underline underline-offset-4 hover:text-accent'>privacy policy</a> for details."
   },
   {
     question: "What tones are available?",
@@ -41,23 +41,28 @@ const faqs = [
 ];
 ---
 
-<section class="px-5 py-16 md:px-8 lg:px-12 md:py-20">
-  <div class="mx-auto max-w-2xl">
-    <h2 class="mb-12 text-center font-[var(--font-sora)] text-2xl font-semibold md:text-4xl">
-      Frequently asked questions
-    </h2>
+<section class="px-6 py-24 md:px-10 md:py-32 lg:px-14">
+  <div class="mx-auto max-w-3xl">
+    <div class="mb-14 animate-on-scroll">
+      <p class="eyebrow mb-5">FAQ</p>
+      <h2 class="font-display text-balance font-semibold leading-[1.05]" style="font-size: var(--text-display);">
+        Questions, answered.
+      </h2>
+    </div>
 
-    <div class="flex flex-col gap-3">
+    <div class="hairline-top">
       {faqs.map((faq) => (
-        <details class="glass-card-lite group">
-          <summary class="flex cursor-pointer items-center justify-between p-5">
-            <span class="pr-4 font-[var(--font-sora)] text-base font-semibold">{faq.question}</span>
+        <details class="hairline-bottom group">
+          <summary class="flex cursor-pointer items-center justify-between gap-6 py-6">
+            <span class="font-display text-lg font-semibold leading-snug text-text-primary md:text-xl">
+              {faq.question}
+            </span>
             <span class="faq-chevron shrink-0">
               <Icon name="caret-down" size={18} class="text-text-tertiary" />
             </span>
           </summary>
-          <div class="border-t border-surface-border px-5 pb-5 pt-4">
-            <p class="text-base leading-relaxed text-text-secondary" set:html={faq.answer} />
+          <div class="pb-6 pr-12">
+            <p class="text-base leading-relaxed text-text-secondary md:text-lg" set:html={faq.answer} />
           </div>
         </details>
       ))}

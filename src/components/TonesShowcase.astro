@@ -3,28 +3,32 @@ import Icon from './Icon.astro';
 
 const scenarios = [
   {
-    label: "The Love Interest",
+    id: "love",
+    label: "The crush",
     icon: "heart",
     incoming: "had a really great time last night :)",
     tone: "the rizler",
     reply: "me too honestly. already thinking about what excuse I can come up with to see you again"
   },
   {
-    label: "The Tricky Boss",
+    id: "boss",
+    label: "The tricky boss",
     icon: "briefcase",
     incoming: "Can you take on the Henderson project too? I know you're swamped but you're the only one I trust with it",
     tone: "corporate robot",
-    reply: "Thanks for the trust, I'd love to help. Let me look at my current workload and circle back with a realistic timeline by EOD."
+    reply: "Thanks for the trust — happy to help. Let me look at my current workload and circle back with a realistic timeline by EOD."
   },
   {
-    label: "The Friend in Need",
+    id: "friend",
+    label: "The friend in need",
     icon: "hand-heart",
     incoming: "I don't think I got the job. They said they went with someone else",
     tone: "the 3am friend",
     reply: "that really sucks and I'm sorry. their loss genuinely. want to grab food later and talk about it? or not talk about it. either way I'm coming over"
   },
   {
-    label: "The Group Chat",
+    id: "groupchat",
+    label: "The group chat",
     icon: "users-three",
     incoming: "bro did you see what Jake posted",
     tone: "nonchalant",
@@ -33,44 +37,80 @@ const scenarios = [
 ];
 ---
 
-<section class="px-5 py-16 md:px-8 lg:px-12 md:py-20">
-  <div class="mx-auto max-w-6xl">
-    <div class="mb-12 text-center">
-      <h2 class="mb-3 font-[var(--font-sora)] text-2xl font-semibold md:text-4xl">
-        The right tone for every situation
+<section class="px-6 py-24 md:px-10 md:py-32 lg:px-14">
+  <div class="mx-auto max-w-5xl">
+    <div class="mb-14 max-w-2xl animate-on-scroll">
+      <p class="eyebrow mb-5">Tones in action</p>
+      <h2 class="font-display text-balance font-semibold leading-[1.05]" style="font-size: var(--text-display);">
+        The right tone for every situation.
       </h2>
-      <p class="text-text-secondary">
-        From dating to damage control, parry matches the vibe you need.
+      <p class="mt-5 text-lg leading-relaxed text-text-secondary">
+        From dating to damage control — pick a scenario and see what parry would say.
       </p>
     </div>
 
-    <div class="grid gap-6 md:grid-cols-2">
-      {scenarios.map((scenario) => (
-        <div class="glass-card-lite glass-card-hover animate-on-scroll p-6">
-          <div class="mb-4 flex items-center gap-3">
-            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-surface">
-              <Icon name={scenario.icon} size={20} class="text-warm-gold" />
-            </div>
-            <h3 class="font-[var(--font-sora)] text-base font-semibold">{scenario.label}</h3>
+    <!-- Scenario tabs -->
+    <div class="mb-6 flex flex-wrap gap-2 animate-on-scroll" role="tablist" aria-label="Scenarios">
+      {scenarios.map((s, i) => (
+        <button
+          type="button"
+          class="tone-tab inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2.5 text-sm font-medium text-text-secondary transition-colors hover:border-hairline-strong hover:text-text-primary aria-selected:border-accent aria-selected:bg-accent-soft aria-selected:text-text-primary"
+          data-scenario={s.id}
+          role="tab"
+          aria-selected={i === 0 ? "true" : "false"}
+        >
+          <Icon name={s.icon} size={16} class="text-accent-text" />
+          <span>{s.label}</span>
+        </button>
+      ))}
+    </div>
+
+    <!-- Demo panel -->
+    <div class="surface-elevated p-6 md:p-10 animate-on-scroll">
+      {scenarios.map((s, i) => (
+        <div
+          class="tone-panel"
+          data-scenario={s.id}
+          role="tabpanel"
+          hidden={i !== 0}
+        >
+          <p class="eyebrow mb-2">They said</p>
+          <div class="mb-6 rounded-2xl bg-bg-inset p-5">
+            <p class="text-lg leading-relaxed text-text-secondary">"{s.incoming}"</p>
           </div>
 
-          <div class="mb-3 rounded-xl bg-surface/50 p-3">
-            <p class="mb-1 text-[10px] font-medium uppercase tracking-wider text-text-label">They said</p>
-            <p class="text-sm leading-relaxed text-text-secondary">"{scenario.incoming}"</p>
-          </div>
-
-          <div class="mb-3">
-            <span class="inline-block rounded-full bg-accent/20 px-3 py-1 text-xs font-medium text-accent">
-              {scenario.tone}
+          <div class="mb-3 flex items-center gap-3">
+            <p class="eyebrow mb-0">Tone</p>
+            <span class="inline-block rounded-full bg-accent-soft px-3 py-1 text-xs font-medium text-accent-text">
+              {s.tone}
             </span>
           </div>
 
-          <div class="rounded-xl bg-surface/50 p-3">
-            <p class="mb-1 text-[10px] font-medium uppercase tracking-wider text-text-label">parry says</p>
-            <p class="text-sm leading-relaxed text-text-primary">"{scenario.reply}"</p>
+          <p class="eyebrow mb-2">parry says</p>
+          <div class="rounded-2xl bg-bg-inset p-5">
+            <p class="text-lg leading-relaxed text-text-primary">"{s.reply}"</p>
           </div>
         </div>
       ))}
     </div>
   </div>
 </section>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.tone-tab');
+  const panels = document.querySelectorAll<HTMLElement>('.tone-panel');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.scenario;
+      tabs.forEach((t) => t.setAttribute('aria-selected', t === tab ? 'true' : 'false'));
+      panels.forEach((p) => {
+        if (p.dataset.scenario === target) {
+          p.removeAttribute('hidden');
+        } else {
+          p.setAttribute('hidden', '');
+        }
+      });
+    });
+  });
+</script>
