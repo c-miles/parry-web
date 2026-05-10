@@ -1,6 +1,20 @@
 ---
 import Icon from './Icon.astro';
 
+// TODO(post-mobile-redesign): Do NOT replace the CSS-rendered demo panel with iPhone
+// screenshots. The four-scenario tab interaction is a live demo of the tone-switching
+// value prop — that interactivity can't survive a static screenshot. When real
+// HowItWorks screenshots ship, audit TonesShowcase visual treatment to make sure it
+// reads as a deliberate sibling (a live demo) and not a placeholder leftover.
+// Possible polish: iPhone-styled chrome around the bubbles to match the iPhone aspect
+// ratio of HowItWorks screenshots, while keeping the live tab logic intact.
+
+// TODO(post-launch): re-evaluate "the rizler" custom-tone label in the first scenario.
+// Per .agents/product-marketing-context.md (Words to AVOID), "rizz/rizler" is acceptable
+// only as a custom-tone example, never as positioning. Currently the only instance on
+// the site. If brand-foundation post-launch tightens the rule, swap for an equally
+// voice-y label without rizz association (e.g. "the smooth one").
+
 const scenarios = [
   {
     id: "love",
@@ -37,7 +51,7 @@ const scenarios = [
 ];
 ---
 
-<section class="px-6 py-24 md:px-10 md:py-32 lg:px-14">
+<section class="px-6 py-24 md:px-10 md:py-32 lg:px-14" data-tones-root>
   <div class="mx-auto max-w-5xl">
     <div class="mb-14 max-w-2xl animate-on-scroll">
       <p class="eyebrow mb-5">Tones in action</p>
@@ -45,7 +59,7 @@ const scenarios = [
         The right tone for every situation.
       </h2>
       <p class="mt-5 text-lg leading-relaxed text-text-secondary">
-        From dating to damage control — pick a scenario and see what parry would say.
+        From dating to damage control. Pick a scenario and see what parry would say.
       </p>
     </div>
 
@@ -54,10 +68,13 @@ const scenarios = [
       {scenarios.map((s, i) => (
         <button
           type="button"
+          id={`tone-tab-${s.id}`}
           class="tone-tab inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2.5 text-sm font-medium text-text-secondary transition-colors hover:border-hairline-strong hover:text-text-primary aria-selected:border-accent aria-selected:bg-accent-soft aria-selected:text-text-primary"
           data-scenario={s.id}
           role="tab"
           aria-selected={i === 0 ? "true" : "false"}
+          aria-controls={`tone-panel-${s.id}`}
+          tabindex={i === 0 ? 0 : -1}
         >
           <Icon name={s.icon} size={16} class="text-accent-text" />
           <span>{s.label}</span>
@@ -69,9 +86,12 @@ const scenarios = [
     <div class="surface-elevated p-6 md:p-10 animate-on-scroll">
       {scenarios.map((s, i) => (
         <div
+          id={`tone-panel-${s.id}`}
           class="tone-panel"
           data-scenario={s.id}
           role="tabpanel"
+          aria-labelledby={`tone-tab-${s.id}`}
+          tabindex={0}
           hidden={i !== 0}
         >
           <p class="eyebrow mb-2">They said</p>
@@ -97,19 +117,49 @@ const scenarios = [
 </section>
 
 <script>
-  const tabs = document.querySelectorAll<HTMLButtonElement>('.tone-tab');
-  const panels = document.querySelectorAll<HTMLElement>('.tone-panel');
+  // Scoped per-instance: every <section data-tones-root> on the page wires its own tabs/panels.
+  // Guards: bails loudly if a tab is missing data-scenario or no panel matches (silent no-op
+  // would leave users staring at an empty card with no console signal).
+  document.querySelectorAll<HTMLElement>('[data-tones-root]').forEach((root) => {
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('.tone-tab'));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('.tone-panel'));
 
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
+    if (tabs.length === 0 || panels.length === 0) return;
+
+    function activate(tab: HTMLButtonElement) {
       const target = tab.dataset.scenario;
-      tabs.forEach((t) => t.setAttribute('aria-selected', t === tab ? 'true' : 'false'));
-      panels.forEach((p) => {
-        if (p.dataset.scenario === target) {
-          p.removeAttribute('hidden');
-        } else {
-          p.setAttribute('hidden', '');
-        }
+      if (!target) {
+        console.error('[TonesShowcase] tab is missing data-scenario attribute', tab);
+        return;
+      }
+      const matchingPanels = panels.filter((p) => p.dataset.scenario === target);
+      if (matchingPanels.length === 0) {
+        console.error(`[TonesShowcase] no panel matches data-scenario="${target}"`);
+        return;
+      }
+      tabs.forEach((t) => {
+        const isActive = t === tab;
+        t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        t.tabIndex = isActive ? 0 : -1;
+      });
+      panels.forEach((p) => p.toggleAttribute('hidden', p.dataset.scenario !== target));
+    }
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => activate(tab));
+
+      tab.addEventListener('keydown', (e) => {
+        let next = -1;
+        if (e.key === 'ArrowRight') next = (i + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = tabs.length - 1;
+        else return;
+
+        e.preventDefault();
+        const nextTab = tabs[next];
+        nextTab.focus();
+        activate(nextTab);
       });
     });
   });
