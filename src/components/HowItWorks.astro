@@ -1,55 +1,59 @@
 ---
-import Icon from './Icon.astro';
+const steps = [
+  {
+    num: "01",
+    title: "Paste what they said",
+    body: "Got a message that stumped you? Copy it and drop it into parry. Works with any messaging app — iMessage, WhatsApp, Slack, Hinge, anywhere."
+  },
+  {
+    num: "02",
+    title: "Pick your tone",
+    body: "Casual, professional, supportive, witty, assertive. Choose the tone that fits the moment, not the one the AI defaults to."
+  },
+  {
+    num: "03",
+    title: "Send with confidence",
+    body: "Four ready-to-send replies appear instantly. Tap to copy, switch back to your chat, hit send. Five seconds, end-to-end."
+  }
+];
 ---
 
-<section class="px-5 py-16 md:px-8 lg:px-12 md:py-20">
-  <div class="mx-auto max-w-6xl">
-    <h2 class="mb-12 text-center font-[var(--font-sora)] text-2xl font-semibold md:text-4xl">
-      Three steps. Perfect reply.
-    </h2>
+<section class="px-6 py-24 md:px-10 md:py-32 lg:px-14">
+  <div class="mx-auto max-w-7xl">
+    <div class="mb-20 max-w-2xl animate-on-scroll">
+      <p class="eyebrow mb-5">How it works</p>
+      <h2 class="font-display text-balance font-semibold leading-[1.05]" style="font-size: var(--text-display);">
+        Three steps. The right reply.
+      </h2>
+      {/* "Three steps" refers to the paste/pick/send workflow — independent of the
+          generation count (which is four). Keep as-is unless brand-foundation says otherwise. */}
+    </div>
 
-    <div class="grid gap-6 md:grid-cols-3 md:gap-8">
-      <!-- Step 1 -->
-      <div class="glass-card-lite glass-card-hover animate-on-scroll p-6 text-center">
-        <div class="mb-4 flex justify-center">
-          <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-surface">
-            <Icon name="clipboard-text" size={28} class="text-warm-gold" />
+    <div class="flex flex-col gap-24 md:gap-32">
+      {steps.map((step, i) => (
+        <div class={`grid items-center gap-10 md:gap-16 lg:grid-cols-2 animate-on-scroll ${i % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`}>
+          <!-- Numeral + text -->
+          <div>
+            <p class="font-display mb-4 leading-none text-accent" style="font-size: clamp(5rem, 12vw, 9rem); letter-spacing: -0.04em;">
+              {step.num}
+            </p>
+            <h3 class="font-display mb-4 text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+              {step.title}
+            </h3>
+            <p class="max-w-md text-lg leading-relaxed text-text-secondary">
+              {step.body}
+            </p>
+          </div>
+
+          {/* TODO(issue #9): swap placeholder for real screenshot. */}
+          <div class="surface-elevated flex aspect-[4/3] items-center justify-center">
+            <div class="flex flex-col items-center gap-3 text-text-tertiary">
+              <div class="font-display text-5xl font-semibold opacity-30">{step.num}</div>
+              <p class="eyebrow">Screenshot · step {step.num}</p>
+            </div>
           </div>
         </div>
-        <p class="mb-2 text-xs font-medium uppercase tracking-wider text-text-label">Step 1</p>
-        <h3 class="mb-2 font-[var(--font-sora)] text-lg font-semibold">Paste what they said</h3>
-        <p class="text-base text-text-secondary">
-          Got a message that stumped you? Copy it and paste it into parry. Works with any messaging app.
-        </p>
-      </div>
-
-      <!-- Step 2 -->
-      <div class="glass-card-lite glass-card-hover animate-on-scroll p-6 text-center">
-        <div class="mb-4 flex justify-center">
-          <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-surface">
-            <Icon name="sliders-horizontal" size={28} class="text-warm-gold" />
-          </div>
-        </div>
-        <p class="mb-2 text-xs font-medium uppercase tracking-wider text-text-label">Step 2</p>
-        <h3 class="mb-2 font-[var(--font-sora)] text-lg font-semibold">Pick your vibe</h3>
-        <p class="text-base text-text-secondary">
-          Casual, professional, supportive, witty, or assertive. Choose the tone that fits the moment, or create your own.
-        </p>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="glass-card-lite glass-card-hover animate-on-scroll p-6 text-center">
-        <div class="mb-4 flex justify-center">
-          <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-surface">
-            <Icon name="chat-circle-text" size={28} class="text-warm-gold" />
-          </div>
-        </div>
-        <p class="mb-2 text-xs font-medium uppercase tracking-wider text-text-label">Step 3</p>
-        <h3 class="mb-2 font-[var(--font-sora)] text-lg font-semibold">Send with confidence</h3>
-        <p class="text-base text-text-secondary">
-          Get three ready-to-send replies instantly. Tap to copy, switch back to your chat, and hit send.
-        </p>
-      </div>
+      ))}
     </div>
   </div>
 </section>

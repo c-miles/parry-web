@@ -1,57 +1,61 @@
 ---
 import Icon from './Icon.astro';
+
+const features = [
+  {
+    icon: "palette",
+    title: "A tone for every conversation",
+    body: "Casual, professional, supportive, witty, assertive. Plus a custom one of your own, or up to four with Pro. Always sound like you, just dialed in for the moment.",
+    visual: "tones"
+  },
+  {
+    icon: "globe",
+    title: "Any app. Any message.",
+    body: "iMessage, WhatsApp, Slack, Hinge, Instagram DMs. If you can copy a message, parry can help you reply. No integrations, no permissions, no fuss.",
+    visual: "apps"
+  },
+  {
+    icon: "microphone",
+    title: "More than just text",
+    body: "Don't feel like typing? Just speak. Or snap a screenshot of a conversation and drop it right in. Voice and image input, no extra steps.",
+    visual: "input"
+  }
+];
 ---
 
-<section class="px-5 py-16 md:px-8 lg:px-12 md:py-20">
-  <div class="mx-auto max-w-6xl">
-    <h2 class="mb-12 text-center font-[var(--font-sora)] text-2xl font-semibold md:text-4xl">
-      Why people love parry
-    </h2>
+<section class="px-6 py-24 md:px-10 md:py-32 lg:px-14">
+  <div class="mx-auto max-w-7xl">
+    <div class="mb-20 max-w-2xl animate-on-scroll">
+      <p class="eyebrow mb-5">Why people love parry</p>
+      <h2 class="font-display text-balance font-semibold leading-[1.05]" style="font-size: var(--text-display);">
+        Built for the way you actually message.
+      </h2>
+    </div>
 
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      <!-- A tone for every conversation -->
-      <div class="glass-card-lite glass-card-hover animate-on-scroll p-6">
-        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-surface">
-          <Icon name="palette" size={24} class="text-warm-gold" />
-        </div>
-        <h3 class="mb-2 font-[var(--font-sora)] text-lg font-semibold">A tone for every conversation</h3>
-        <p class="text-base leading-relaxed text-text-secondary">
-          Casual, professional, supportive, witty, assertive, plus custom tones you create yourself. Always sound like you, just... better.
-        </p>
-      </div>
+    <div class="flex flex-col gap-24 md:gap-32">
+      {features.map((f, i) => (
+        <div class={`grid items-center gap-10 md:gap-16 lg:grid-cols-2 animate-on-scroll ${i % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`}>
+          <div>
+            <div class="mb-6 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent-soft">
+              <Icon name={f.icon} size={22} class="text-accent-text" />
+            </div>
+            <h3 class="font-display mb-4 text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+              {f.title}
+            </h3>
+            <p class="max-w-md text-lg leading-relaxed text-text-secondary">
+              {f.body}
+            </p>
+          </div>
 
-      <!-- Any app. Any message. -->
-      <div class="glass-card-lite glass-card-hover animate-on-scroll p-6">
-        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-surface">
-          <Icon name="globe" size={24} class="text-warm-gold" />
+          {/* TODO(issue #9): swap placeholder for real visual. */}
+          <div class="surface-elevated flex aspect-[4/3] items-center justify-center">
+            <div class="flex flex-col items-center gap-3 text-text-tertiary">
+              <Icon name={f.icon} size={48} class="opacity-30" />
+              <p class="eyebrow">Visual · {f.visual}</p>
+            </div>
+          </div>
         </div>
-        <h3 class="mb-2 font-[var(--font-sora)] text-lg font-semibold">Any app. Any message.</h3>
-        <p class="text-base leading-relaxed text-text-secondary">
-          iMessage, WhatsApp, Slack, Hinge, Instagram DMs. If you can copy a message, parry can help you reply.
-        </p>
-      </div>
-
-      <!-- More than just text -->
-      <div class="glass-card-lite glass-card-hover animate-on-scroll p-6">
-        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-surface">
-          <Icon name="microphone" size={24} class="text-warm-gold" />
-        </div>
-        <h3 class="mb-2 font-[var(--font-sora)] text-lg font-semibold">More than just text</h3>
-        <p class="text-base leading-relaxed text-text-secondary">
-          Don't feel like typing? Just speak. You can also snap a screenshot of a conversation and drop it right in. <span class="text-accent text-sm font-medium">Pro</span>
-        </p>
-      </div>
-
-      <!-- Your messages stay yours -->
-      <div class="glass-card-lite glass-card-hover animate-on-scroll p-6">
-        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-surface">
-          <Icon name="shield-check" size={24} class="text-warm-gold" />
-        </div>
-        <h3 class="mb-2 font-[var(--font-sora)] text-lg font-semibold">Your messages stay yours</h3>
-        <p class="text-base leading-relaxed text-text-secondary">
-          Nothing stored. Nothing trained on. No account required. Your conversations are processed and immediately forgotten.
-        </p>
-      </div>
+      ))}
     </div>
   </div>
 </section>

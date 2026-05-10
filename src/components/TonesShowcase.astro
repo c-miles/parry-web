@@ -1,30 +1,48 @@
 ---
 import Icon from './Icon.astro';
 
+// TODO(post-mobile-redesign): Do NOT replace the CSS-rendered demo panel with iPhone
+// screenshots. The four-scenario tab interaction is a live demo of the tone-switching
+// value prop — that interactivity can't survive a static screenshot. When real
+// HowItWorks screenshots ship, audit TonesShowcase visual treatment to make sure it
+// reads as a deliberate sibling (a live demo) and not a placeholder leftover.
+// Possible polish: iPhone-styled chrome around the bubbles to match the iPhone aspect
+// ratio of HowItWorks screenshots, while keeping the live tab logic intact.
+
+// TODO(post-launch): re-evaluate "the rizler" custom-tone label in the first scenario.
+// Per .agents/product-marketing-context.md (Words to AVOID), "rizz/rizler" is acceptable
+// only as a custom-tone example, never as positioning. Currently the only instance on
+// the site. If brand-foundation post-launch tightens the rule, swap for an equally
+// voice-y label without rizz association (e.g. "the smooth one").
+
 const scenarios = [
   {
-    label: "The Love Interest",
+    id: "love",
+    label: "The crush",
     icon: "heart",
     incoming: "had a really great time last night :)",
     tone: "the rizler",
     reply: "me too honestly. already thinking about what excuse I can come up with to see you again"
   },
   {
-    label: "The Tricky Boss",
+    id: "boss",
+    label: "The tricky boss",
     icon: "briefcase",
     incoming: "Can you take on the Henderson project too? I know you're swamped but you're the only one I trust with it",
     tone: "corporate robot",
-    reply: "Thanks for the trust, I'd love to help. Let me look at my current workload and circle back with a realistic timeline by EOD."
+    reply: "Thanks for the trust — happy to help. Let me look at my current workload and circle back with a realistic timeline by EOD."
   },
   {
-    label: "The Friend in Need",
+    id: "friend",
+    label: "The friend in need",
     icon: "hand-heart",
     incoming: "I don't think I got the job. They said they went with someone else",
     tone: "the 3am friend",
     reply: "that really sucks and I'm sorry. their loss genuinely. want to grab food later and talk about it? or not talk about it. either way I'm coming over"
   },
   {
-    label: "The Group Chat",
+    id: "groupchat",
+    label: "The group chat",
     icon: "users-three",
     incoming: "bro did you see what Jake posted",
     tone: "nonchalant",
@@ -33,44 +51,116 @@ const scenarios = [
 ];
 ---
 
-<section class="px-5 py-16 md:px-8 lg:px-12 md:py-20">
-  <div class="mx-auto max-w-6xl">
-    <div class="mb-12 text-center">
-      <h2 class="mb-3 font-[var(--font-sora)] text-2xl font-semibold md:text-4xl">
-        The right tone for every situation
+<section class="px-6 py-24 md:px-10 md:py-32 lg:px-14" data-tones-root>
+  <div class="mx-auto max-w-5xl">
+    <div class="mb-14 max-w-2xl animate-on-scroll">
+      <p class="eyebrow mb-5">Tones in action</p>
+      <h2 class="font-display text-balance font-semibold leading-[1.05]" style="font-size: var(--text-display);">
+        The right tone for every situation.
       </h2>
-      <p class="text-text-secondary">
-        From dating to damage control, parry matches the vibe you need.
+      <p class="mt-5 text-lg leading-relaxed text-text-secondary">
+        From dating to damage control. Pick a scenario and see what parry would say.
       </p>
     </div>
 
-    <div class="grid gap-6 md:grid-cols-2">
-      {scenarios.map((scenario) => (
-        <div class="glass-card-lite glass-card-hover animate-on-scroll p-6">
-          <div class="mb-4 flex items-center gap-3">
-            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-surface">
-              <Icon name={scenario.icon} size={20} class="text-warm-gold" />
-            </div>
-            <h3 class="font-[var(--font-sora)] text-base font-semibold">{scenario.label}</h3>
+    <!-- Scenario tabs -->
+    <div class="mb-6 flex flex-wrap gap-2 animate-on-scroll" role="tablist" aria-label="Scenarios">
+      {scenarios.map((s, i) => (
+        <button
+          type="button"
+          id={`tone-tab-${s.id}`}
+          class="tone-tab inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2.5 text-sm font-medium text-text-secondary transition-colors hover:border-hairline-strong hover:text-text-primary aria-selected:border-accent aria-selected:bg-accent-soft aria-selected:text-text-primary"
+          data-scenario={s.id}
+          role="tab"
+          aria-selected={i === 0 ? "true" : "false"}
+          aria-controls={`tone-panel-${s.id}`}
+          tabindex={i === 0 ? 0 : -1}
+        >
+          <Icon name={s.icon} size={16} class="text-accent-text" />
+          <span>{s.label}</span>
+        </button>
+      ))}
+    </div>
+
+    <!-- Demo panel -->
+    <div class="surface-elevated p-6 md:p-10 animate-on-scroll">
+      {scenarios.map((s, i) => (
+        <div
+          id={`tone-panel-${s.id}`}
+          class="tone-panel"
+          data-scenario={s.id}
+          role="tabpanel"
+          aria-labelledby={`tone-tab-${s.id}`}
+          tabindex={0}
+          hidden={i !== 0}
+        >
+          <p class="eyebrow mb-2">They said</p>
+          <div class="mb-6 rounded-2xl bg-bg-inset p-5">
+            <p class="text-lg leading-relaxed text-text-secondary">"{s.incoming}"</p>
           </div>
 
-          <div class="mb-3 rounded-xl bg-surface/50 p-3">
-            <p class="mb-1 text-[10px] font-medium uppercase tracking-wider text-text-label">They said</p>
-            <p class="text-sm leading-relaxed text-text-secondary">"{scenario.incoming}"</p>
-          </div>
-
-          <div class="mb-3">
-            <span class="inline-block rounded-full bg-accent/20 px-3 py-1 text-xs font-medium text-accent">
-              {scenario.tone}
+          <div class="mb-3 flex items-center gap-3">
+            <p class="eyebrow mb-0">Tone</p>
+            <span class="inline-block rounded-full bg-accent-soft px-3 py-1 text-xs font-medium text-accent-text">
+              {s.tone}
             </span>
           </div>
 
-          <div class="rounded-xl bg-surface/50 p-3">
-            <p class="mb-1 text-[10px] font-medium uppercase tracking-wider text-text-label">parry says</p>
-            <p class="text-sm leading-relaxed text-text-primary">"{scenario.reply}"</p>
+          <p class="eyebrow mb-2">parry says</p>
+          <div class="rounded-2xl bg-bg-inset p-5">
+            <p class="text-lg leading-relaxed text-text-primary">"{s.reply}"</p>
           </div>
         </div>
       ))}
     </div>
   </div>
 </section>
+
+<script>
+  // Scoped per-instance: every <section data-tones-root> on the page wires its own tabs/panels.
+  // Guards: bails loudly if a tab is missing data-scenario or no panel matches (silent no-op
+  // would leave users staring at an empty card with no console signal).
+  document.querySelectorAll<HTMLElement>('[data-tones-root]').forEach((root) => {
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('.tone-tab'));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('.tone-panel'));
+
+    if (tabs.length === 0 || panels.length === 0) return;
+
+    function activate(tab: HTMLButtonElement) {
+      const target = tab.dataset.scenario;
+      if (!target) {
+        console.error('[TonesShowcase] tab is missing data-scenario attribute', tab);
+        return;
+      }
+      const matchingPanels = panels.filter((p) => p.dataset.scenario === target);
+      if (matchingPanels.length === 0) {
+        console.error(`[TonesShowcase] no panel matches data-scenario="${target}"`);
+        return;
+      }
+      tabs.forEach((t) => {
+        const isActive = t === tab;
+        t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        t.tabIndex = isActive ? 0 : -1;
+      });
+      panels.forEach((p) => p.toggleAttribute('hidden', p.dataset.scenario !== target));
+    }
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => activate(tab));
+
+      tab.addEventListener('keydown', (e) => {
+        let next = -1;
+        if (e.key === 'ArrowRight') next = (i + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = tabs.length - 1;
+        else return;
+
+        e.preventDefault();
+        const nextTab = tabs[next];
+        nextTab.focus();
+        activate(nextTab);
+      });
+    });
+  });
+</script>
