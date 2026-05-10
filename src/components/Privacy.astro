@@ -11,10 +11,6 @@ const promises = [
   {
     title: "Anonymous by default",
     body: "No account required. No email, no phone number. Just open and go."
-  },
-  {
-    title: "Powered by Claude AI",
-    body: "Built on Anthropic's Claude — the industry leader in AI safety."
   }
 ];
 ---
@@ -24,14 +20,14 @@ const promises = [
     <div class="mb-16 max-w-2xl animate-on-scroll">
       <p class="eyebrow mb-5">Privacy</p>
       <h2 class="font-display text-balance font-semibold leading-[1.05]" style="font-size: var(--text-display);">
-        Your messages are yours.
+        Anonymous by design. Not by promise.
       </h2>
       <p class="mt-5 text-lg leading-relaxed text-text-secondary">
         Every message is processed in real-time and immediately forgotten. Nothing stored. Nothing trained on. Ever.
       </p>
     </div>
 
-    <div class="grid gap-px bg-hairline sm:grid-cols-2 lg:grid-cols-4 animate-on-scroll" style="border-top: 1px solid var(--color-hairline); border-bottom: 1px solid var(--color-hairline);">
+    <div class="grid gap-px bg-hairline sm:grid-cols-2 lg:grid-cols-3 animate-on-scroll" style="border-top: 1px solid var(--color-hairline); border-bottom: 1px solid var(--color-hairline);">
       {promises.map((p) => (
         <div class="bg-bg-base p-6 md:p-8">
           <p class="font-display mb-3 text-lg font-semibold tracking-tight">{p.title}</p>
