@@ -3,7 +3,7 @@
 /* Tailwind v4 theme configuration — Editorial Dark */
 @theme {
   /* Backgrounds — solid, no gradient */
-  --color-bg-base: #0E0B11;        /* warm near-black, ~4% plum tint */
+  --color-bg-base: #161220;        /* warm near-black, plum-tinted; lifted from #0E0B11 to L=0.0071 for cross-surface parity (per parry/docs/18-BRAND-FOUNDATION.md Decision 1 amendment) */
   --color-bg-elevated: #161218;    /* rare inset surface */
   --color-bg-inset: #110E14;       /* nested elevation */
 
