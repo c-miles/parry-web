@@ -1,16 +1,9 @@
 ---
-/*
-  Phone preview frame. Currently renders a static "screenshot-like" composition
-  in CSS as a placeholder. When real app screenshots are ready (see issue #4),
-  replace the entire <div class="phone-screen-content"> with an <img> tag —
-  the frame, dimensions, and shadow stay the same.
-*/
+// Placeholder phone preview — see issue #9 for the swap to a real screenshot.
 ---
 
 <div class="phone-frame" role="img" aria-label="parry app preview showing a witty reply suggestion">
-  <!-- Outer frame (titanium-ish bezel). Height-driven sizing so the phone always
-       fits the viewport on laptop screens (1280x800, 1440x900, etc.). Width
-       derives from the 9/19.5 aspect ratio. -->
+  {/* Height clamp keeps the phone in the viewport on short laptop screens; width follows the iPhone aspect ratio. */}
   <div
     class="relative mx-auto aspect-[9/19.5] w-auto"
     style="height: clamp(440px, 62dvh, 640px);"
@@ -26,7 +19,7 @@
         <!-- Notch -->
         <div class="absolute left-1/2 top-2.5 z-10 h-6 w-28 -translate-x-1/2 rounded-full bg-black"></div>
 
-        <!-- TODO(issue #4): replace this entire block with <img src="/screenshots/hero.png" alt="..." class="h-full w-full object-cover" /> -->
+        {/* TODO(issue #9): replace this block with <img src="/screenshots/hero.png" ... /> once real screenshots are captured. */}
         <div class="phone-screen-content flex h-full flex-col px-5 pt-12 pb-6">
           <!-- Status bar -->
           <div class="mb-6 flex items-center justify-between text-[11px] font-medium text-text-tertiary">

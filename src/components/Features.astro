@@ -41,16 +41,13 @@ const features = [
             </div>
             <h3 class="font-display mb-4 text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
               {f.title}
-              {f.pro && (
-                <span class="ml-3 align-middle rounded-md border border-accent/40 bg-accent-soft px-2 py-0.5 text-xs font-medium text-accent-text">Pro</span>
-              )}
             </h3>
             <p class="max-w-md text-lg leading-relaxed text-text-secondary">
               {f.body}
             </p>
           </div>
 
-          <!-- Visual placeholder block (TODO issue #4: swap for real visuals) -->
+          {/* TODO(issue #9): swap placeholder for real visual. */}
           <div class="surface-elevated flex aspect-[4/3] items-center justify-center">
             <div class="flex flex-col items-center gap-3 text-text-tertiary">
               <Icon name={f.icon} size={48} class="opacity-30" />
