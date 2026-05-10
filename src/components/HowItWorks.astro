@@ -7,13 +7,13 @@ const steps = [
   },
   {
     num: "02",
-    title: "Pick your vibe",
-    body: "Casual, professional, supportive, witty, assertive — or save your own. Choose the tone that fits the moment, not the one the AI defaults to."
+    title: "Pick your tone",
+    body: "Casual, professional, supportive, witty, assertive. Choose the tone that fits the moment, not the one the AI defaults to."
   },
   {
     num: "03",
     title: "Send with confidence",
-    body: "Three ready-to-send replies appear instantly. Tap to copy, switch back to your chat, hit send. Five seconds, end-to-end."
+    body: "Four ready-to-send replies appear instantly. Tap to copy, switch back to your chat, hit send. Five seconds, end-to-end."
   }
 ];
 ---
@@ -25,6 +25,8 @@ const steps = [
       <h2 class="font-display text-balance font-semibold leading-[1.05]" style="font-size: var(--text-display);">
         Three steps. The right reply.
       </h2>
+      {/* "Three steps" refers to the paste/pick/send workflow — independent of the
+          generation count (which is four). Keep as-is unless brand-foundation says otherwise. */}
     </div>
 
     <div class="flex flex-col gap-24 md:gap-32">
