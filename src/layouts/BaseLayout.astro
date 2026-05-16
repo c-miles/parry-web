@@ -12,6 +12,22 @@ interface Props {
 
 const { title, description, canonicalPath, jsonLd } = Astro.props;
 const canonicalUrl = canonicalPath !== undefined ? `https://parryai.app${canonicalPath}` : null;
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "parry",
+  "legalName": "Anomaly Labs LLC",
+  "url": "https://parryai.app",
+  "email": "support@parryai.app",
+  "logo": "https://parryai.app/brand/parry-wordmark-white.svg",
+  "foundingDate": "2026-04-14",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "WA",
+    "addressCountry": "US"
+  }
+};
 ---
 
 <html lang="en">
@@ -21,6 +37,12 @@ const canonicalUrl = canonicalPath !== undefined ? `https://parryai.app${canonic
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#161220" />
+
+    {/* Apple smart app banner. Numeric app ID is assigned when the App Store
+        Connect record is created — swap "0000000000" once that exists. The
+        banner only renders in mobile Safari for live App Store apps, so this
+        placeholder is inert until launch. */}
+    <meta name="apple-itunes-app" content="app-id=0000000000, app-argument=parry://" />
 
     <title>{title}</title>
 
@@ -53,6 +75,7 @@ const canonicalUrl = canonicalPath !== undefined ? `https://parryai.app${canonic
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="https://parryai.app/og-image.png" />
 
+    <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
     {jsonLd && (
       <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     )}

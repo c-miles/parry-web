@@ -2,7 +2,7 @@
 
 > AI-powered reply suggestions for text messages. A mobile app that helps you craft the perfect response.
 
-parry lets you paste a text message, pick a tone, and get three ready-to-send replies in seconds. Available on iOS and Android.
+parry lets you paste a text message, pick a tone, and get four ready-to-send replies in seconds. Currently launching on iOS; Android is on the roadmap.
 
 ## Features
 - 5 built-in tones: Casual, Professional, Supportive, Witty, Assertive
@@ -17,8 +17,12 @@ parry lets you paste a text message, pick a tone, and get three ready-to-send re
 - Your data is never used to train AI models
 
 ## Pricing
-- Free: reply generations every day, no account needed
-- Pro: monthly or annual subscription — more generations, custom tones, priority processing
+- Free: daily reply generations, no account needed
+- Pro: monthly or annual subscription — more daily replies, custom tone presets, priority processing
+
+## Company
+- Operator: Anomaly Labs LLC (Washington state, USA), operating parry as a registered DBA
+- Founded: April 2026
 
 ## Pages
 - [Home](https://parryai.app): Landing page with features and download links
