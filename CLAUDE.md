@@ -111,7 +111,7 @@ The parry mobile app currently links `https://parryai.app/privacy` from its AI c
 
 - **Tailwind v4** uses CSS-based `@theme {}` in `global.css`, not a JS config file.
 - **Icon.astro** reads SVGs from `@phosphor-icons/core` at build time via `createRequire`. Names are kebab-case (`shield-check`, `clipboard-text`). Verify at phosphoricons.com.
-- **`apple-itunes-app`** meta in `BaseLayout.astro` uses placeholder `app-id=0000000000` — swap once the App Store Connect record is created (numeric ID is assigned then, no review needed).
+- **`apple-itunes-app`** meta in `BaseLayout.astro` uses the real App Store ID (`6761346279`). The banner only renders in mobile Safari for published apps, so it's inert until parry is live in the App Store.
 - **Store badges** are placeholder SVGs, not official Apple/Google assets. Tracked in issue #9.
 - **Phone mockup** uses placeholder content. Real screenshots tracked in issue #9.
 - **`canonicalPath`** is optional; omit it for the 404 page (and the JSON-LD `og:url` will also be omitted, which is correct behavior).

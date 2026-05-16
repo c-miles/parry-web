@@ -40,11 +40,10 @@ const organizationJsonLd = {
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#161220" />
 
-    {/* Apple smart app banner. Numeric app ID is assigned when the App Store
-        Connect record is created — swap "0000000000" once that exists. The
-        banner only renders in mobile Safari for live App Store apps, so this
-        placeholder is inert until launch. */}
-    <meta name="apple-itunes-app" content="app-id=0000000000, app-argument=parry://" />
+    {/* Apple smart app banner. Inert until parry is live in the App Store —
+        mobile Safari only renders the banner for published apps. Safe to
+        ship now. */}
+    <meta name="apple-itunes-app" content="app-id=6761346279, app-argument=parry://" />
 
     <title>{title}</title>
 
