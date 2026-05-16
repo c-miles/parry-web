@@ -2,7 +2,7 @@
 import PhoneMockup from './PhoneMockup.astro';
 ---
 
-<section class="relative overflow-hidden px-6 pt-16 pb-20 md:px-10 md:pt-24 md:pb-28 lg:px-14 lg:pt-12 lg:pb-16">
+<section class="relative overflow-hidden px-6 pt-8 pb-12 md:px-10 md:pt-24 md:pb-28 lg:px-14 lg:pt-12 lg:pb-16">
   <div class="hero-glow" aria-hidden="true"></div>
 
   <div class="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
@@ -38,4 +38,7 @@ import PhoneMockup from './PhoneMockup.astro';
       <PhoneMockup />
     </div>
   </div>
+
+  {/* Sentinel for the sticky mobile download bar — see MobileDownloadBar.astro. */}
+  <div id="hero-sentinel" aria-hidden="true" class="absolute bottom-0 left-0 h-px w-px"></div>
 </section>

@@ -7,7 +7,7 @@ Marketing and landing page for [parry](https://parryai.app), an AI-powered mobil
 - **Astro 5** -- static HTML/CSS output, zero client-side JavaScript
 - **Tailwind CSS v4** -- CSS-based `@theme` configuration
 - **Phosphor Icons** -- light-weight SVGs loaded at build time
-- **Cloudflare Pages** -- hosting (planned)
+- **Render** -- hosting; auto-deploys on push to `main`
 
 ## Getting Started
 
@@ -42,4 +42,4 @@ public/             # Static assets (favicons, badges, robots.txt, llms.txt)
 
 ## Design
 
-The visual design matches the parry mobile app, using the same color palette, glassmorphism cards, and typography. Design tokens originate from the mobile app's theme files in the sibling repo at `~/Documents/parry/`.
+Editorial-dark visual system, intentionally diverged from the mobile app's glassmorphism look. Solid plum-tinted near-black background (`#161220`), Fraunces display serif paired with Geist body sans-serif, single coral accent (`#E8734A`), and hairline-bordered surfaces instead of frosted cards. All tokens live in `src/styles/global.css` inside Tailwind v4's `@theme {}` block.

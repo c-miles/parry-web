@@ -4,11 +4,11 @@ import Icon from './Icon.astro';
 const faqs = [
   {
     question: "Is parry free?",
-    answer: "Yes. parry is free to download and use every day, no account needed. If you want more replies and custom tones, you can upgrade to parry Pro."
+    answer: "Yes. The free tier gives you five generations per day and one custom tone, no account needed. If you want more, you can upgrade to parry Pro."
   },
   {
     question: "How much does parry Pro cost?",
-    answer: "parry Pro is available as a monthly or annual subscription. You can see current pricing in the app. Pro gives you more daily replies, custom tone presets, and priority processing."
+    answer: "parry Pro is available as a monthly or annual subscription — you can see current pricing in the app. Pro gives you 200 generations per day, up to four custom tones, and priority processing."
   },
   {
     question: "How does it work?",
@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     question: "What tones are available?",
-    answer: "parry includes five built-in tones: Casual, Professional, Supportive, Witty, and Assertive. Pro subscribers can also create custom tone presets (like \"the rizler\" or \"corporate robot\") that match their unique communication style."
+    answer: "parry includes five built-in tones: Casual, Professional, Supportive, Witty, and Assertive. Everyone can also create one custom tone preset (like \"the rizler\" or \"corporate robot\") that matches their style. Pro subscribers can create up to four custom tones."
   },
   {
     question: "What makes parry different from ChatGPT?",
@@ -39,6 +39,19 @@ const faqs = [
     answer: "No. Your messages are processed in real-time and immediately discarded. Nothing is saved, logged, or backed up. We couldn't look at your messages even if we wanted to."
   }
 ];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((f) => ({
+    "@type": "Question",
+    "name": f.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.answer.replace(/<[^>]+>/g, "")
+    }
+  }))
+};
 ---
 
 <section class="px-6 py-24 md:px-10 md:py-32 lg:px-14">
@@ -69,3 +82,5 @@ const faqs = [
     </div>
   </div>
 </section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
