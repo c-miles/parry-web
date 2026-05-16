@@ -39,6 +39,19 @@ const faqs = [
     answer: "No. Your messages are processed in real-time and immediately discarded. Nothing is saved, logged, or backed up. We couldn't look at your messages even if we wanted to."
   }
 ];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((f) => ({
+    "@type": "Question",
+    "name": f.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.answer.replace(/<[^>]+>/g, "")
+    }
+  }))
+};
 ---
 
 <section class="px-6 py-24 md:px-10 md:py-32 lg:px-14">
@@ -69,3 +82,5 @@ const faqs = [
     </div>
   </div>
 </section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
