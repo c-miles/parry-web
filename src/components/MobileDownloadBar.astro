@@ -1,0 +1,55 @@
+<div id="mobile-download-bar" class="mobile-download-bar" aria-hidden="true">
+  <a href="/#download" class="flex items-center justify-between gap-4 px-5 py-3" aria-label="Download parry on the App Store">
+    <span class="text-sm font-medium text-text-primary">Free on iOS</span>
+    <img src="/app-store-badge.svg" alt="" width="120" height="40" class="h-10 w-auto" />
+  </a>
+</div>
+
+<style>
+  .mobile-download-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    background: rgba(14, 11, 17, 0.92);
+    border-top: 1px solid var(--color-hairline);
+    backdrop-filter: blur(10px);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .mobile-download-bar.is-visible {
+    transform: translateY(0);
+  }
+
+  @media (min-width: 768px) {
+    .mobile-download-bar {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-download-bar {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const bar = document.getElementById('mobile-download-bar');
+  const sentinel = document.getElementById('hero-sentinel');
+
+  if (bar && sentinel && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const past = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+        bar.classList.toggle('is-visible', past);
+        bar.setAttribute('aria-hidden', past ? 'false' : 'true');
+      },
+      { threshold: 0 }
+    );
+    observer.observe(sentinel);
+  }
+</script>
