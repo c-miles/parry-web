@@ -1,0 +1,212 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+{/* TODO: have a qualified attorney review this Usage Policy before App
+    Store submission. Drafted by a non-attorney — not legal advice. */}
+<BaseLayout
+  title="Usage Policy — parry"
+  description="parry's usage policy. Subscription limits, acceptable-use rules, and what happens if you break them."
+  canonicalPath="/usage"
+>
+  <section class="px-6 py-20 md:px-10 md:py-28 lg:px-14">
+    <div class="prose-legal mx-auto max-w-3xl">
+      <p class="eyebrow mb-5">Legal</p>
+      <h1 class="font-display mb-3 text-4xl font-semibold tracking-tight md:text-5xl" style="letter-spacing: -0.025em;">Usage Policy</h1>
+      <p class="mb-12 text-sm text-text-tertiary">Last updated: May 2026</p>
+
+      <h2>About this policy</h2>
+      <p>
+        This Usage Policy applies to everyone who uses parry. By using parry, you agree to follow it. It covers two things:
+      </p>
+      <ul>
+        <li><strong>Section 1 — Subscription usage limits.</strong> What you get on Free and Pro, what counts as a generation, what happens when you reach a limit.</li>
+        <li><strong>Sections 2–8 — Acceptable use.</strong> What you can and cannot use parry for, the flow-down of Anthropic's Usage Policy, and how we enforce.</li>
+      </ul>
+      <p>
+        This Usage Policy is incorporated into our <a href="/terms">Terms of Service</a> by reference. Violating it is a breach of those Terms. If anything in this Usage Policy conflicts with Anthropic's Usage Policy at <a href="https://www.anthropic.com/legal/aup" target="_blank" rel="noopener noreferrer">anthropic.com/legal/aup</a>, the stricter rule controls.
+      </p>
+
+      <h2>1. Subscription usage limits</h2>
+      <p>
+        parry is an AI-powered reply suggestion tool. Each tap of the Generate button uses AI compute (which costs us real money) and counts as one "generation." The tiers below are the exact limits that the parry app currently enforces. We provide this transparent breakdown so you can decide what you need before purchasing — consistent with Apple Guideline 3.1.2(c) and FTC subscription-disclosure expectations.
+      </p>
+
+      <h3>1.1 Free tier</h3>
+      <ul>
+        <li><strong>5 generations per day</strong>, resetting at midnight UTC.</li>
+        <li><strong>Up to 3 generations per minute</strong> (short-burst protection).</li>
+        <li><strong>1 custom tone preset</strong> (in addition to the 5 built-in tones: Casual, Professional, Witty, Supportive, Assertive).</li>
+        <li>Text, voice, and image / screenshot input.</li>
+        <li>No account required — anonymous by default.</li>
+      </ul>
+
+      <h3>1.2 Pro tier (subscription)</h3>
+      <ul>
+        <li><strong>200 generations per day</strong>, resetting at midnight UTC.</li>
+        <li><strong>Up to 30 generations per hour</strong>, on a rolling 60-minute window.</li>
+        <li><strong>Up to 5 generations per minute</strong> (short-burst protection).</li>
+        <li><strong>Up to 4 custom tone presets</strong>, in addition to the 5 built-in tones.</li>
+        <li>Text, voice, and image / screenshot input (same as Free).</li>
+      </ul>
+      <p>
+        Current Pro pricing (monthly and annual options) is shown in the in-app paywall at the moment of purchase, where Apple's required pre-purchase disclosures also appear. See our <a href="/terms">Terms of Service §6</a> for the full subscription terms (auto-renewal, cancellation, refunds, EU withdrawal rights).
+      </p>
+
+      <h3>1.3 What counts as one generation</h3>
+      <ul>
+        <li>Tapping Generate counts as <strong>one</strong> generation, regardless of how many reply suggestions are returned in that batch (parry returns up to four per request).</li>
+        <li>Tapping Regenerate counts as <strong>one additional</strong> generation. There is no separate "regen" allowance.</li>
+        <li>Attaching an image and tapping Generate counts as <strong>one</strong> generation. Images do not double-charge.</li>
+        <li>Inputs are limited to <strong>1,000 characters</strong> of text and image attachments up to about <strong>4&nbsp;MB</strong> in JPEG, PNG, GIF, or WebP format.</li>
+      </ul>
+
+      <h3>1.4 Why these limits exist</h3>
+      <p>
+        Each generation hits Anthropic's API and costs us a small but non-zero amount per request. Without limits, parry would be expensive to run and would feel slow for everyone. Daily caps keep costs predictable for us and pricing fair for you. Burst caps prevent automated abuse. The hourly Pro cap exists so that no single user can exhaust shared service capacity in a few seconds.
+      </p>
+
+      <h3>1.5 What happens when you reach a limit</h3>
+      <p>
+        We show you a friendly message in the app telling you you've reached the limit, when it resets, and (for Free users) how to upgrade. Your saved data — custom tones, account, subscription — is unaffected. You don't lose anything. You just can't generate again until the limit window resets.
+      </p>
+
+      <h3>1.6 Changes to Pro limits</h3>
+      <p>
+        We commit to providing <strong>at least 14 days' advance notice in-app</strong> before any reduction in the Pro limits in §1.2. We may increase limits at any time without notice.
+      </p>
+
+      <h2>2. Anthropic Usage Policy flow-down</h2>
+      <p>
+        parry is powered by Anthropic's Claude™. By using parry, you also agree to <a href="https://www.anthropic.com/legal/aup" target="_blank" rel="noopener noreferrer">Anthropic's Usage Policy</a>, which is incorporated into this Usage Policy by reference. Anthropic's policy is updated from time to time and we recommend reviewing it. If anything in our Usage Policy conflicts with Anthropic's, <strong>the stricter rule controls</strong>.
+      </p>
+
+      <h2>3. What you cannot use parry for</h2>
+      <p>
+        The categories below are prohibited. They reflect Anthropic's Usage Policy plus parry-specific rules for a messaging-assistance tool. This is not a complete list — if something is illegal, abusive, or harmful, don't use parry for it.
+      </p>
+
+      <h3>3.1 Illegal activity</h3>
+      <p>
+        Don't use parry to plan, request, or send messages that further illegal activity — including coordinating the sale or trafficking of controlled substances, weapons, or people; financial crimes; or threats.
+      </p>
+
+      <h3>3.2 Harassment, threats, bullying, hate</h3>
+      <p>
+        Don't use parry to generate replies that threaten, harass, demean, dox, stalk, or bully another person — including ex-partners, classmates, coworkers, family members, or strangers. Don't generate hateful or discriminatory content targeting people based on race, ethnicity, national origin, religion, gender, gender identity, sexual orientation, disability, age, or other protected attributes. Don't generate violent extremist or terrorist content.
+      </p>
+
+      <h3>3.3 Sexual content involving minors</h3>
+      <p>
+        Don't use parry to generate, request, or assist in the creation of sexual content involving any person under 18, sexual content directed at any person under 18, or content that sexualizes real minors — including via roleplay, paraphrase, or coded language. Don't use parry to groom, solicit, sexually extort, or sexually message any minor.
+      </p>
+      <p>
+        <strong>Zero tolerance.</strong> Violations of this rule result in immediate termination and may be reported to the National Center for Missing &amp; Exploited Children as required by 18 U.S.C. §2258A and to law enforcement.
+      </p>
+
+      <h3>3.4 Non-consensual sexual content involving adults</h3>
+      <p>
+        Don't use parry to send sexual messages to anyone who hasn't consented to receive them. Don't generate non-consensual nude or intimate imagery descriptions, "sextortion" threats, threats to release intimate images ("revenge porn"), or content that coerces sexual contact.
+      </p>
+
+      <h3>3.5 Violence and self-harm</h3>
+      <p>
+        Don't use parry to send messages that threaten violence against any person or group, that celebrate violence, or that encourage someone to hurt themselves. If you or someone you know is in crisis, in the United States call or text <strong>988</strong> (Suicide &amp; Crisis Lifeline) or text HOME to <strong>741741</strong> (Crisis Text Line). parry is not a crisis-response service.
+      </p>
+
+      <h3>3.6 Deception, fraud, and impersonation</h3>
+      <p>
+        Don't use parry to pretend to be someone you're not (catfishing), to run a romance scam, to phish for money or credentials, or to impersonate a specific real person without that person's explicit written consent. Don't use parry to draft fake reviews, fake testimonials, or content meant to mislead audiences about its origin in commercial contexts.
+      </p>
+
+      <h3>3.7 Psychological manipulation and coercion</h3>
+      <p>
+        Don't use parry to generate manipulation tactics aimed at another person — including gaslighting, love bombing, coercive control, ultimatums designed to isolate, pressuring someone into sex, financial coercion, or pressure to remain in a relationship. parry is for clearer, kinder, more confident communication, not for weaponizing it.
+      </p>
+
+      <h3>3.8 Privacy violations</h3>
+      <p>
+        Don't paste in someone else's private information (home address, phone number, medical or financial information, photos, etc.) in order to generate replies that expose, mock, or weaponize it. Don't dox.
+      </p>
+
+      <h3>3.9 Passing AI off as human in contexts where authorship matters</h3>
+      <p>
+        Don't use parry to produce writing you'll submit as your own in contexts where AI assistance is prohibited — including academic work that bans AI assistance, sworn or affirmed statements, or regulated professional communications. parry is for everyday messaging; if your context has a no-AI rule, follow it.
+      </p>
+
+      <h3>3.10 Medical, legal, financial, and other professional advice</h3>
+      <p>
+        parry is not a doctor, lawyer, accountant, therapist, or psychiatrist. Don't rely on parry's suggestions for medical, mental-health, legal, tax, or financial decisions — talk to a qualified professional. Don't use parry to provide professional advice to others as if it were your own.
+      </p>
+
+      <h3>3.11 Service abuse</h3>
+      <p>
+        Don't try to jailbreak parry's safety measures, bypass rate limits, scrape outputs to train another AI model, reverse-engineer the API, or use automated tools to abuse the service. Don't use parry's outputs to develop a competing AI product.
+      </p>
+
+      <h2>4. You are responsible for what you send</h2>
+      <p>
+        parry suggests; you decide. You — not parry, not Anomaly Labs LLC — are responsible for choosing which suggestion (if any) to send, for editing it before sending, and for the consequences of sending it. <strong>The person who taps Send is the speaker.</strong>
+      </p>
+      <p>
+        When you give parry context about another person — a message they sent you, your relationship, what they've been going through — you are responsible for the accuracy of that context and for what you decide to send. Don't paste in private information about someone in order to generate a reply that exploits it.
+      </p>
+
+      <h2>5. Users aged 13–17</h2>
+      <p>
+        If you are between 13 and 17, additional protections and responsibilities apply.
+      </p>
+      <ul>
+        <li>You should use parry only with the awareness of a parent or guardian.</li>
+        <li>parry's suggestions are drafts only. AI sometimes gets things wrong or misses nuance — you're in control of what you send.</li>
+        <li>Do not share personal information in your prompts: your full name, home address, school, phone number, financial information, photos of yourself, or other identifying details.</li>
+        <li>If a conversation feels unsafe or pressured — including pressure to share photos, to keep something secret from a parent, or to meet up — stop and talk to a trusted adult. In the US, call or text <strong>988</strong> (Suicide &amp; Crisis Lifeline), text HOME to <strong>741741</strong> (Crisis Text Line), or contact the CyberTipline at <a href="https://report.cybertip.org" target="_blank" rel="noopener noreferrer">report.cybertip.org</a>.</li>
+      </ul>
+      <p>
+        See our <a href="/privacy">Privacy Policy</a> for additional protections that apply to users under 18, including no targeted advertising, no sale of personal information, and no profiling that produces legal or similarly significant effects.
+      </p>
+
+      <h2>6. Enforcement</h2>
+      <p>
+        We may, at our discretion:
+      </p>
+      <ul>
+        <li>Warn you about a violation</li>
+        <li>Block specific outputs or refuse generations</li>
+        <li>Suspend your account temporarily</li>
+        <li>Permanently terminate your account</li>
+        <li>Refer the matter to law enforcement or the National Center for Missing &amp; Exploited Children (for violations of §3.3)</li>
+      </ul>
+      <p>
+        We choose the response that fits the severity. <strong>For violations involving child sexual abuse material, credible threats of violence, coordinated harassment, or sexual exploitation, we will terminate immediately and report to law enforcement as required by law.</strong>
+      </p>
+
+      <h2>7. Appeals</h2>
+      <p>
+        If you believe we suspended or terminated your account in error, email <a href="mailto:support@parryai.app">support@parryai.app</a> with "Appeal" in the subject line within <strong>30 days</strong> of the action. Include your account email (if any), an approximate date, and the relevant details. We will review and respond, but we can't guarantee a timeline or reinstatement. Some violations — including those in §3.3 and credible threats of violence — are not eligible for appeal.
+      </p>
+
+      <h2>8. Reporting abuse</h2>
+      <p>
+        If you believe someone is misusing parry — including if you received a parry-generated message that violates this policy — email <a href="mailto:support@parryai.app">support@parryai.app</a>. Include as much detail as you can share. For copyright concerns, see our <a href="/terms">Terms of Service §8</a>.
+      </p>
+      <p>
+        Reports of child exploitation, imminent threats of violence, or other serious crimes should also be reported directly to the appropriate authorities. In the US, the CyberTipline is at <a href="https://report.cybertip.org" target="_blank" rel="noopener noreferrer">report.cybertip.org</a> (1-800-843-5678).
+      </p>
+
+      <h2>9. Changes to this policy</h2>
+      <p>
+        We may update this Usage Policy as the product, Anthropic's policies, or applicable law change. We will post the updated version at <a href="/usage">parryai.app/usage</a> with a new effective date. Material changes will be highlighted at the top. We will preserve the previous version on request for at least 12 months. Continued use of parry after the effective date means you accept the updated policy.
+      </p>
+
+      <h2>10. Contact</h2>
+      <p>
+        Anomaly Labs LLC<br />
+        6335 180TH Pl NE Unit 125, Redmond, WA 98052<br />
+        {/* TODO: swap to CMRA once acquired. */}
+        <a href="mailto:support@parryai.app">support@parryai.app</a>
+      </p>
+
+      <p class="mt-8 text-sm text-text-tertiary">&copy; 2026 Anomaly Labs LLC. All rights reserved.</p>
+    </div>
+  </section>
+</BaseLayout>
