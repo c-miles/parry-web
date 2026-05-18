@@ -12,8 +12,20 @@
         <a href="/privacy" class="text-text-secondary no-underline transition-colors duration-200 hover:text-text-primary">
           Privacy
         </a>
+        {/* WA My Health My Data Act (RCW 19.373.030(1)) requires regulated
+            entities to link to a consumer health data privacy policy from
+            their homepage. This Footer renders on every page (including the
+            homepage), satisfying the surface requirement. The href targets
+            /privacy §10.2 where the defensive disclosure lives. The statute
+            does not mandate verbatim link text. */}
+        <a href="/privacy#washington-consumer-health-data" class="text-text-secondary no-underline transition-colors duration-200 hover:text-text-primary">
+          Health Data Privacy
+        </a>
         <a href="/terms" class="text-text-secondary no-underline transition-colors duration-200 hover:text-text-primary">
           Terms
+        </a>
+        <a href="/usage" class="text-text-secondary no-underline transition-colors duration-200 hover:text-text-primary">
+          Usage Policy
         </a>
         <a href="mailto:support@parryai.app" class="text-text-secondary no-underline transition-colors duration-200 hover:text-text-primary">
           support@parryai.app
