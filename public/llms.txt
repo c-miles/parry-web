@@ -8,7 +8,7 @@ parry lets you paste a text message, pick a tone, and get four ready-to-send rep
 - 5 built-in tones: Casual, Professional, Supportive, Witty, Assertive
 - 1 custom tone preset on the free tier; up to 4 with Pro
 - Voice input with transcription
-- Image and screenshot input (Pro)
+- Image and screenshot input
 
 ## Privacy
 - Messages are processed in real-time and immediately discarded
@@ -18,7 +18,7 @@ parry lets you paste a text message, pick a tone, and get four ready-to-send rep
 
 ## Pricing
 - Free: 5 generations per day, 1 custom tone, no account required
-- Pro (monthly or annual): 200 generations per day, up to 4 custom tones, priority processing
+- Pro (monthly or annual): 200 generations per day, up to 4 custom tones
 
 ## Company
 - Operator: Anomaly Labs LLC (Washington state, USA), operating parry as a registered DBA

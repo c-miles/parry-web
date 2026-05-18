@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
+{/* TODO: have a qualified attorney review this Privacy Policy before App
+    Store submission. Drafted by a non-attorney — not legal advice. */}
 <BaseLayout
   title="Privacy Policy — parry"
   description="parry's privacy policy. Learn how we handle your data, what we collect, and how your messages are processed."
@@ -10,135 +12,352 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="prose-legal mx-auto max-w-3xl">
       <p class="eyebrow mb-5">Legal</p>
       <h1 class="font-display mb-3 text-4xl font-semibold tracking-tight md:text-5xl" style="letter-spacing: -0.025em;">Privacy Policy</h1>
-      <p class="mb-12 text-sm text-text-tertiary">Last updated: May 2026</p>
+      <p class="mb-12 text-sm text-text-tertiary">Last updated: May 2026 · We review and update this policy at least annually.</p>
 
-      <h2>Introduction</h2>
+      <h2>1. Who we are</h2>
       <p>
-        Anomaly Labs LLC ("we", "our", "us"), operating as parry, provides the parry mobile application. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our app.
+        parry is operated by <strong>Anomaly Labs LLC</strong>, a Washington (USA) limited liability company. "parry" is a DBA (doing-business-as) name for Anomaly Labs LLC. Where this policy uses "we", "our", or "us", it refers to Anomaly Labs LLC.
+      </p>
+      <p>
+        <strong>Contact:</strong> <a href="mailto:support@parryai.app">support@parryai.app</a><br />
+        <strong>Mailing address:</strong> Anomaly Labs LLC, 6335 180TH Pl NE Unit 125, Redmond, WA 98052
+        {/* TODO: swap to CMRA once acquired. */}
+        {/* TODO: add Washington UBI here when we want it published. Optional for a
+            privacy policy itself; the natural home is an Imprint / Digital Services
+            Act (DSA) trader-disclosure block if/when we ship one. */}
+      </p>
+      <p>
+        This policy covers the parry iOS application and the parryai.app marketing website.
       </p>
 
-      <h2>Information Collection and Use</h2>
-
-      <h3>Data We Collect</h3>
-      <p><strong>Usage Data:</strong></p>
-      <ul>
-        <li>Anonymous user identifier (for subscription management)</li>
-        <li>Crash reports and error logs</li>
-      </ul>
-
-      <p><strong>Message Content and Images:</strong></p>
-      <ul>
-        <li>Text and images you submit are sent to Anthropic (our AI provider) for processing via their Claude API</li>
-        <li>We do <strong>NOT</strong> store your message content or images on our servers</li>
-        <li>Anthropic may retain this data for up to 7 days for safety monitoring purposes</li>
-        <li>Your data is <strong>NOT</strong> used to train AI models</li>
-        <li>After the 7-day safety window, data is deleted by Anthropic</li>
-      </ul>
-
-      <p><strong>Generation Metadata:</strong></p>
+      <h2>2. What we collect, why, and on what legal basis</h2>
       <p>
-        When you generate a reply suggestion, we log the following metadata to improve the Service:
+        We try to collect the minimum amount of personal data we need to run parry. The table below summarizes what we collect, why, and (for users in the European Economic Area, the United Kingdom, and Switzerland) the lawful basis we rely on under the GDPR / UK GDPR.
+      </p>
+
+      <h3>2.1 Account identifiers</h3>
+      <ul>
+        <li><strong>Anonymous user identifier (UUID):</strong> created the first time you open the app. Used to link your local data to cloud backup and manage your subscription. Stored by Supabase. <em>Lawful basis: Art. 6(1)(b) contract.</em></li>
+        <li><strong>Apple Relay email and (optionally) full name:</strong> if you choose Sign in with Apple, Apple shares an email address (which may be a private Apple Relay address) and, on first sign-in only, the full name you choose to share. We store these to associate your subscription and account-recovery options with your identity. We never receive your Apple ID password. <em>Lawful basis: Art. 6(1)(b) contract.</em></li>
+        <li><strong>Subscription state:</strong> whether you are on the Free or Pro tier, your renewal date, and your purchase history. Managed by RevenueCat. <em>Lawful basis: Art. 6(1)(b) contract; Art. 6(1)(c) for tax/accounting retention.</em></li>
+      </ul>
+
+      <h3>2.2 Message context (transient — not stored by us)</h3>
+      <ul>
+        <li>Text and images you submit for reply suggestions are transmitted to <strong>Anthropic</strong>, the provider of the Claude™ AI model, for processing.</li>
+        <li><strong>We do NOT store your message content or images on our servers.</strong> They are forwarded to Anthropic, the AI generates suggestions, and we discard the input as soon as the response is returned to you.</li>
+        <li>Anthropic processes the data on our behalf as our processor. Anthropic's published policy states it automatically deletes inputs and outputs from its backend within <strong>30 days</strong> of receipt or generation (see <a href="https://privacy.claude.com/en/articles/7996866" target="_blank" rel="noopener noreferrer">Anthropic's data-retention article</a>). For content that violates Anthropic's Usage Policy, Anthropic may retain inputs and outputs for up to 2 years and safety classification scores for up to 7 years.</li>
+        <li>Your data is <strong>NOT used to train AI models</strong>. Anthropic's commercial terms expressly prohibit training on customer content (<a href="https://www.anthropic.com/legal/commercial-terms" target="_blank" rel="noopener noreferrer">Commercial Terms §B</a>).</li>
+        <li><em>Lawful basis: Art. 6(1)(b) contract — generating the suggestion is the service you requested. If your prompt contains special-category data (health, religion, sexual orientation, etc.) we additionally rely on your explicit consent (Art. 9(2)(a)) captured by the in-app AI consent dialog.</em></li>
+      </ul>
+
+      <h3>2.3 Generation metadata (not your messages)</h3>
+      <p>
+        When you generate a reply suggestion, we log the following metadata to monitor service health, enforce rate limits, and improve the app:
       </p>
       <ul>
         <li>Anonymous user identifier</li>
-        <li>Tone selection and whether a custom tone was used</li>
-        <li>Input length (character count only — not the content itself)</li>
+        <li>Tone selection (one of the built-in tones, or a flag indicating a custom tone was used)</li>
+        <li>Whether a custom tone was used (boolean)</li>
+        <li>Input length (character count only — not the text)</li>
         <li>Number of responses generated</li>
         <li>Response latency</li>
         <li>AI model used</li>
-        <li>Whether an image was attached (yes/no — not the image itself)</li>
+        <li>Whether an image was attached (yes/no — not the image)</li>
+        <li>Timestamp of the request</li>
       </ul>
       <p>
-        Generation metadata does <strong>NOT</strong> include your message content or images.
+        Generation metadata does <strong>not</strong> include your message content or images. Custom tone presets you create yourself (name + style description) are stored server-side so the AI can apply them; you can delete them at any time. <em>Lawful basis: Art. 6(1)(f) legitimate interests — operating, securing, and improving the service. We have weighed this interest against your privacy and consider it proportionate.</em>
       </p>
 
-      <p><strong>Voice Input:</strong></p>
+      {/* The on-device speech-recognition guarantee below depends on
+          requiresOnDeviceRecognition being true in the mobile app. Source of
+          truth: ~/Documents/parry/src/hooks/useSpeechRecognition.ts. If that
+          flag is changed in the mobile repo, this section must be updated. */}
+      <h3>2.4 Voice input</h3>
       <p>
-        If you use voice input, speech recognition is handled on-device by your operating system (Apple Speech or Google Speech Services). Audio is never transmitted to parry's servers. Only the resulting text is sent to Anthropic for AI processing, subject to the same policies described under "Message Content and Images" above. Voice input is also subject to your device manufacturer's privacy policy.
+        parry offers an optional voice-input mode for composing prompts. On iOS, speech recognition runs <strong>on your device</strong> using Apple's Speech framework, with <em>SFSpeechRecognizer.requiresOnDeviceRecognition</em> set to true. <strong>Audio never leaves your device</strong> — it is not transmitted to Apple, to parry, or to any other third party. If your device or language does not support on-device recognition, parry simply will not transcribe; it never silently falls back to server-based recognition. Only the resulting transcript text is sent onward, and only if you tap Generate (in which case it goes to Anthropic for AI processing under the same policies described in §2.2 above). <em>Lawful basis: Art. 6(1)(b) contract.</em>
+      </p>
+      <p>
+        Android support for parry is not yet available. When it ships, we will re-evaluate the on-device guarantee against the equivalent Android speech-recognition APIs and update this section before users encounter the feature on that platform.
       </p>
 
-      <p><strong>Data We Do NOT Collect:</strong></p>
+      <h3>2.5 Error reports and diagnostics</h3>
+      <p>
+        We use <strong>Sentry</strong> to capture errors and crashes so we can fix them. Sentry receives:
+      </p>
       <ul>
-        <li>Your name or email (unless you contact support)</li>
+        <li>Error reports (exception type, message, stack trace, file/line) at the moment of failure</li>
+        <li>Breadcrumbs (categorized records of recent actions, such as a sign-in attempt, a generation event, or a voice-module load — used to understand what led up to an error)</li>
+        <li>Your anonymous user identifier (so we can group repeated errors from the same user)</li>
+        <li>Device metadata (model, OS version, app version, locale)</li>
+      </ul>
+      <p>
+        We do <strong>not</strong> send message content, images, or voice transcripts to Sentry. <em>Lawful basis: Art. 6(1)(f) legitimate interests — debugging, security, and service integrity.</em>
+      </p>
+
+      <h3>2.6 What we do NOT collect</h3>
+      <ul>
         <li>Your phone number</li>
         <li>Your contacts</li>
         <li>Your location</li>
-        <li>Your messages outside of what you explicitly submit</li>
+        <li>Your photo library beyond images you explicitly attach to a prompt</li>
+        <li>Messages or conversations outside of what you explicitly submit</li>
+        <li>Health, biometric, or precise-location data</li>
+        <li>Government-issued identifiers</li>
+        <li>Financial account credentials (purchases are handled by Apple)</li>
       </ul>
 
-      <h3>How We Use Your Data</h3>
-      <ul>
-        <li>To provide AI-generated response suggestions</li>
-        <li>To manage your subscription</li>
-        <li>To improve our app through generation metadata analysis</li>
-        <li>To fix bugs and improve performance</li>
-      </ul>
-
-      <h2>Third-Party Services</h2>
-      <p>We use the following services that may collect data:</p>
-      <ul>
-        <li><strong>Anthropic (Claude AI)</strong> — Processes your text and image input to generate responses. <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
-        <li><strong>Supabase</strong> — Stores anonymous user profiles, generation metadata (see above), and custom tone presets. Does not store message content or images. <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
-        <li><strong>RevenueCat</strong> — Manages subscriptions and purchases. <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
-        <li><strong>Sentry</strong> — Error tracking and crash reporting. <a href="https://sentry.io/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
-      </ul>
-
-      <h2>Data Retention</h2>
-      <ul>
-        <li><strong>Anonymous user data:</strong> Retained while you use the app</li>
-        <li><strong>AI processing data:</strong> Retained by Anthropic for up to 7 days for safety monitoring; not used for model training</li>
-        <li><strong>Generation metadata:</strong> Retained indefinitely in anonymized form for service improvement</li>
-        <li><strong>Crash reports:</strong> Retained for 90 days</li>
-      </ul>
-
-      <h2>Your Rights</h2>
-      <p>You can:</p>
-      <ul>
-        <li>Request a copy of the data we hold about you by emailing <a href="mailto:support@parryai.app">support@parryai.app</a></li>
-        <li>Request deletion of your data by contacting us at <a href="mailto:support@parryai.app">support@parryai.app</a></li>
-      </ul>
+      <h2>3. Subprocessors — who else handles your data</h2>
       <p>
-        We will respond to data requests within 30 days.
+        We use the following third-party services to operate parry. Where a service holds personal data on our behalf, it acts as our processor under GDPR (and as our "service provider" under CCPA). We have data-processing agreements with each. We do <strong>not</strong> sell or share your personal data, and the services below are not authorized to use your data for their own purposes.
       </p>
 
-      <h2>California Privacy Rights (CCPA)</h2>
+      {/* TODO: attorney to verify the current Data Privacy Framework (DPF)
+          certification status for each subprocessor at
+          https://www.dataprivacyframework.gov, and confirm SCC fallback
+          language is in our DPA with any vendor that isn't DPF-certified.
+          The values below reflect industry practice and have not been
+          individually attorney-verified — re-check at each policy revision. */}
+      <table style="width:100%; border-collapse:collapse; margin:1.25rem 0;">
+        <thead>
+          <tr style="text-align:left; border-bottom:1px solid var(--color-hairline-strong);">
+            <th style="padding:0.5rem 0.5rem 0.5rem 0;">Provider</th>
+            <th style="padding:0.5rem;">Purpose</th>
+            <th style="padding:0.5rem;">Where</th>
+            <th style="padding:0.5rem;">Transfer mechanism</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--color-hairline);">
+            <td style="padding:0.5rem 0.5rem 0.5rem 0;"><strong>Apple Inc.</strong></td>
+            <td style="padding:0.5rem;">Sign in with Apple, App Store distribution and billing, optional voice transcription</td>
+            <td style="padding:0.5rem;">USA, Ireland</td>
+            <td style="padding:0.5rem;">EU-US DPF</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-hairline);">
+            <td style="padding:0.5rem 0.5rem 0.5rem 0;"><strong>Anthropic PBC</strong></td>
+            <td style="padding:0.5rem;">AI inference (Claude API) — generates the reply suggestions; 30-day default retention; no training on your data</td>
+            <td style="padding:0.5rem;">USA</td>
+            <td style="padding:0.5rem;">EU-US DPF + Anthropic DPA / SCCs ⟶ <a href="https://www.anthropic.com/legal/data-processing-addendum" target="_blank" rel="noopener noreferrer">DPA</a></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-hairline);">
+            <td style="padding:0.5rem 0.5rem 0.5rem 0;"><strong>Supabase Inc.</strong></td>
+            <td style="padding:0.5rem;">Backend database, anonymous auth, custom tone storage, edge functions</td>
+            <td style="padding:0.5rem;">USA</td>
+            <td style="padding:0.5rem;">DPF / SCCs</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-hairline);">
+            <td style="padding:0.5rem 0.5rem 0.5rem 0;"><strong>RevenueCat Inc.</strong></td>
+            <td style="padding:0.5rem;">Subscription management and entitlement state</td>
+            <td style="padding:0.5rem;">USA</td>
+            <td style="padding:0.5rem;">SCCs</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem 0.5rem 0.5rem 0;"><strong>Functional Software, Inc.</strong> (Sentry)</td>
+            <td style="padding:0.5rem;">Error monitoring</td>
+            <td style="padding:0.5rem;">USA, EU</td>
+            <td style="padding:0.5rem;">DPF + SCCs</td>
+          </tr>
+        </tbody>
+      </table>
+
       <p>
-        If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA):
+        Linked privacy policies: <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Apple</a>, <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener noreferrer">Anthropic</a>, <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Supabase</a>, <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">RevenueCat</a>, <a href="https://sentry.io/privacy/" target="_blank" rel="noopener noreferrer">Sentry</a>.
+      </p>
+
+      <h2>4. Data retention</h2>
+      <table style="width:100%; border-collapse:collapse; margin:1.25rem 0;">
+        <thead>
+          <tr style="text-align:left; border-bottom:1px solid var(--color-hairline-strong);">
+            <th style="padding:0.5rem 0.5rem 0.5rem 0;">Data</th>
+            <th style="padding:0.5rem;">Retention</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--color-hairline);">
+            <td style="padding:0.5rem 0.5rem 0.5rem 0;">Anonymous user identifier, Apple Relay email / full name, custom tone presets</td>
+            <td style="padding:0.5rem;">Until you delete your account, or 24 months from your last app activity, whichever comes first</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-hairline);">
+            <td style="padding:0.5rem 0.5rem 0.5rem 0;">Message content and images (sent to Anthropic)</td>
+            <td style="padding:0.5rem;">Not retained by parry. Anthropic retains for up to 30 days by default (longer for policy-violating content); see Anthropic's policy</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-hairline);">
+            <td style="padding:0.5rem 0.5rem 0.5rem 0;">Generation metadata (no content)</td>
+            <td style="padding:0.5rem;">90 days raw retention + aggregated, anonymized summaries thereafter</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-hairline);">
+            <td style="padding:0.5rem 0.5rem 0.5rem 0;">Subscription / billing records</td>
+            <td style="padding:0.5rem;">7 years (US tax-law requirement)</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem 0.5rem 0.5rem 0;">Sentry error reports</td>
+            <td style="padding:0.5rem;">90 days</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>5. How to exercise your rights</h2>
+      <p>
+        Depending on where you live, you have some or all of the rights below. We honor them regardless of jurisdiction, to the extent operationally possible.
       </p>
       <ul>
-        <li><strong>Right to Know:</strong> You may request the categories and specific pieces of personal information we have collected about you.</li>
-        <li><strong>Right to Delete:</strong> You may request that we delete personal information we have collected from you, subject to certain exceptions.</li>
-        <li><strong>Right to Non-Discrimination:</strong> We will not discriminate against you for exercising your CCPA rights.</li>
+        <li><strong>Access:</strong> request a copy of the personal data we hold about you</li>
+        <li><strong>Rectification / correction:</strong> ask us to correct inaccurate data</li>
+        <li><strong>Erasure / deletion:</strong> ask us to delete your account and the data we hold about you</li>
+        <li><strong>Restriction:</strong> ask us to limit processing in specific circumstances</li>
+        <li><strong>Portability:</strong> receive your data in a structured, commonly-used machine-readable format</li>
+        <li><strong>Objection:</strong> object to processing based on legitimate interests</li>
+        <li><strong>Withdraw consent:</strong> if processing is based on your consent (including the AI consent given via the in-app dialog), withdraw it at any time without affecting prior lawful processing</li>
+        <li><strong>Not be subject to solely automated decisions:</strong> parry's reply suggestions are drafts; we do not make decisions about you with legal or similarly significant effects</li>
+        <li><strong>Lodge a complaint with a supervisory authority:</strong> if you are in the EEA or UK, see Section 11 for how</li>
       </ul>
-      <p><strong>Categories of personal information we collect:</strong></p>
+      <p>
+        <strong>How to request:</strong>
+      </p>
       <ul>
-        <li>Identifiers (anonymous user ID)</li>
-        <li>Internet or other electronic network activity information (generation metadata)</li>
-        <li>Inferences drawn from the above (service improvement)</li>
+        <li><strong>In-app:</strong> Settings → Account → Delete Account (for deletion).</li>
+        <li><strong>Email:</strong> <a href="mailto:support@parryai.app">support@parryai.app</a> for any request.</li>
       </ul>
       <p>
-        <strong>We do not sell your personal information.</strong> To exercise your rights, contact us at <a href="mailto:support@parryai.app">support@parryai.app</a>.
+        We may ask you to verify your identity before we can act on a request (for example, by asking you to confirm the request from the email address associated with your account, or by responding from inside the app). We aim to respond within <strong>30 days</strong>; for complex requests, we may extend by up to 60 additional days and will tell you if that is needed. If we deny a request, we will explain why and how to appeal — see Section 6.
+      </p>
+      <p>
+        If you are in California, you may designate an <strong>authorized agent</strong> to make a request on your behalf. We may require the agent to provide proof of authorization (such as a signed permission letter from you) and to verify your identity directly with us.
       </p>
 
-      <h2>International Users</h2>
+      <h2>6. Appeals</h2>
       <p>
-        If you are accessing the Service from outside the United States, please be aware that your data may be transferred to, stored, and processed in the United States, where our servers and service providers are located. Data protection laws in the United States may differ from those in your jurisdiction.
+        Several U.S. state privacy laws (Virginia, Colorado, Connecticut, and others) give you a right to appeal if we decline a privacy request. To appeal, reply to our denial email or write to <a href="mailto:support@parryai.app">support@parryai.app</a> with "Privacy appeal" in the subject line. We will respond within 60 days. If we deny your appeal, you may also be able to complain to your state attorney general.
       </p>
 
-      <h2>Children's Privacy</h2>
+      <h2>7. AI and automated processing</h2>
       <p>
-        Our app is intended for users who are at least 13 years of age. We do not knowingly collect personal data from anyone under 13. If we learn that we have collected personal data from a user under 13, we will take steps to delete that information promptly.
+        parry uses an AI system — specifically, Anthropic's Claude — to generate reply suggestions based on the message context you submit. You are always the decision-maker: parry presents suggestions; you choose which (if any) to send, you can edit before sending, and you send via your device's own messaging app.
+      </p>
+      <p>
+        Because the suggestions are drafts that you control, parry does <strong>not</strong> make decisions about you that produce legal or similarly significant effects within the meaning of GDPR Article 22. This disclosure also satisfies the transparency obligation under EU AI Act Article 50(1), which becomes applicable on 2 August 2026: when you use parry's generation feature, you are interacting with an AI system.
       </p>
 
-      <h2>Changes to This Policy</h2>
+      <h2>8. Children</h2>
       <p>
-        We may update this policy from time to time. We will notify you of any changes by posting the new policy on this page.
+        parry is intended for users who are at least <strong>13 years old</strong>. We do not direct parry to children under 13, and we do not knowingly collect personal data from anyone under 13. If we learn that we have collected personal data from a user under 13, we will delete it promptly without requiring proof of identity beyond what is reasonably necessary to identify the account.
+      </p>
+      <p>
+        If you believe a child under 13 has provided us personal information, please email <a href="mailto:support@parryai.app">support@parryai.app</a>.
+      </p>
+      <h3>Users aged 13–17</h3>
+      <p>
+        If you are between 13 and 17, you may use parry only with the awareness of a parent or guardian. We encourage parents and guardians to review this Privacy Policy and our <a href="/terms">Terms of Service</a> with you. parry's reply suggestions are AI-generated drafts, not advice. Some suggestions may not be appropriate for your situation — you are responsible for what you choose to send. Don't share personal information (your full name, school, address, phone number, photos, financial information) in your prompts. If a conversation feels unsafe, talk to a trusted adult or contact help: in the US, call or text <strong>988</strong> (Suicide &amp; Crisis Lifeline) or text HOME to <strong>741741</strong> (Crisis Text Line).
+      </p>
+      <p>
+        We do not sell personal information of any user. We do not use the content of your messages or AI generations to train AI models or for targeted advertising. We do not knowingly share personal information of users under 18 with third parties for cross-context behavioral advertising.
       </p>
 
-      <h2>Contact Us</h2>
+      <h2>9. International users and data transfers</h2>
       <p>
-        If you have questions about this Privacy Policy, contact us:<br />
-        Email: <a href="mailto:support@parryai.app">support@parryai.app</a>
+        Anomaly Labs LLC is based in the United States. If you use parry from outside the United States, your personal data will be transferred to, stored, and processed in the US (and in any other country in which our subprocessors operate). Data protection laws in the US may differ from those in your country.
+      </p>
+      <p>
+        Where we transfer personal data of users in the EEA, UK, or Switzerland to the US, we rely on the <strong>EU-US Data Privacy Framework</strong> (Commission Implementing Decision (EU) 2023/1795) and, where the recipient is not DPF-certified, the EU Commission's <strong>Standard Contractual Clauses</strong> (Implementing Decision (EU) 2021/914), with supplementary measures where necessary following the Schrems II decision (C-311/18). For UK transfers, we rely on the UK Extension to the EU-US DPF and the ICO's International Data Transfer Agreement / UK Addendum as applicable. To request a copy of the safeguards we rely on, email <a href="mailto:support@parryai.app">support@parryai.app</a>.
+      </p>
+
+      <h2>10. United States — your state privacy rights</h2>
+      <p>
+        The rights in Section 5 are available to all users regardless of jurisdiction. The following are additional or clarified rights for residents of specific U.S. states.
+      </p>
+
+      <h3>10.1 California (CCPA / CPRA)</h3>
+      <p>
+        <strong>Categories of personal information collected in the past 12 months</strong> (Cal. Civ. Code §1798.140):
+      </p>
+      <ul>
+        <li>Identifiers: anonymous user UUID; Apple Relay email if you sign in with Apple; subscription/customer IDs.</li>
+        <li>Customer records: subscription state.</li>
+        <li>Commercial information: purchase history (via Apple/RevenueCat).</li>
+        <li>Internet or other electronic network activity: generation metadata (no content), error reports.</li>
+        <li>Inferences: none drawn beyond what's needed to deliver the service.</li>
+      </ul>
+      <p>
+        <strong>Sensitive personal information:</strong> message content you submit may include sensitive content of your choosing; we process it transiently to generate the suggestion you requested and we do not retain it (see Section 2.2). We rely on §1798.121(d) (use necessary to perform the service you requested) and do not use SPI for any secondary purpose. We do not display a "Limit the Use of My Sensitive Personal Information" link because we do not use SPI beyond the permitted purposes.
+      </p>
+      <p>
+        <strong>We do not sell or share personal information</strong> as those terms are defined under the CCPA, and we have not done so in the prior 12 months. Accordingly, we do not display a "Do Not Sell or Share My Personal Information" link. We do not offer any financial incentive in exchange for personal information.
+      </p>
+      <p>
+        <strong>Your CCPA rights:</strong> the right to <em>know</em> what personal information we collect, use, disclose, and (if applicable) sell or share; the right to <em>delete</em>; the right to <em>correct</em>; the right to <em>opt out</em> of sale/share (not applicable to us); the right to <em>limit use</em> of sensitive PI (not applicable as described above); and the right to <em>non-discrimination</em> for exercising your rights. To exercise these rights, see Section 5.
+      </p>
+
+      {/* Anchor id below is referenced by Footer.astro for MHMDA labeled-link
+          compliance — do not rename without updating the Footer href. */}
+      <h3 id="washington-consumer-health-data">10.2 Washington — Consumer Health Data (My Health My Data Act)</h3>
+      <p>
+        <strong>We do not knowingly collect consumer health data</strong> as defined by Washington's My Health My Data Act (RCW 19.373.010(8)). parry is a messaging-assistance tool; it is not a healthcare service. parry's tone categories (casual, professional, supportive, witty, assertive) are stylistic choices for message drafting, not therapeutic interventions. The reply suggestions are drafts you control, not diagnoses, treatments, or mental-health advice.
+      </p>
+      <p>
+        We process the message content you submit transiently to generate the reply you requested and we do not retain it. We do not use that content to draw, store, or share inferences about your health or mental state. We do not use geofencing of any kind around healthcare facilities.
+      </p>
+      <p>
+        If you believe we have processed your consumer health data and you wish to exercise rights under RCW 19.373.050, email <a href="mailto:support@parryai.app">support@parryai.app</a>. parry is not a substitute for medical, psychiatric, psychological, or therapeutic care.
+      </p>
+
+      <h3>10.3 Other U.S. states</h3>
+      <p>
+        Residents of Virginia, Colorado, Connecticut, Utah, Texas, Oregon, Montana, Tennessee, Iowa, Delaware, New Hampshire, New Jersey, Nebraska, Minnesota, Maryland, and Indiana have substantially similar rights under their respective state privacy laws: access, correction, deletion, portability, and opt-out of sale, targeted advertising, and profiling that produces legal or similarly significant effects. We do not sell personal data, we do not use it for targeted advertising, and we do not engage in profiling that produces legal or similarly significant effects.
+      </p>
+      <p>
+        For users under 18, we apply heightened protections consistent with state minor-privacy laws (Colorado SB 24-041, Connecticut 2026 amendments, Maryland MODPA): no sale, no sharing for cross-context behavioral advertising, no profiling with legal effects.
+      </p>
+      <p>
+        To exercise these rights or to appeal a denial, see Sections 5 and 6.
+      </p>
+
+      <h2>11. EEA, UK, and Swiss users</h2>
+      <p>
+        <strong>Controller:</strong> Anomaly Labs LLC (see Section 1).
+      </p>
+      {/* EU Article 27 representative appointment deferred; revisit before
+          App Store EU distribution scales. */}
+      <p>
+        <strong>Right to complain to a supervisory authority:</strong> if you believe we are processing your data unlawfully, you can complain to your local Data Protection Authority. EEA users can find the relevant authority via the <a href="https://www.edpb.europa.eu/about-edpb/about-edpb/members_en" target="_blank" rel="noopener noreferrer">EDPB members list</a>. UK users can contact the <a href="https://ico.org.uk/" target="_blank" rel="noopener noreferrer">ICO</a>. Swiss users can contact the <a href="https://www.edoeb.admin.ch/" target="_blank" rel="noopener noreferrer">FDPIC</a>. We would also appreciate the chance to address your concern directly first.
+      </p>
+      <p>
+        We do not have a Data Protection Officer because parry's processing does not meet the Article 37 thresholds (no public-authority processing, no large-scale special-category processing, no large-scale systematic monitoring). Privacy questions can be directed to <a href="mailto:support@parryai.app">support@parryai.app</a>.
+      </p>
+
+      <h2>12. Cookies and tracking on parryai.app</h2>
+      <p>
+        The parryai.app marketing website is a static site. It does <strong>not</strong> set tracking cookies. It does not run analytics. It does not embed third-party advertising or tracking pixels. The site loads typefaces from Google Fonts; doing so transmits your IP address to Google as part of the font request. If we add any tracking, we will update this section and seek consent where required.
+      </p>
+      <p>
+        Inside the parry mobile app, we do not use third-party analytics or advertising SDKs.
+      </p>
+
+      <h2>13. Security</h2>
+      <p>
+        All requests between the app and our servers use HTTPS / TLS. Supabase enforces row-level security so users can only access their own data. The Anthropic API key is held server-side as a Supabase edge-function secret and is never shipped in the app bundle. We do not log message content. We follow the principle of least privilege for our service-provider accounts.
+      </p>
+      <p>
+        No system is perfectly secure. If you believe you've found a security issue, please email <a href="mailto:support@parryai.app">support@parryai.app</a>.
+      </p>
+
+      <h2>14. Account deletion</h2>
+      <p>
+        You can delete your parry account at any time from <strong>Settings → Account → Delete Account</strong> inside the mobile app. Deletion removes your anonymous user identifier, any Apple Relay email and name we stored, your custom tone presets, and your generation metadata. It also requests deletion of your customer record from RevenueCat on a best-effort basis. If you have an active subscription, you should also cancel it through your device's <em>Settings → [Your Name] → Subscriptions</em>; uninstalling parry or deleting your account does not by itself cancel the subscription.
+      </p>
+
+      <h2>15. Changes to this policy</h2>
+      <p>
+        We may update this policy as our service, vendors, or applicable law change. When we make a material change, we will update the "Last updated" date at the top, post a notice inside the app, and (where we have your email) email you. The previous version will remain available on request for at least 12 months.
+      </p>
+
+      <h2>16. Contact</h2>
+      <p>
+        Privacy questions, requests, and complaints:<br />
+        <a href="mailto:support@parryai.app">support@parryai.app</a><br />
+        Anomaly Labs LLC, 6335 180TH Pl NE Unit 125, Redmond, WA 98052
+        {/* TODO: swap to CMRA once acquired. */}
       </p>
 
       <p class="mt-8 text-sm text-text-tertiary">&copy; 2026 Anomaly Labs LLC. All rights reserved.</p>
