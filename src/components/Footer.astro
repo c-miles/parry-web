@@ -1,36 +1,24 @@
-<footer class="mt-32 hairline-top">
-  <div class="mx-auto max-w-7xl px-6 py-12 md:px-10 lg:px-14">
-    <div class="flex flex-col items-center gap-6 md:flex-row md:justify-between">
+<footer class="hairline-top">
+  <div class="mx-auto max-w-7xl px-6 py-8 md:px-10 lg:px-14">
+    <div class="flex flex-col items-center gap-4 text-center">
+      <nav aria-label="Footer" class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm">
+        <a href="/support" class="text-text-secondary no-underline transition-colors duration-200 hover:text-text-primary">
+          support
+        </a>
+        <a href="/privacy" class="text-text-secondary no-underline transition-colors duration-200 hover:text-text-primary">
+          privacy
+        </a>
+        <a href="/terms" class="text-text-secondary no-underline transition-colors duration-200 hover:text-text-primary">
+          terms
+        </a>
+        <a href="/usage" class="text-text-secondary no-underline transition-colors duration-200 hover:text-text-primary">
+          usage
+        </a>
+      </nav>
+
       <p class="text-sm text-text-tertiary">
         &copy; 2026 Anomaly Labs LLC
       </p>
-
-      <nav aria-label="Footer" class="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm">
-        <a href="/#download" class="text-text-secondary no-underline transition-colors duration-200 hover:text-text-primary">
-          Download
-        </a>
-        <a href="/privacy" class="text-text-secondary no-underline transition-colors duration-200 hover:text-text-primary">
-          Privacy
-        </a>
-        {/* WA My Health My Data Act (RCW 19.373.030(1)) requires regulated
-            entities to link to a consumer health data privacy policy from
-            their homepage. This Footer renders on every page (including the
-            homepage), satisfying the surface requirement. The href targets
-            /privacy §10.2 where the defensive disclosure lives. The statute
-            does not mandate verbatim link text. */}
-        <a href="/privacy#washington-consumer-health-data" class="text-text-secondary no-underline transition-colors duration-200 hover:text-text-primary">
-          Health Data Privacy
-        </a>
-        <a href="/terms" class="text-text-secondary no-underline transition-colors duration-200 hover:text-text-primary">
-          Terms
-        </a>
-        <a href="/usage" class="text-text-secondary no-underline transition-colors duration-200 hover:text-text-primary">
-          Usage Policy
-        </a>
-        <a href="mailto:support@parryai.app" class="text-text-secondary no-underline transition-colors duration-200 hover:text-text-primary">
-          support@parryai.app
-        </a>
-      </nav>
     </div>
   </div>
 </footer>
