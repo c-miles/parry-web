@@ -31,11 +31,13 @@ src/
 │   ├── index.astro             # Landing page (passes MobileApplication JSON-LD)
 │   ├── privacy.astro           # Privacy policy
 │   ├── terms.astro             # Terms of service
+│   ├── usage.astro             # Usage policy (subscription limits + acceptable use)
+│   ├── support.astro           # Support page (App Store Support URL): contact, FAQ link, account deletion
 │   └── 404.astro               # Custom 404 page (no canonicalPath)
 ├── components/
 │   ├── Header.astro            # Logo only (no nav CTA)
-│   ├── Footer.astro            # Links, copyright, support email
-│   ├── Hero.astro              # Headline, CTA, phone mockup, sentinel
+│   ├── Footer.astro            # Footer nav (support, privacy, terms, usage), copyright
+│   ├── Hero.astro              # Headline, CTA, phone mockup
 │   ├── HowItWorks.astro        # 3-step section
 │   ├── Features.astro          # Feature cards
 │   ├── SocialProof.astro       # Claude AI attribution badge
@@ -44,7 +46,6 @@ src/
 │   ├── Privacy.astro           # Trust/privacy section
 │   ├── DownloadCTA.astro       # App Store badge
 │   ├── FAQ.astro               # <details>/<summary> + FAQPage JSON-LD
-│   ├── MobileDownloadBar.astro # Fixed bottom bar, IntersectionObserver-gated
 │   ├── PhoneMockup.astro       # CSS phone frame with placeholder app UI
 │   └── Icon.astro              # Phosphor icon loader (build-time SVG)
 ├── styles/
@@ -89,11 +90,13 @@ Surface primitives (utility classes in `global.css`):
 - Headings use `font-display`. Body text uses Geist (set on `<body>`).
 - Cross-page anchor links use absolute paths (`/#download`, not `#download`).
 - Legal pages (`/privacy`, `/terms`) use the `prose-legal` class.
-- `BaseLayout` props: `title`, `description`, `canonicalPath?`, `jsonLd?`, `showMobileDownloadBar?`. Omit `canonicalPath` for the 404 page.
+- `BaseLayout` props: `title`, `description`, `canonicalPath?`, `jsonLd?`. Omit `canonicalPath` for the 404 page.
 
 ## Critical URLs
 
 The parry mobile app currently links `https://parryai.app/privacy` from its AI consent modal (`AIConsentModal.tsx`). Once a Settings screen ships there, `/terms` will be linked too. **These routes MUST work and contain the correct legal text** — they are referenced from the App Store listing and the in-app consent flow.
+
+`https://parryai.app/support` is the **App Store Connect Support URL** (parry repo #119). It MUST return 200, name the app, expose a working contact method (`support@parryai.app`), and carry the in-app account-deletion steps (Apple Guideline 5.1.1(v)). It must not redirect to the App Store listing or the homepage.
 
 ## Legal entity
 
