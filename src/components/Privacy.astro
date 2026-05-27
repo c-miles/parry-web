@@ -1,8 +1,8 @@
 ---
 const promises = [
   {
-    title: "Never stored",
-    body: "Messages are processed and gone. No logs, no databases, no backups."
+    title: "Not stored by parry",
+    body: "Our own servers never keep the messages you paste in."
   },
   {
     title: "Never trained on",
@@ -23,7 +23,7 @@ const promises = [
         Anonymous by design. Not by promise.
       </h2>
       <p class="mt-5 text-lg leading-relaxed text-text-secondary">
-        Every message is processed in real-time and immediately forgotten. Nothing stored. Nothing trained on. Ever.
+        parry doesn't keep your conversations, and your words are never used to train AI models.
       </p>
     </div>
 
@@ -36,7 +36,11 @@ const promises = [
       ))}
     </div>
 
-    <p class="mt-10 animate-on-scroll">
+    <p class="mt-10 max-w-2xl text-base leading-relaxed text-text-secondary animate-on-scroll">
+      To write replies, your message is sent to our AI provider, Anthropic, which may keep it up to 30 days for safety review before deleting it.
+    </p>
+
+    <p class="mt-6 animate-on-scroll">
       <a href="/privacy" class="inline-flex items-center gap-2 text-base text-accent-text underline underline-offset-4 transition-colors hover:text-accent">
         Read our full privacy policy
         <span aria-hidden="true">&rarr;</span>

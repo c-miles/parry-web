@@ -11,10 +11,11 @@ parry lets you paste a text message, pick a tone, and get four ready-to-send rep
 - Image and screenshot input
 
 ## Privacy
-- Messages are processed in real-time and immediately discarded
-- No message storage, no conversation history retained
-- No account required — anonymous by default
-- Your data is never used to train AI models
+- parry does not store your conversations on its own servers
+- Messages are sent to Anthropic (the AI provider) only to generate replies
+- Anthropic may retain them up to 30 days for safety review, then deletes them
+- Your messages are never used to train AI models
+- No account required, anonymous by default
 
 ## Pricing
 - Free: 5 generations per day, 1 custom tone, no account required
