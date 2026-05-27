@@ -50,6 +50,12 @@
 /* Base styles */
 html {
   scroll-behavior: smooth;
+  /* Offset in-page anchor targets below the fixed translucent header so deep
+     links (e.g. /#faq, /privacy#washington-consumer-health-data) land clear of
+     it instead of scrolling underneath. 6rem is a deliberate clearance buffer
+     above the ~3.6rem header, not mechanically coupled to it; retune if the
+     header height changes substantially. */
+  scroll-padding-top: 6rem;
   color-scheme: dark;
 }
 
@@ -57,11 +63,21 @@ body {
   font-family: var(--font-body);
   color: var(--color-text-primary);
   background: var(--color-bg-base);
+  /* Sticky-footer layout: body is a flex column so #main-content grows to fill
+     the viewport on short pages (e.g. the 404 page), pinning the footer to the
+     bottom instead of leaving empty space beneath it. The fixed Header sits
+     outside the flow and is unaffected. */
+  display: flex;
+  flex-direction: column;
   min-height: 100dvh;
   overflow-x: hidden;
   font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 /* Editorial display headings */
