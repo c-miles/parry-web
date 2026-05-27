@@ -28,7 +28,9 @@ parry lets you paste a text message, pick a tone, and get four ready-to-send rep
 - [Home](https://parryai.app): Landing page with features and download links
 - [Privacy Policy](https://parryai.app/privacy): How parry handles user data
 - [Terms of Service](https://parryai.app/terms): Terms governing use of parry
+- [Support](https://parryai.app/support): Help, contact, subscriptions, and account deletion for parry
 
-## Contact
-- Support: support@parryai.app
+## Support
+- Email: support@parryai.app
+- Support page: https://parryai.app/support
 - Website: https://parryai.app
