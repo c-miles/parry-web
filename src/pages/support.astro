@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="parry support"
+  description="Get help with parry. Email support@parryai.app, manage your subscription, or delete your account and data from inside the app."
+  canonicalPath="/support"
+>
+  <section class="px-6 py-20 md:px-10 md:py-28 lg:px-14">
+    <div class="prose-legal mx-auto max-w-3xl">
+      <h1 class="font-display mb-3 text-4xl font-semibold tracking-tight md:text-5xl" style="letter-spacing: -0.025em;">parry support</h1>
+      <p class="mb-12 text-lg text-text-secondary">
+        parry is an AI-powered app for replying to text messages. Paste a message, pick a tone, and get ready-to-send suggestions. Need help? Start here.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Email <a href="mailto:support@parryai.app"><strong>support@parryai.app</strong></a>. We read every message and usually reply within 2 business days.
+      </p>
+      <p>
+        To help us sort things out faster, include your device model, your iOS version, and your parry version (find it in Settings, About).
+      </p>
+
+      <h2>Common questions</h2>
+      <p>
+        Answers to the most common questions about parry, pricing, tones, and privacy live in the <a href="/#faq">FAQ</a> on our home page.
+      </p>
+
+      <h2>Subscriptions and refunds</h2>
+      {/* TODO(android): the billing copy here is iOS-only (Apple ID >
+          Subscriptions; refunds via reportaproblem.apple.com). When parry
+          ships on Google Play, add the Android equivalent (manage/cancel and
+          refunds via Google Play). The account-deletion section below carries
+          the same iOS-only cancellation note. */}
+      <p>
+        Manage or cancel a parry Pro subscription in iOS Settings, under Apple ID, Subscriptions. Refunds are handled by Apple, not by parry. Request one at <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener noreferrer">reportaproblem.apple.com</a>.
+      </p>
+
+      <h2>Account and data deletion</h2>
+      <p>
+        You can delete your parry data and account from inside the app. There is no separate website step.
+      </p>
+      <ol>
+        <li>Open parry and go to Settings.</li>
+        <li>Scroll to the bottom.</li>
+        <li>Tap the red <strong>Delete account</strong> link. If you have never signed in, it reads <strong>Delete data</strong> instead.</li>
+        <li>Confirm when the app asks. parry confirms with you before anything is removed.</li>
+      </ol>
+      <p>
+        This permanently removes your custom tones and your usage history (the metadata we log for each suggestion, such as the tone and timestamp). If you created an account, it also removes your linked sign-in. It cannot be undone.
+      </p>
+      <p>
+        Deleting your data does not cancel a paid subscription, since Apple manages billing. Cancel that separately in iOS Settings, under Apple ID, Subscriptions.
+      </p>
+      <p>
+        Locked out and can't reach Settings? Email <a href="mailto:support@parryai.app">support@parryai.app</a> from your account address and we'll delete it for you.
+      </p>
+
+      <h2>Privacy and policies</h2>
+      <p>
+        Read our <a href="/privacy">privacy policy</a>, <a href="/terms">terms of service</a>, and <a href="/usage">usage policy</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

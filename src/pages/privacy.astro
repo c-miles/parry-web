@@ -289,8 +289,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <strong>Your CCPA rights:</strong> the right to <em>know</em> what personal information we collect, use, disclose, and (if applicable) sell or share; the right to <em>delete</em>; the right to <em>correct</em>; the right to <em>opt out</em> of sale/share (not applicable to us); the right to <em>limit use</em> of sensitive PI (not applicable as described above); and the right to <em>non-discrimination</em> for exercising your rights. To exercise these rights, see Section 5.
       </p>
 
-      {/* Anchor id below is referenced by Footer.astro for MHMDA labeled-link
-          compliance — do not rename without updating the Footer href. */}
+      {/* §10.2 Washington Consumer Health Data disclosure (My Health My Data
+          Act), kept as a defensive disclosure even though parry's position is
+          that it does not collect consumer health data and is not a regulated
+          entity under the Act. The id is a stable anchor; keep it if any page
+          ever links back to this section. */}
       <h3 id="washington-consumer-health-data">10.2 Washington — Consumer Health Data (My Health My Data Act)</h3>
       <p>
         <strong>We do not knowingly collect consumer health data</strong> as defined by Washington's My Health My Data Act (RCW 19.373.010(8)). parry is a messaging-assistance tool; it is not a healthcare service. parry's tone categories (casual, professional, supportive, witty, assertive) are stylistic choices for message drafting, not therapeutic interventions. The reply suggestions are drafts you control, not diagnoses, treatments, or mental-health advice.
@@ -358,9 +361,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <a href="mailto:support@parryai.app">support@parryai.app</a><br />
         Anomaly Labs LLC, 6335 180TH Pl NE Unit 125, Redmond, WA 98052
         {/* TODO: swap to CMRA once acquired. */}
-      </p>
-
-      <p class="mt-8 text-sm text-text-tertiary">&copy; 2026 Anomaly Labs LLC. All rights reserved.</p>
-    </div>
+      </p>    </div>
   </section>
 </BaseLayout>
