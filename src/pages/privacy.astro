@@ -2,9 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 {/* TODO: have a qualified attorney review this Privacy Policy before App
-    Store submission. Drafted by a non-attorney — not legal advice. */}
+    Store submission. Drafted by a non-attorney. Not legal advice. */}
 <BaseLayout
-  title="Privacy Policy — parry"
+  title="Privacy Policy | parry"
   description="parry's privacy policy. Learn how we handle your data, what we collect, and how your messages are processed."
   canonicalPath="/privacy"
 >
@@ -42,13 +42,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <li><strong>Subscription state:</strong> whether you are on the Free or Pro tier, your renewal date, and your purchase history. Managed by RevenueCat. <em>Lawful basis: Art. 6(1)(b) contract; Art. 6(1)(c) for tax/accounting retention.</em></li>
       </ul>
 
-      <h3>2.2 Message context (transient — not stored by us)</h3>
+      <h3>2.2 Message context (transient, not stored by us)</h3>
       <ul>
         <li>Text and images you submit for reply suggestions are transmitted to <strong>Anthropic</strong>, the provider of the Claude™ AI model, for processing.</li>
         <li><strong>We do NOT store your message content or images on our servers.</strong> They are forwarded to Anthropic, the AI generates suggestions, and we discard the input as soon as the response is returned to you.</li>
         <li>Anthropic processes the data on our behalf as our processor. Anthropic's published policy states it automatically deletes inputs and outputs from its backend within <strong>30 days</strong> of receipt or generation (see <a href="https://privacy.claude.com/en/articles/7996866" target="_blank" rel="noopener noreferrer">Anthropic's data-retention article</a>). For content that violates Anthropic's Usage Policy, Anthropic may retain inputs and outputs for up to 2 years and safety classification scores for up to 7 years.</li>
         <li>Your data is <strong>NOT used to train AI models</strong>. Anthropic's commercial terms expressly prohibit training on customer content (<a href="https://www.anthropic.com/legal/commercial-terms" target="_blank" rel="noopener noreferrer">Commercial Terms §B</a>).</li>
-        <li><em>Lawful basis: Art. 6(1)(b) contract — generating the suggestion is the service you requested. If your prompt contains special-category data (health, religion, sexual orientation, etc.) we additionally rely on your explicit consent (Art. 9(2)(a)) captured by the in-app AI consent dialog.</em></li>
+        <li><em>Lawful basis: Art. 6(1)(b) contract; generating the suggestion is the service you requested. If your prompt contains special-category data (health, religion, sexual orientation, etc.) we additionally rely on your explicit consent (Art. 9(2)(a)) captured by the in-app AI consent dialog.</em></li>
       </ul>
 
       <h3>2.3 Generation metadata (not your messages)</h3>
@@ -59,15 +59,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <li>Anonymous user identifier</li>
         <li>Tone selection (one of the built-in tones, or a flag indicating a custom tone was used)</li>
         <li>Whether a custom tone was used (boolean)</li>
-        <li>Input length (character count only — not the text)</li>
+        <li>Input length (character count only, not the text)</li>
         <li>Number of responses generated</li>
         <li>Response latency</li>
         <li>AI model used</li>
-        <li>Whether an image was attached (yes/no — not the image)</li>
+        <li>Whether an image was attached (yes/no, not the image)</li>
         <li>Timestamp of the request</li>
       </ul>
       <p>
-        Generation metadata does <strong>not</strong> include your message content or images. Custom tone presets you create yourself (name + style description) are stored server-side so the AI can apply them; you can delete them at any time. <em>Lawful basis: Art. 6(1)(f) legitimate interests — operating, securing, and improving the service. We have weighed this interest against your privacy and consider it proportionate.</em>
+        Generation metadata does <strong>not</strong> include your message content or images. Custom tone presets you create yourself (name + style description) are stored server-side so the AI can apply them; you can delete them at any time. <em>Lawful basis: Art. 6(1)(f) legitimate interests: operating, securing, and improving the service. We have weighed this interest against your privacy and consider it proportionate.</em>
       </p>
 
       {/* The on-device speech-recognition guarantee below depends on
@@ -76,7 +76,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           flag is changed in the mobile repo, this section must be updated. */}
       <h3>2.4 Voice input</h3>
       <p>
-        parry offers an optional voice-input mode for composing prompts. On iOS, speech recognition runs <strong>on your device</strong> using Apple's Speech framework, with <em>SFSpeechRecognizer.requiresOnDeviceRecognition</em> set to true. <strong>Audio never leaves your device</strong> — it is not transmitted to Apple, to parry, or to any other third party. If your device or language does not support on-device recognition, parry simply will not transcribe; it never silently falls back to server-based recognition. Only the resulting transcript text is sent onward, and only if you tap Generate (in which case it goes to Anthropic for AI processing under the same policies described in §2.2 above). <em>Lawful basis: Art. 6(1)(b) contract.</em>
+        parry offers an optional voice-input mode for composing prompts. On iOS, speech recognition runs <strong>on your device</strong> using Apple's Speech framework, with <em>SFSpeechRecognizer.requiresOnDeviceRecognition</em> set to true. <strong>Audio never leaves your device.</strong> It is not transmitted to Apple, to parry, or to any other third party. If your device or language does not support on-device recognition, parry simply will not transcribe; it never silently falls back to server-based recognition. Only the resulting transcript text is sent onward, and only if you tap Generate (in which case it goes to Anthropic for AI processing under the same policies described in §2.2 above). <em>Lawful basis: Art. 6(1)(b) contract.</em>
       </p>
       <p>
         Android support for parry is not yet available. When it ships, we will re-evaluate the on-device guarantee against the equivalent Android speech-recognition APIs and update this section before users encounter the feature on that platform.
@@ -88,12 +88,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </p>
       <ul>
         <li>Error reports (exception type, message, stack trace, file/line) at the moment of failure</li>
-        <li>Breadcrumbs (categorized records of recent actions, such as a sign-in attempt, a generation event, or a voice-module load — used to understand what led up to an error)</li>
+        <li>Breadcrumbs (categorized records of recent actions, such as a sign-in attempt, a generation event, or a voice-module load, used to understand what led up to an error)</li>
         <li>Your anonymous user identifier (so we can group repeated errors from the same user)</li>
         <li>Device metadata (model, OS version, app version, locale)</li>
       </ul>
       <p>
-        We do <strong>not</strong> send message content, images, or voice transcripts to Sentry. <em>Lawful basis: Art. 6(1)(f) legitimate interests — debugging, security, and service integrity.</em>
+        We do <strong>not</strong> send message content, images, or voice transcripts to Sentry. <em>Lawful basis: Art. 6(1)(f) legitimate interests: debugging, security, and service integrity.</em>
       </p>
 
       <h3>2.6 What we do NOT collect</h3>
@@ -108,7 +108,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <li>Financial account credentials (purchases are handled by Apple)</li>
       </ul>
 
-      <h2>3. Subprocessors — who else handles your data</h2>
+      <h2>3. Subprocessors: who else handles your data</h2>
       <p>
         We use the following third-party services to operate parry. Where a service holds personal data on our behalf, it acts as our processor under GDPR (and as our "service provider" under CCPA). We have data-processing agreements with each. We do <strong>not</strong> sell or share your personal data, and the services below are not authorized to use your data for their own purposes.
       </p>
@@ -118,7 +118,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           https://www.dataprivacyframework.gov, and confirm SCC fallback
           language is in our DPA with any vendor that isn't DPF-certified.
           The values below reflect industry practice and have not been
-          individually attorney-verified — re-check at each policy revision. */}
+          individually attorney-verified; re-check at each policy revision. */}
       <table style="width:100%; border-collapse:collapse; margin:1.25rem 0;">
         <thead>
           <tr style="text-align:left; border-bottom:1px solid var(--color-hairline-strong);">
@@ -137,7 +137,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </tr>
           <tr style="border-bottom:1px solid var(--color-hairline);">
             <td style="padding:0.5rem 0.5rem 0.5rem 0;"><strong>Anthropic PBC</strong></td>
-            <td style="padding:0.5rem;">AI inference (Claude API) — generates the reply suggestions; 30-day default retention; no training on your data</td>
+            <td style="padding:0.5rem;">AI inference (Claude API): generates the reply suggestions; 30-day default retention; no training on your data</td>
             <td style="padding:0.5rem;">USA</td>
             <td style="padding:0.5rem;">EU-US DPF + Anthropic DPA / SCCs ⟶ <a href="https://www.anthropic.com/legal/data-processing-addendum" target="_blank" rel="noopener noreferrer">DPA</a></td>
           </tr>
@@ -221,7 +221,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <li><strong>Email:</strong> <a href="mailto:support@parryai.app">support@parryai.app</a> for any request.</li>
       </ul>
       <p>
-        We may ask you to verify your identity before we can act on a request (for example, by asking you to confirm the request from the email address associated with your account, or by responding from inside the app). We aim to respond within <strong>30 days</strong>; for complex requests, we may extend by up to 60 additional days and will tell you if that is needed. If we deny a request, we will explain why and how to appeal — see Section 6.
+        We may ask you to verify your identity before we can act on a request (for example, by asking you to confirm the request from the email address associated with your account, or by responding from inside the app). We aim to respond within <strong>30 days</strong>; for complex requests, we may extend by up to 60 additional days and will tell you if that is needed. If we deny a request, we will explain why and how to appeal. See Section 6.
       </p>
       <p>
         If you are in California, you may designate an <strong>authorized agent</strong> to make a request on your behalf. We may require the agent to provide proof of authorization (such as a signed permission letter from you) and to verify your identity directly with us.
@@ -234,7 +234,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <h2>7. AI and automated processing</h2>
       <p>
-        parry uses an AI system — specifically, Anthropic's Claude — to generate reply suggestions based on the message context you submit. You are always the decision-maker: parry presents suggestions; you choose which (if any) to send, you can edit before sending, and you send via your device's own messaging app.
+        parry uses an AI system (specifically, Anthropic's Claude) to generate reply suggestions based on the message context you submit. You are always the decision-maker: parry presents suggestions; you choose which (if any) to send, you can edit before sending, and you send via your device's own messaging app.
       </p>
       <p>
         Because the suggestions are drafts that you control, parry does <strong>not</strong> make decisions about you that produce legal or similarly significant effects within the meaning of GDPR Article 22. This disclosure also satisfies the transparency obligation under EU AI Act Article 50(1), which becomes applicable on 2 August 2026: when you use parry's generation feature, you are interacting with an AI system.
@@ -249,7 +249,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </p>
       <h3>Users aged 13–17</h3>
       <p>
-        If you are between 13 and 17, you may use parry only with the awareness of a parent or guardian. We encourage parents and guardians to review this Privacy Policy and our <a href="/terms">Terms of Service</a> with you. parry's reply suggestions are AI-generated drafts, not advice. Some suggestions may not be appropriate for your situation — you are responsible for what you choose to send. Don't share personal information (your full name, school, address, phone number, photos, financial information) in your prompts. If a conversation feels unsafe, talk to a trusted adult or contact help: in the US, call or text <strong>988</strong> (Suicide &amp; Crisis Lifeline) or text HOME to <strong>741741</strong> (Crisis Text Line).
+        If you are between 13 and 17, you may use parry only with the awareness of a parent or guardian. We encourage parents and guardians to review this Privacy Policy and our <a href="/terms">Terms of Service</a> with you. parry's reply suggestions are AI-generated drafts, not advice. Some suggestions may not be appropriate for your situation, and you are responsible for what you choose to send. Don't share personal information (your full name, school, address, phone number, photos, financial information) in your prompts. If a conversation feels unsafe, talk to a trusted adult or contact help: in the US, call or text <strong>988</strong> (Suicide &amp; Crisis Lifeline) or text HOME to <strong>741741</strong> (Crisis Text Line).
       </p>
       <p>
         We do not sell personal information of any user. We do not use the content of your messages or AI generations to train AI models or for targeted advertising. We do not knowingly share personal information of users under 18 with third parties for cross-context behavioral advertising.
@@ -263,7 +263,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         Where we transfer personal data of users in the EEA, UK, or Switzerland to the US, we rely on the <strong>EU-US Data Privacy Framework</strong> (Commission Implementing Decision (EU) 2023/1795) and, where the recipient is not DPF-certified, the EU Commission's <strong>Standard Contractual Clauses</strong> (Implementing Decision (EU) 2021/914), with supplementary measures where necessary following the Schrems II decision (C-311/18). For UK transfers, we rely on the UK Extension to the EU-US DPF and the ICO's International Data Transfer Agreement / UK Addendum as applicable. To request a copy of the safeguards we rely on, email <a href="mailto:support@parryai.app">support@parryai.app</a>.
       </p>
 
-      <h2>10. United States — your state privacy rights</h2>
+      <h2>10. United States: your state privacy rights</h2>
       <p>
         The rights in Section 5 are available to all users regardless of jurisdiction. The following are additional or clarified rights for residents of specific U.S. states.
       </p>
@@ -294,7 +294,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           that it does not collect consumer health data and is not a regulated
           entity under the Act. The id is a stable anchor; keep it if any page
           ever links back to this section. */}
-      <h3 id="washington-consumer-health-data">10.2 Washington — Consumer Health Data (My Health My Data Act)</h3>
+      <h3 id="washington-consumer-health-data">10.2 Washington: Consumer Health Data (My Health My Data Act)</h3>
       <p>
         <strong>We do not knowingly collect consumer health data</strong> as defined by Washington's My Health My Data Act (RCW 19.373.010(8)). parry is a messaging-assistance tool; it is not a healthcare service. parry's tone categories (casual, professional, supportive, witty, assertive) are stylistic choices for message drafting, not therapeutic interventions. The reply suggestions are drafts you control, not diagnoses, treatments, or mental-health advice.
       </p>
