@@ -22,7 +22,7 @@ const { screenshot, alt, size = 'hero' } = Astro.props;
   /* Bezel mirrors the design system used for parry's App Store screenshots:
      titanium gradient chassis, subtle coral wash that matches the page's
      ambient hero glow, iPhone-accurate chassis-to-screen corner radius
-     ratio. Two size variants reuse the same proportions. */
+     ratio. Three size variants reuse the same proportions. */
 
   .phone-frame {
     display: flex;
@@ -34,27 +34,54 @@ const { screenshot, alt, size = 'hero' } = Astro.props;
     position: relative;
   }
 
+  /* Mobile / single-column sizing is driven by WIDTH, not height. The phone is
+     tall and narrow, so its rendered width is what decides how readable the
+     screenshot's text is — sizing by width lets us dial that in directly. It
+     also fixes a scroll glitch: a viewport-HEIGHT unit (dvh) recomputes as the
+     mobile browser's address bar shows and hides, so a height-driven phone
+     visibly grows and shrinks while you scroll. vw doesn't change on scroll, so
+     the phone stays put. Height follows from aspect-ratio. The three variants
+     stay close in size (hero marginally largest) since on a phone they're
+     viewed one at a time, not side by side. */
   .phone-frame--hero .phone-aspect {
-    height: clamp(480px, 68dvh, 720px);
+    width: clamp(240px, 74vw, 330px);
     --bezel-pad: 5px;
     --chassis-radius: 44px;
     --screen-radius: 39px;
   }
 
-  /* step-large sits between hero and step, used for the Step 03 payoff
-     so the inner reply-card text reads comfortably on large displays. */
   .phone-frame--step-large .phone-aspect {
-    height: clamp(460px, 54vw, 640px);
+    width: clamp(240px, 74vw, 320px);
     --bezel-pad: 4.5px;
     --chassis-radius: 38px;
     --screen-radius: 34px;
   }
 
   .phone-frame--step .phone-aspect {
-    height: clamp(420px, 48vw, 580px);
+    width: clamp(235px, 71vw, 310px);
     --bezel-pad: 4px;
     --chassis-radius: 34px;
     --screen-radius: 30px;
+  }
+
+  /* From lg up the page is a two-column grid where each phone sits beside a
+     column of body text, so size by height there and let width follow from
+     aspect-ratio. Desktop browsers have no collapsing chrome, so a
+     viewport-height unit is stable here — the scroll-resize problem the
+     width-based rules above avoid only happens on mobile. */
+  @media (min-width: 1024px) {
+    .phone-frame--hero .phone-aspect {
+      width: auto;
+      height: clamp(480px, 68dvh, 720px);
+    }
+    .phone-frame--step-large .phone-aspect {
+      width: auto;
+      height: clamp(460px, 54vw, 660px);
+    }
+    .phone-frame--step .phone-aspect {
+      width: auto;
+      height: clamp(420px, 48vw, 600px);
+    }
   }
 
   .phone-bezel {
