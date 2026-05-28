@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
-import SocialProof from '../components/SocialProof.astro';
 import PainPoint from '../components/PainPoint.astro';
 import HowItWorks from '../components/HowItWorks.astro';
 import TonesShowcase from '../components/TonesShowcase.astro';
@@ -16,7 +15,9 @@ const jsonLd = {
   "name": "parry",
   "description": "Paste a message, pick a tone, get four ready-to-send replies. parry is the fastest way to respond to any message.",
   "url": "https://parryai.app",
-  "applicationCategory": "UtilitiesApplication",
+  "installUrl": "https://apps.apple.com/app/id6761346279",
+  "downloadUrl": "https://apps.apple.com/app/id6761346279",
+  "applicationCategory": "LifestyleApplication",
   "operatingSystem": "iOS",
   "offers": {
     "@type": "Offer",
@@ -28,19 +29,17 @@ const jsonLd = {
     "name": "Anomaly Labs LLC",
     "url": "https://parryai.app"
   },
-  "inLanguage": "en-US",
-  "softwareVersion": "1.0.0"
+  "inLanguage": "en-US"
 };
 ---
 
 <BaseLayout
-  title="parry — Never Overthink a Message Again"
+  title="parry | Your countermove for any message"
   description="parry gives you the right reply for any message. Paste a message, pick a tone, get four ready-to-send responses. Free on iOS."
   canonicalPath=""
   jsonLd={jsonLd}
 >
   <Hero />
-  <SocialProof />
   <PainPoint />
   <HowItWorks />
   <TonesShowcase />

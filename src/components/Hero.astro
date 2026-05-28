@@ -8,22 +8,17 @@ import PhoneMockup from './PhoneMockup.astro';
   <div class="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
     <!-- Text content -->
     <div class="text-center lg:text-left">
-      {/* Eyebrow rewrite candidates considered (foundation: parry-and-riposte craft framing). Unused alternates kept here for review:
-           A: "the conversational craft assistant" — safer, App Store category-aligned, less distinctive
-           E: "the back-and-forth, sharper" — metaphor at the verb level, but "sharper" is more figurative than brand voice usually allows */}
-      <p class="eyebrow mb-6">your countermove for any message</p>
-
       <h1 class="font-display mb-6 text-balance font-semibold leading-[0.95]" style="font-size: var(--text-hero);">
-        Never overthink<br />a message again.
+        Your <span class="text-accent">countermove</span><br />for any message.
       </h1>
 
       <p class="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-text-secondary md:text-xl lg:mx-0">
-        parry gives you the right reply for any message — any tone, any situation. Paste, pick, send.
+        Reply or reach out, in any app, in your tone. Describe it, paste it, snap it, or say it. Four ready-to-send options in seconds.
       </p>
 
       <div class="flex flex-col items-center gap-4 lg:items-start">
         <div class="flex items-center gap-3 sm:gap-4">
-          <a href="#download" class="inline-block transition-transform duration-200 hover:scale-105">
+          <a href="https://apps.apple.com/app/id6761346279" target="_blank" rel="noopener" class="inline-block transition-transform duration-200 hover:scale-105">
             <img src="/app-store-badge.svg" alt="Download on the App Store" width="160" height="54" />
           </a>
         </div>
@@ -35,7 +30,11 @@ import PhoneMockup from './PhoneMockup.astro';
 
     <!-- Phone preview -->
     <div class="flex justify-center lg:justify-end">
-      <PhoneMockup />
+      <PhoneMockup
+        screenshot="/screenshots/home.png"
+        alt="parry home screen with 'we need to talk' typed into the input and the Witty tone selected"
+        size="hero"
+      />
     </div>
   </div>
 </section>

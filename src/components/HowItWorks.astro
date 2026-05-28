@@ -1,21 +1,14 @@
 ---
-const steps = [
-  {
-    num: "01",
-    title: "Paste what they said",
-    body: "Got a message that stumped you? Copy it and drop it into parry. Works with any messaging app — iMessage, WhatsApp, Slack, Hinge, anywhere."
-  },
-  {
-    num: "02",
-    title: "Pick your tone",
-    body: "Casual, professional, supportive, witty, assertive. Choose the tone that fits the moment, not the one the AI defaults to."
-  },
-  {
-    num: "03",
-    title: "Send with confidence",
-    body: "Four ready-to-send replies appear instantly. Tap to copy, switch back to your chat, hit send. Five seconds, end-to-end."
-  }
-];
+import PhoneMockup from './PhoneMockup.astro';
+
+// Three steps, three visual treatments:
+//   01: cropped attach.png panel (input affordances + screenshot mode)
+//   02: HTML tone-chip row with Gen Z custom selected, app-style styling
+//   03: full PhoneMockup of results.png (the payoff: whole results screen
+//       visible at readable scale — Original Message + 4 reply cards + tone
+//       selector + Regenerate buttons + AI disclaimer all in frame).
+// Step 03's full phone matches Features Card 2 below ("It reads the room for
+// you") for a clean visual pairing across the section break.
 ---
 
 <section class="px-6 py-24 md:px-10 md:py-32 lg:px-14">
@@ -25,35 +18,177 @@ const steps = [
       <h2 class="font-display text-balance font-semibold leading-[1.05]" style="font-size: var(--text-display);">
         Three steps. The right reply.
       </h2>
-      {/* "Three steps" refers to the paste/pick/send workflow — independent of the
-          generation count (which is four). Keep as-is unless brand-foundation says otherwise. */}
     </div>
 
     <div class="flex flex-col gap-24 md:gap-32">
-      {steps.map((step, i) => (
-        <div class={`grid items-center gap-10 md:gap-16 lg:grid-cols-2 animate-on-scroll ${i % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`}>
-          <!-- Numeral + text -->
-          <div>
-            <p class="font-display mb-4 leading-none text-accent" style="font-size: clamp(5rem, 12vw, 9rem); letter-spacing: -0.04em;">
-              {step.num}
-            </p>
-            <h3 class="font-display mb-4 text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
-              {step.title}
-            </h3>
-            <p class="max-w-md text-lg leading-relaxed text-text-secondary">
-              {step.body}
-            </p>
-          </div>
+      <!-- Step 01: Give parry the situation -->
+      <div class="grid items-center gap-10 md:gap-16 lg:grid-cols-2 animate-on-scroll">
+        <div>
+          <p class="font-display mb-4 leading-none text-accent" style="font-size: clamp(5rem, 12vw, 9rem); letter-spacing: -0.04em;">01</p>
+          <h3 class="font-display mb-4 text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+            Give parry the situation.
+          </h3>
+          <p class="max-w-md text-lg leading-relaxed text-text-secondary">
+            Type the context, paste a message, drop a screenshot, or just say it out loud. Works whether you're replying to something or reaching out first.
+          </p>
+        </div>
 
-          {/* TODO(issue #9): swap placeholder for real screenshot. */}
-          <div class="surface-elevated flex aspect-[4/3] items-center justify-center">
-            <div class="flex flex-col items-center gap-3 text-text-tertiary">
-              <div class="font-display text-5xl font-semibold opacity-30">{step.num}</div>
-              <p class="eyebrow">Screenshot · step {step.num}</p>
-            </div>
+        <!-- Cropped UI panel: bottom of attach.png shown enlarged in a soft frame.
+             Uses attach.png (not home.png, which is the hero) so the visitor sees
+             a different input mode here. attach.png crops down to show the
+             screenshot-input affordance with a thumbnail in the input bar, which
+             sells the 'drop a screenshot' half of the step copy. -->
+        <div class="input-panel mx-auto w-full max-w-lg" aria-label="parry input bar showing a screenshot attached and a context note typed"></div>
+      </div>
+
+      <!-- Step 02: Pick a tone -->
+      <div class="grid items-center gap-10 md:gap-16 lg:grid-cols-2 animate-on-scroll lg:[&>*:first-child]:order-2">
+        <div>
+          <p class="font-display mb-4 leading-none text-accent" style="font-size: clamp(5rem, 12vw, 9rem); letter-spacing: -0.04em;">02</p>
+          <h3 class="font-display mb-4 text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+            Pick a tone.
+          </h3>
+          <p class="max-w-md text-lg leading-relaxed text-text-secondary">
+            Five built-in tones, plus any custom ones you build. Pick the one that fits the moment.
+          </p>
+        </div>
+        <!-- HTML chip-row fragment. Values ported pixel-for-pixel from the
+             mobile app's ToneSelector (parry/src/components/ui/ToneSelector.tsx)
+             so that the card and chips render identically to what shows in
+             Steps 01 and 03's cropped screenshots. -->
+        <div class="tone-fragment w-full">
+          <p class="eyebrow mb-5">Tone</p>
+          <!-- Single-row horizontal scroller. Custom tone (Gen Z) leads the
+               row per the app's ToneSelector convention. Trailing-edge mask
+               fade hints at chips that extend past the visible area. -->
+          <div class="tone-chip-scroll">
+            <span class="tone-chip tone-chip--selected">Gen Z</span>
+            <span class="tone-chip">Casual</span>
+            <span class="tone-chip">Professional</span>
+            <span class="tone-chip">Supportive</span>
+            <span class="tone-chip">Witty</span>
+            <span class="tone-chip">Assertive</span>
           </div>
         </div>
-      ))}
+      </div>
+
+      <!-- Step 03: cropped results.png panel showing ORIGINAL MESSAGE + replies -->
+      <div class="grid items-center gap-10 md:gap-16 lg:grid-cols-2 animate-on-scroll">
+        <div>
+          <p class="font-display mb-4 leading-none text-accent" style="font-size: clamp(5rem, 12vw, 9rem); letter-spacing: -0.04em;">03</p>
+          <h3 class="font-display mb-4 text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+            Get four replies. Send the one that fits.
+          </h3>
+          <p class="max-w-md text-lg leading-relaxed text-text-secondary">
+            Four ready-to-send options in about five seconds. Tap to copy, switch back to your chat, hit send. Not the one? Regenerate or try a different tone.
+          </p>
+        </div>
+
+        <PhoneMockup
+          screenshot="/screenshots/results.png"
+          alt="parry results screen showing the original message 'I didn't get the job I really wanted.' and four suggested replies in the Supportive tone"
+          size="step-large"
+        />
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  /* Cropped input panel for Step 01. Shows just the bottom of attach.png
+     (the input bar with attached screenshot thumbnail + tone strip) by
+     scaling the image to cover a 4:3 container positioned at center-bottom. */
+  .input-panel {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-image: url('/screenshots/attach.png');
+    background-position: center bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 28px;
+    border: 1px solid var(--color-hairline);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+      0 30px 60px rgba(0, 0, 0, 0.45);
+  }
+
+  /* Tone-fragment card for Step 02. Background uses #1A1620 to match the
+     surface tone rendered inside the screenshot crops in Steps 01 and 03,
+     so the chip card and the screenshots read as the same plane. No
+     min-height — card sizes naturally to the TONE label + chip row + padding. */
+  .tone-fragment {
+    background: #1A1620;
+    border: 1px solid var(--color-hairline);
+    border-radius: 28px;
+    padding: 1.75rem 0 1.75rem 1.75rem;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+      0 30px 60px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+  }
+  @media (min-width: 768px) {
+    .tone-fragment { padding: 2rem 0 2rem 2rem; }
+  }
+
+  /* Horizontal-scroll chip strip with trailing-edge fade only. Chips always
+     start at the leading edge — a left-side fade would just clip the first
+     chip for no reason. Trailing fade hints there's more to the right. */
+  .tone-chip-scroll {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-right: 1.75rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    mask-image: linear-gradient(
+      to right,
+      black 0%,
+      black calc(100% - 40px),
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      black 0%,
+      black calc(100% - 40px),
+      transparent 100%
+    );
+  }
+  .tone-chip-scroll::-webkit-scrollbar { display: none; }
+  @media (min-width: 768px) {
+    .tone-chip-scroll { padding-right: 2rem; }
+  }
+
+  /* Chip styling: subtle white surface + soft border, 64px min-width so
+     single-word labels don't collapse, medium-weight body text at
+     secondary opacity; selected state goes solid coral with white semibold
+     to clear WCAG AA Large. flex-shrink: 0 + nowrap so chips keep their
+     natural width in the scroll strip. (Same spec used in TonesShowcase.) */
+  .tone-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-width: 64px;
+    padding: 8px 16px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.4;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  /* Selected chip: solid accent fill, transparent border (per the app —
+     no coral outline), white text bumped to semibold (600) so white-on-
+     coral hits WCAG AA Large per the app's own contrast comment. */
+  .tone-chip--selected {
+    background: #E8734A;
+    border-color: transparent;
+    color: #FFFFFF;
+    font-weight: 600;
+  }
+
+</style>

@@ -1,0 +1,92 @@
+---
+// Three nested crescents from the parry brand mark, staggered pulse.
+// Visual language ported from the mobile app's Logo.tsx (scale 1.0 → 1.08,
+// opacity 0.7 → 1.0, linear interpolation). Cycle extended to 2000ms on
+// the web so the wave has room to breathe in a static marketing-page
+// context; keyframes remapped accordingly so wave-shape stays identical
+// and the rest gap between waves grows.
+//
+// Honors prefers-reduced-motion: the static state is the three crescents
+// at peak opacity (1.0) and rest scale (1.0).
+
+interface Props {
+  size?: 'small' | 'medium' | 'large';
+  animated?: boolean;
+  class?: string;
+}
+
+const { size = 'medium', animated = true, class: className = '' } = Astro.props;
+
+const HEIGHTS = { small: 48, medium: 96, large: 160 } as const;
+const VIEWBOX_W = 488.4;
+const VIEWBOX_H = 312.7;
+const height = HEIGHTS[size];
+const width = (height * VIEWBOX_W) / VIEWBOX_H;
+---
+
+<div
+  class={`brand-mark ${animated ? 'brand-mark--animated' : ''} ${className}`}
+  style={`width: ${width}px; height: ${height}px;`}
+  aria-hidden="true"
+>
+  <svg viewBox={`0 0 ${VIEWBOX_W} ${VIEWBOX_H}`} xmlns="http://www.w3.org/2000/svg">
+    {/* Largest crescent — animates last (longest stagger) */}
+    <path class="crescent crescent--3" d="M25.9,39.3S698.3-10.8,385.4,206.5c0,0,85.9-144.9-359.5-167.3Z" />
+    {/* Medium crescent */}
+    <path class="crescent crescent--2" d="M200.1,102.5c.6.2,121.4,41.2,83.5,154.2-2,7.9-4.8,12.6-4.8,12.6,163-113.2,58.7-153.8-78.7-166.8Z" />
+    {/* Smallest crescent — animates first */}
+    <path class="crescent crescent--1" d="M200.1,185.9c.3.2,51.5,33.7,23.3,98.5-1.7,4.6-3.4,7.2-3.4,7.2,85.6-55.7,41.8-87.7-19.9-105.7Z" />
+  </svg>
+</div>
+
+<style>
+  .brand-mark {
+    display: inline-block;
+  }
+  .brand-mark svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  .crescent {
+    fill: #ffffff;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  /* Static / reduced-motion default: three crescents at full opacity, rest scale. */
+  .brand-mark .crescent {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .brand-mark--animated .crescent {
+      opacity: 0.7;
+      animation: crescent-pulse 2000ms linear infinite;
+      will-change: transform, opacity;
+    }
+    /* Stagger between crescents kept at the 1.5× scale (150/300ms absolute)
+       because the visible stagger rate already looked right. Cycle extended
+       to 2000ms instead — that lengthens the REST GAP between waves without
+       touching the wave's own speed. */
+    .brand-mark--animated .crescent--1 { animation-delay: 0ms; }
+    .brand-mark--animated .crescent--2 { animation-delay: 150ms; }
+    .brand-mark--animated .crescent--3 { animation-delay: 300ms; }
+  }
+
+  /* Keyframes recomputed for the 2000ms cycle to keep the wave's absolute
+     timing identical to the previous 1500ms version (wave still occupies
+     0-600ms). Only the rest portion changed: now 600-2000ms = 1400ms of
+     stillness between waves (was 900ms).
+     Original mobile keyframes mapped through:
+       absolute time = (mobile % × 1500ms / 100); new % = absolute / 2000ms × 100.
+     So 8% → 6%, 16% → 12%, 28% → 21%, 40% → 30%. */
+  @keyframes crescent-pulse {
+    0%   { transform: scale(1);     opacity: 0.7; }
+    6%   { transform: scale(1.04);  opacity: 1.0; }
+    12%  { transform: scale(1.08);  opacity: 1.0; }
+    21%  { transform: scale(1.03);  opacity: 0.9; }
+    30%  { transform: scale(1);     opacity: 0.7; }
+    100% { transform: scale(1);     opacity: 0.7; }
+  }
+</style>

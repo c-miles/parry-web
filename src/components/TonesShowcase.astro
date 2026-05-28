@@ -1,115 +1,152 @@
 ---
-import Icon from './Icon.astro';
+// One fixed incoming message; six tones; four replies per tone. Reply content
+// generated to be tonally consistent within each tone while covering different
+// emotional angles (acknowledge / ask / offer / different read) so the visitor
+// can imagine actually picking one. Surface styling mirrors what the mobile
+// results screen renders so the demo reads as a fragment of the real app —
+// dark plate, frosted original-message card, solid reply cards, app-spec
+// tone chips, h3 heading. Specific color/border tokens are documented per
+// CSS rule below; if the mobile app retunes its glass tokens we re-port.
 
-// TODO(post-mobile-redesign): Do NOT replace the CSS-rendered demo panel with iPhone
-// screenshots. The four-scenario tab interaction is a live demo of the tone-switching
-// value prop — that interactivity can't survive a static screenshot. When real
-// HowItWorks screenshots ship, audit TonesShowcase visual treatment to make sure it
-// reads as a deliberate sibling (a live demo) and not a placeholder leftover.
-// Possible polish: iPhone-styled chrome around the bubbles to match the iPhone aspect
-// ratio of HowItWorks screenshots, while keeping the live tab logic intact.
+const incoming = "hey can we talk later? something's been on my mind";
 
-// TODO(post-launch): re-evaluate "the rizler" custom-tone label in the first scenario.
-// Per .agents/product-marketing-context.md (Words to AVOID), "rizz/rizler" is acceptable
-// only as a custom-tone example, never as positioning. Currently the only instance on
-// the site. If brand-foundation post-launch tightens the rule, swap for an equally
-// voice-y label without rizz association (e.g. "the smooth one").
-
-const scenarios = [
+// Reply set rules applied to every tone:
+//   1. Each reply within a tone uses a DIFFERENT opening structure
+//      (question / statement / command / observation / affirm — not all
+//      starting with "yes" / "of course" / etc). Same opener twice in a
+//      four-reply set is the AI-temperature-collapse failure mode.
+//   2. Order is NOT length-ranked — parry's actual prompt doesn't sort
+//      by length, so the longer reply might come first, the shortest third.
+//   3. Each tone is recognizably itself on a single reading (no drift to
+//      a neighboring tone — Casual shouldn't read Supportive, Deadpan
+//      shouldn't read Witty).
+//   4. Length mix per tone: at least one brief, one medium, one longer.
+// The custom tone (currently "big sis") leads the row, matching the app's
+// custom-tones-first ordering.
+const tones = [
   {
-    id: "love",
-    label: "The crush",
-    icon: "heart",
-    incoming: "had a really great time last night :)",
-    tone: "the rizler",
-    reply: "me too honestly. already thinking about what excuse I can come up with to see you again"
+    id: "big-sis",
+    label: "big sis",
+    replies: [
+      "come over. i'll figure out dinner.",
+      "ok now i'm worried. you ok physically? once i know you're safe i can wait for the rest.",
+      "tonight. my place or yours.",
+      "talk now if it's bad, talk tonight if it can wait. either way you're not sitting with this alone."
+    ]
   },
   {
-    id: "boss",
-    label: "The tricky boss",
-    icon: "briefcase",
-    incoming: "Can you take on the Henderson project too? I know you're swamped but you're the only one I trust with it",
-    tone: "corporate robot",
-    reply: "Thanks for the trust — happy to help. Let me look at my current workload and circle back with a realistic timeline by EOD."
+    id: "casual",
+    label: "Casual",
+    replies: [
+      "wanna call now or wait til later?",
+      "what time?",
+      "yeah course. text me when you're free, i'm not doing much tonight",
+      "tonight works for me"
+    ]
   },
   {
-    id: "friend",
-    label: "The friend in need",
-    icon: "hand-heart",
-    incoming: "I don't think I got the job. They said they went with someone else",
-    tone: "the 3am friend",
-    reply: "that really sucks and I'm sorry. their loss genuinely. want to grab food later and talk about it? or not talk about it. either way I'm coming over"
+    id: "professional",
+    label: "Professional",
+    replies: [
+      "Happy to. Tonight or tomorrow morning easier?",
+      "I'm free after 6. Earlier is harder, but I can move things if you need.",
+      "Yes, name a time and I'll be there.",
+      "Sure. Anything you want me to know going in?"
+    ]
   },
   {
-    id: "groupchat",
-    label: "The group chat",
-    icon: "users-three",
-    incoming: "bro did you see what Jake posted",
-    tone: "nonchalant",
-    reply: "lmaooo I cannot. that man has zero self awareness and honestly it's iconic at this point"
+    id: "supportive",
+    label: "Supportive",
+    replies: [
+      "i'm here. text me when you want.",
+      "whenever you're ready.",
+      "course we can. and if you don't want to talk at all, that's fine too. either way i'm not going anywhere.",
+      "take your time. i'm around either way."
+    ]
+  },
+  {
+    id: "witty",
+    label: "Witty",
+    replies: [
+      "tonight, unless suspense counts as a love language now.",
+      "ominous opener. but yes.",
+      "you can't open with that and just dip. but yes, later works.",
+      "worried or just curious? give me a hint and i'll show up appropriately."
+    ]
+  },
+  {
+    id: "assertive",
+    label: "Assertive",
+    replies: [
+      "name a time. i'll be there.",
+      "if it's serious, just tell me now so i'm not guessing. otherwise give me an actual time tonight.",
+      "tonight, not 'later this week.' pick an hour.",
+      "let's talk. don't stew on it all day. text me when you're free."
+    ]
   }
 ];
 ---
 
 <section class="px-6 py-24 md:px-10 md:py-32 lg:px-14" data-tones-root>
   <div class="mx-auto max-w-5xl">
-    <div class="mb-14 max-w-2xl animate-on-scroll">
+    <div class="mb-20 max-w-2xl animate-on-scroll">
       <p class="eyebrow mb-5">Tones in action</p>
       <h2 class="font-display text-balance font-semibold leading-[1.05]" style="font-size: var(--text-display);">
-        The right tone for every situation.
+        One message. Different <span class="text-accent">tone</span>. Different reply.
       </h2>
       <p class="mt-5 text-lg leading-relaxed text-text-secondary">
-        From dating to damage control. Pick a scenario and see what parry would say.
+        Tap a tone. Watch the reply change.
       </p>
     </div>
 
-    <!-- Scenario tabs -->
-    <div class="mb-6 flex flex-wrap gap-2 animate-on-scroll" role="tablist" aria-label="Scenarios">
-      {scenarios.map((s, i) => (
+    <!-- Tone tabs: subtle white surface for unselected chips, solid coral
+         fill with white semibold text for the active tab. -->
+    <div class="mb-6 flex flex-wrap gap-2 animate-on-scroll" role="tablist" aria-label="Tones">
+      {tones.map((t, i) => (
         <button
           type="button"
-          id={`tone-tab-${s.id}`}
-          class="tone-tab inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2.5 text-sm font-medium text-text-secondary transition-colors hover:border-hairline-strong hover:text-text-primary aria-selected:border-accent aria-selected:bg-accent-soft aria-selected:text-text-primary"
-          data-scenario={s.id}
+          id={`tone-tab-${t.id}`}
+          class="tone-tab"
+          data-tone={t.id}
           role="tab"
           aria-selected={i === 0 ? "true" : "false"}
-          aria-controls={`tone-panel-${s.id}`}
+          aria-controls={`tone-panel-${t.id}`}
           tabindex={i === 0 ? 0 : -1}
         >
-          <Icon name={s.icon} size={16} class="text-accent-text" />
-          <span>{s.label}</span>
+          <span>{t.label}</span>
         </button>
       ))}
     </div>
 
-    <!-- Demo panel -->
-    <div class="surface-elevated p-6 md:p-10 animate-on-scroll">
-      {scenarios.map((s, i) => (
+    <!-- Demo panel mirrors the layout of the app's results screen: dark
+         plate, original-message card, "Suggested replies" heading, then
+         four reply cards each with a copy affordance. -->
+    <div class="results-panel animate-on-scroll">
+      <p class="eyebrow mb-2 text-[11px]" style="color: rgba(255,255,255,0.60);">Original message</p>
+      <div class="msg-card mb-6">
+        <p class="text-base leading-relaxed text-text-primary">&ldquo;{incoming}&rdquo;</p>
+      </div>
+
+      <div class="mb-4 flex items-end justify-between gap-3">
+        <h3 class="font-display text-xl font-semibold text-text-primary md:text-2xl">Suggested replies</h3>
+        <span id="tone-active-label" class="text-sm font-medium" style="color: var(--color-accent-text);">{tones[0].label}</span>
+      </div>
+
+      {tones.map((tone, i) => (
         <div
-          id={`tone-panel-${s.id}`}
-          class="tone-panel"
-          data-scenario={s.id}
+          id={`tone-panel-${tone.id}`}
+          class="replies-group"
+          data-tone={tone.id}
           role="tabpanel"
-          aria-labelledby={`tone-tab-${s.id}`}
+          aria-labelledby={`tone-tab-${tone.id}`}
           tabindex={0}
           hidden={i !== 0}
         >
-          <p class="eyebrow mb-2">They said</p>
-          <div class="mb-6 rounded-2xl bg-bg-inset p-5">
-            <p class="text-lg leading-relaxed text-text-secondary">"{s.incoming}"</p>
-          </div>
-
-          <div class="mb-3 flex items-center gap-3">
-            <p class="eyebrow mb-0">Tone</p>
-            <span class="inline-block rounded-full bg-accent-soft px-3 py-1 text-xs font-medium text-accent-text">
-              {s.tone}
-            </span>
-          </div>
-
-          <p class="eyebrow mb-2">parry says</p>
-          <div class="rounded-2xl bg-bg-inset p-5">
-            <p class="text-lg leading-relaxed text-text-primary">"{s.reply}"</p>
-          </div>
+          {tone.replies.map((reply) => (
+            <div class="reply-card">
+              <p class="reply-text">{reply}</p>
+            </div>
+          ))}
         </div>
       ))}
     </div>
@@ -117,24 +154,25 @@ const scenarios = [
 </section>
 
 <script>
-  // Scoped per-instance: every <section data-tones-root> on the page wires its own tabs/panels.
-  // Guards: bails loudly if a tab is missing data-scenario or no panel matches (silent no-op
-  // would leave users staring at an empty card with no console signal).
+  // Scoped per-instance: every <section data-tones-root> wires its own tabs
+  // and reply groups. One panel, multiple reply-group divs; clicking a tab
+  // toggles which group is visible and updates the active tone label.
   document.querySelectorAll<HTMLElement>('[data-tones-root]').forEach((root) => {
     const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('.tone-tab'));
-    const panels = Array.from(root.querySelectorAll<HTMLElement>('.tone-panel'));
+    const groups = Array.from(root.querySelectorAll<HTMLElement>('.replies-group'));
+    const activeLabel = root.querySelector<HTMLElement>('#tone-active-label');
 
-    if (tabs.length === 0 || panels.length === 0) return;
+    if (tabs.length === 0 || groups.length === 0) return;
 
     function activate(tab: HTMLButtonElement) {
-      const target = tab.dataset.scenario;
+      const target = tab.dataset.tone;
       if (!target) {
-        console.error('[TonesShowcase] tab is missing data-scenario attribute', tab);
+        console.error('[TonesShowcase] tab missing data-tone', tab);
         return;
       }
-      const matchingPanels = panels.filter((p) => p.dataset.scenario === target);
-      if (matchingPanels.length === 0) {
-        console.error(`[TonesShowcase] no panel matches data-scenario="${target}"`);
+      const match = groups.filter((g) => g.dataset.tone === target);
+      if (match.length === 0) {
+        console.error(`[TonesShowcase] no reply-group matches data-tone="${target}"`);
         return;
       }
       tabs.forEach((t) => {
@@ -142,7 +180,11 @@ const scenarios = [
         t.setAttribute('aria-selected', isActive ? 'true' : 'false');
         t.tabIndex = isActive ? 0 : -1;
       });
-      panels.forEach((p) => p.toggleAttribute('hidden', p.dataset.scenario !== target));
+      groups.forEach((g) => g.toggleAttribute('hidden', g.dataset.tone !== target));
+      if (activeLabel) {
+        const tabText = tab.querySelector('span')?.textContent ?? '';
+        activeLabel.textContent = tabText;
+      }
     }
 
     tabs.forEach((tab, i) => {
@@ -162,5 +204,83 @@ const scenarios = [
         activate(nextTab);
       });
     });
+
   });
 </script>
+
+<style>
+  /* Tab chips. Same chip spec used in HowItWorks Step 02 (subtle white
+     surface, pill radius, 14px medium-weight, coral-fill + white-semibold
+     when selected so contrast hits WCAG AA Large on the accent fill). */
+  .tone-tab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 64px;
+    padding: 8px 16px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.4;
+    cursor: pointer;
+    transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+  }
+  .tone-tab:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .tone-tab[aria-selected="true"] {
+    background: #E8734A;
+    border-color: transparent;
+    color: #FFFFFF;
+    font-weight: 600;
+  }
+
+  /* Demo panel. #1A1620 matches the surface tone rendered inside the
+     screenshot crops elsewhere on the page so the demo reads as the same
+     plane as the screenshots. */
+  .results-panel {
+    background: #1A1620;
+    border: 1px solid var(--color-hairline);
+    border-radius: 28px;
+    padding: 1.5rem;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+      0 30px 60px rgba(0, 0, 0, 0.45);
+  }
+  @media (min-width: 768px) {
+    .results-panel { padding: 2rem 2.25rem 2.25rem; }
+  }
+
+  /* Original message card: slightly elevated translucent surface so it
+     reads as a chip distinct from the panel background. */
+  .msg-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 1rem 1.25rem;
+  }
+
+  /* Reply cards: lower-elevation surface than the original-message card.
+     Passive demo content — the visitor reads to see what a tone produces,
+     no interaction. */
+  .replies-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .reply-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 1rem 1.25rem;
+  }
+  .reply-text {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--color-text-primary);
+  }
+</style>
