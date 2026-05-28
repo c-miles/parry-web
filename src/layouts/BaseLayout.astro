@@ -19,9 +19,10 @@ const organizationJsonLd = {
   "name": "parry",
   "legalName": "Anomaly Labs LLC",
   "url": "https://parryai.app",
+  "sameAs": ["https://anomaly-labs.com"],
   "email": "support@parryai.app",
   "logo": "https://parryai.app/brand/parry-wordmark-white.svg",
-  "foundingDate": "2026-04-14",
+  "foundingDate": "2026-04",
   "address": {
     "@type": "PostalAddress",
     "addressRegion": "WA",
@@ -38,9 +39,9 @@ const organizationJsonLd = {
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#161220" />
 
-    {/* Apple smart app banner. Inert until parry is live in the App Store —
-        mobile Safari only renders the banner for published apps. Safe to
-        ship now. */}
+    {/* Apple smart app banner. Inert until parry is live in the App Store.
+        Mobile Safari only renders the banner for published apps, so this is
+        safe to ship now. */}
     <meta name="apple-itunes-app" content="app-id=6761346279, app-argument=parry://" />
 
     <title>{title}</title>
@@ -64,7 +65,7 @@ const organizationJsonLd = {
     <meta property="og:image" content="https://parryai.app/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="parry — AI-Powered Reply Suggestions" />
+    <meta property="og:image:alt" content="parry: AI-powered reply suggestions" />
     <meta property="og:site_name" content="parry" />
     <meta property="og:locale" content="en_US" />
 
@@ -73,6 +74,7 @@ const organizationJsonLd = {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="https://parryai.app/og-image.png" />
+    <meta name="twitter:image:alt" content="parry: AI-powered reply suggestions" />
 
     <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
     {jsonLd && (

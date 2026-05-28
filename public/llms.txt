@@ -1,8 +1,8 @@
 # parry
 
-> AI-powered reply suggestions for text messages. A mobile app that helps you craft the perfect response.
+> Your countermove for any message. A mobile app that helps you reply or reach out, in any app, in your tone.
 
-parry lets you paste a text message, pick a tone, and get four ready-to-send replies in seconds. Currently launching on iOS; Android is on the roadmap.
+parry helps you describe a situation, paste a message, drop a screenshot, or speak it, then pick a tone and get four ready-to-send replies in seconds. Works for replies and for messages you're trying to start. Currently launching on iOS; Android is on the roadmap.
 
 ## Features
 - 5 built-in tones: Casual, Professional, Supportive, Witty, Assertive
@@ -29,6 +29,7 @@ parry lets you paste a text message, pick a tone, and get four ready-to-send rep
 - [Home](https://parryai.app): Landing page with features and download links
 - [Privacy Policy](https://parryai.app/privacy): How parry handles user data
 - [Terms of Service](https://parryai.app/terms): Terms governing use of parry
+- [Usage Policy](https://parryai.app/usage): Subscription limits and acceptable use
 - [Support](https://parryai.app/support): Help, contact, subscriptions, and account deletion for parry
 
 ## Support
