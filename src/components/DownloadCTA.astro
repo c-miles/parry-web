@@ -1,13 +1,20 @@
+---
+import BrandMark from './BrandMark.astro';
+---
+
 <section id="download" class="px-6 py-24 md:px-10 md:py-32 lg:px-14">
   <div class="mx-auto max-w-3xl text-center animate-on-scroll">
+    <div class="mb-6 flex justify-center">
+      <BrandMark size="large" />
+    </div>
     <h2 class="font-display mb-6 text-balance font-semibold leading-[1.0]" style="font-size: var(--text-display);">
-      Stop overthinking. Start parrying.
+      Stop overthinking. Start <span class="text-accent">parrying</span>.
     </h2>
     <p class="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-text-secondary md:text-xl">
       Free to download. No account needed.
     </p>
     <div class="flex items-center justify-center gap-3 sm:gap-4">
-      <a href="#download" class="inline-block transition-transform duration-200 hover:scale-105">
+      <a href="https://apps.apple.com/app/id6761346279" target="_blank" rel="noopener" class="inline-block transition-transform duration-200 hover:scale-105">
         <img src="/app-store-badge.svg" alt="Download on the App Store" width="170" height="56" />
       </a>
     </div>
