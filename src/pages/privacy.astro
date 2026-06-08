@@ -12,7 +12,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="prose-legal mx-auto max-w-3xl">
       <p class="eyebrow mb-5">Legal</p>
       <h1 class="font-display mb-3 text-4xl font-semibold tracking-tight md:text-5xl" style="letter-spacing: -0.025em;">Privacy Policy</h1>
-      <p class="mb-12 text-sm text-text-tertiary">Last updated: May 2026 · We review and update this policy at least annually.</p>
+      <p class="mb-12 text-sm text-text-tertiary">Last updated: June 2026 · We review and update this policy at least annually.</p>
 
       <h2>1. Who we are</h2>
       <p>
@@ -35,11 +35,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         We try to collect the minimum amount of personal data we need to run parry. The table below summarizes what we collect, why, and (for users in the European Economic Area, the United Kingdom, and Switzerland) the lawful basis we rely on under the GDPR / UK GDPR.
       </p>
 
-      <h3>2.1 Account identifiers</h3>
+      <h3>2.1 Identifiers</h3>
       <ul>
-        <li><strong>Anonymous user identifier (UUID):</strong> created the first time you open the app. Used to link your local data to cloud backup and manage your subscription. Stored by Supabase. <em>Lawful basis: Art. 6(1)(b) contract.</em></li>
-        <li><strong>Apple Relay email and (optionally) full name:</strong> if you choose Sign in with Apple, Apple shares an email address (which may be a private Apple Relay address) and, on first sign-in only, the full name you choose to share. We store these to associate your subscription and account-recovery options with your identity. We never receive your Apple ID password. <em>Lawful basis: Art. 6(1)(b) contract.</em></li>
+        <li><strong>Anonymous user identifier (UUID):</strong> created the first time you open the app. Used to store your custom tone presets and subscription state on our servers. There is no account attached to it: if you reinstall parry or switch devices, your Pro subscription and custom tones are recovered through your App Store purchase receipt (Restore Purchases), not through this identifier. Stored by Supabase. <em>Lawful basis: Art. 6(1)(b) contract.</em></li>
         <li><strong>Subscription state:</strong> whether you are on the Free or Pro tier, your renewal date, and your purchase history. Managed by RevenueCat. <em>Lawful basis: Art. 6(1)(b) contract; Art. 6(1)(c) for tax/accounting retention.</em></li>
+        <li><strong>Usage-limit counters (fraud prevention):</strong> a random device identifier (free tier) and, for Pro subscribers, the Apple transaction identifier for the subscription, each kept with a daily count of generations. Neither record links to an account or contains personal details. We keep them so that daily limits cannot be reset by deleting data and reinstalling, and they survive in-app data deletion (see Section 14). <em>Lawful basis: Art. 6(1)(f) legitimate interests: preventing circumvention of usage limits.</em></li>
       </ul>
 
       <h3>2.2 Message context (transient, not stored by us)</h3>
@@ -88,7 +88,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </p>
       <ul>
         <li>Error reports (exception type, message, stack trace, file/line) at the moment of failure</li>
-        <li>Breadcrumbs (categorized records of recent actions, such as a sign-in attempt, a generation event, or a voice-module load, used to understand what led up to an error)</li>
+        <li>Breadcrumbs (categorized records of recent actions, such as a generation event, a purchase or restore attempt, or a voice-module load, used to understand what led up to an error)</li>
         <li>Your anonymous user identifier (so we can group repeated errors from the same user)</li>
         <li>Device metadata (model, OS version, app version, locale)</li>
       </ul>
@@ -98,6 +98,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <h3>2.6 What we do NOT collect</h3>
       <ul>
+        <li>Your name or email address (parry has no sign-in or registration)</li>
         <li>Your phone number</li>
         <li>Your contacts</li>
         <li>Your location</li>
@@ -131,7 +132,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <tbody>
           <tr style="border-bottom:1px solid var(--color-hairline);">
             <td style="padding:0.5rem 0.5rem 0.5rem 0;"><strong>Apple Inc.</strong></td>
-            <td style="padding:0.5rem;">Sign in with Apple, App Store distribution and billing, optional voice transcription</td>
+            <td style="padding:0.5rem;">App Store distribution, billing, and subscription receipts</td>
             <td style="padding:0.5rem;">USA, Ireland</td>
             <td style="padding:0.5rem;">EU-US DPF</td>
           </tr>
@@ -176,8 +177,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </thead>
         <tbody>
           <tr style="border-bottom:1px solid var(--color-hairline);">
-            <td style="padding:0.5rem 0.5rem 0.5rem 0;">Anonymous user identifier, Apple Relay email / full name, custom tone presets</td>
-            <td style="padding:0.5rem;">Until you delete your account, or 24 months from your last app activity, whichever comes first</td>
+            <td style="padding:0.5rem 0.5rem 0.5rem 0;">Anonymous user identifier, custom tone presets</td>
+            <td style="padding:0.5rem;">Until you delete your data, or 24 months from your last app activity, whichever comes first</td>
           </tr>
           <tr style="border-bottom:1px solid var(--color-hairline);">
             <td style="padding:0.5rem 0.5rem 0.5rem 0;">Message content and images (sent to Anthropic)</td>
@@ -190,6 +191,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <tr style="border-bottom:1px solid var(--color-hairline);">
             <td style="padding:0.5rem 0.5rem 0.5rem 0;">Subscription / billing records</td>
             <td style="padding:0.5rem;">7 years (US tax-law requirement)</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-hairline);">
+            <td style="padding:0.5rem 0.5rem 0.5rem 0;">Usage-limit counters (device identifier and Apple transaction identifier, each with a daily count)</td>
+            <td style="padding:0.5rem;">Retained on a fraud-prevention basis. They survive in-app data deletion so that deletion cannot reset daily limits (see Section 14)</td>
           </tr>
           <tr>
             <td style="padding:0.5rem 0.5rem 0.5rem 0;">Sentry error reports</td>
@@ -205,7 +210,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <ul>
         <li><strong>Access:</strong> request a copy of the personal data we hold about you</li>
         <li><strong>Rectification / correction:</strong> ask us to correct inaccurate data</li>
-        <li><strong>Erasure / deletion:</strong> ask us to delete your account and the data we hold about you</li>
+        <li><strong>Erasure / deletion:</strong> ask us to delete the data we hold about you</li>
         <li><strong>Restriction:</strong> ask us to limit processing in specific circumstances</li>
         <li><strong>Portability:</strong> receive your data in a structured, commonly-used machine-readable format</li>
         <li><strong>Objection:</strong> object to processing based on legitimate interests</li>
@@ -217,11 +222,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <strong>How to request:</strong>
       </p>
       <ul>
-        <li><strong>In-app:</strong> Settings → Account → Delete Account (for deletion).</li>
+        <li><strong>In-app:</strong> tap <strong>Delete data</strong> at the bottom of the Settings screen (for deletion).</li>
         <li><strong>Email:</strong> <a href="mailto:support@parryai.app">support@parryai.app</a> for any request.</li>
       </ul>
       <p>
-        We may ask you to verify your identity before we can act on a request (for example, by asking you to confirm the request from the email address associated with your account, or by responding from inside the app). We aim to respond within <strong>30 days</strong>; for complex requests, we may extend by up to 60 additional days and will tell you if that is needed. If we deny a request, we will explain why and how to appeal. See Section 6.
+        We may ask you to verify your identity before we can act on a request (for example, by asking you to respond from inside the app). We aim to respond within <strong>30 days</strong>. For complex requests, we may extend by up to 60 additional days and will tell you if that is needed. If we deny a request, we will explain why and how to appeal. See Section 6.
       </p>
       <p>
         If you are in California, you may designate an <strong>authorized agent</strong> to make a request on your behalf. We may require the agent to provide proof of authorization (such as a signed permission letter from you) and to verify your identity directly with us.
@@ -242,7 +247,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <h2>8. Children</h2>
       <p>
-        parry is intended for users who are at least <strong>13 years old</strong>. We do not direct parry to children under 13, and we do not knowingly collect personal data from anyone under 13. If we learn that we have collected personal data from a user under 13, we will delete it promptly without requiring proof of identity beyond what is reasonably necessary to identify the account.
+        parry is intended for users who are at least <strong>13 years old</strong>. We do not direct parry to children under 13, and we do not knowingly collect personal data from anyone under 13. If we learn that we have collected personal data from a user under 13, we will delete it promptly without requiring proof of identity beyond what is reasonably necessary to identify the relevant data.
       </p>
       <p>
         If you believe a child under 13 has provided us personal information, please email <a href="mailto:support@parryai.app">support@parryai.app</a>.
@@ -273,7 +278,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <strong>Categories of personal information collected in the past 12 months</strong> (Cal. Civ. Code §1798.140):
       </p>
       <ul>
-        <li>Identifiers: anonymous user UUID; Apple Relay email if you sign in with Apple; subscription/customer IDs.</li>
+        <li>Identifiers: anonymous user UUID; a random device identifier and the Apple transaction identifier for your subscription, each used with a daily count to enforce usage limits; subscription/customer IDs.</li>
         <li>Customer records: subscription state.</li>
         <li>Commercial information: purchase history (via Apple/RevenueCat).</li>
         <li>Internet or other electronic network activity: generation metadata (no content), error reports.</li>
@@ -345,14 +350,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         No system is perfectly secure. If you believe you've found a security issue, please email <a href="mailto:support@parryai.app">support@parryai.app</a>.
       </p>
 
-      <h2>14. Account deletion</h2>
+      <h2>14. Data deletion</h2>
       <p>
-        You can delete your parry account at any time from <strong>Settings → Account → Delete Account</strong> inside the mobile app. Deletion removes your anonymous user identifier, any Apple Relay email and name we stored, your custom tone presets, and your generation metadata. It also requests deletion of your customer record from RevenueCat on a best-effort basis. If you have an active subscription, you should also cancel it through your device's <em>Settings → [Your Name] → Subscriptions</em>; uninstalling parry or deleting your account does not by itself cancel the subscription.
+        You can delete your parry data at any time by tapping <strong>Delete data</strong> at the bottom of the Settings screen inside the mobile app. Deletion removes your anonymous user identifier, your custom tone presets, and your generation metadata. It also requests deletion of your customer record from RevenueCat on a best-effort basis.
+      </p>
+      <p>
+        <strong>What survives deletion.</strong> Two anonymous fraud-prevention records are deliberately retained, because deleting them would let anyone reset their daily usage limits by deleting their data and reinstalling: (a) a random device identifier together with its daily count of free-tier generations, and (b) for Pro subscribers, the Apple transaction identifier for the subscription together with its daily count. Neither record links to an account or contains personal details. If you use Restore Purchases after a deletion, a new subscription record is created from your App Store receipt.
+      </p>
+      <p>
+        If you have an active subscription, you should also cancel it through your device's <em>Settings → [Your Name] → Subscriptions</em>. Uninstalling parry or deleting your data does not by itself cancel the subscription.
       </p>
 
       <h2>15. Changes to this policy</h2>
       <p>
-        We may update this policy as our service, vendors, or applicable law change. When we make a material change, we will update the "Last updated" date at the top, post a notice inside the app, and (where we have your email) email you. The previous version will remain available on request for at least 12 months.
+        We may update this policy as our service, vendors, or applicable law change. When we make a material change, we will update the "Last updated" date at the top and post a notice inside the app. The previous version will remain available on request for at least 12 months.
       </p>
 
       <h2>16. Contact</h2>
