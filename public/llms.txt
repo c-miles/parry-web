@@ -15,7 +15,9 @@ parry helps you describe a situation, paste a message, drop a screenshot, or spe
 - Messages are sent to Anthropic (the AI provider) only to generate replies
 - Anthropic may retain them up to 30 days for safety review, then deletes them
 - Your messages are never used to train AI models
-- No account required, anonymous by default
+- No accounts: no sign-in or registration exists, even for Pro. Anonymous by default
+- Pro is tied to the Apple ID purchase receipt. Restore Purchases brings back Pro, custom tones, and the day's usage count on any reinstall or new device
+- Data deletion is built into the app (Settings, Delete data)
 
 ## Pricing
 - Free: 5 generations per day, 1 custom tone, no account required
@@ -30,7 +32,7 @@ parry helps you describe a situation, paste a message, drop a screenshot, or spe
 - [Privacy Policy](https://parryai.app/privacy): How parry handles user data
 - [Terms of Service](https://parryai.app/terms): Terms governing use of parry
 - [Usage Policy](https://parryai.app/usage): Subscription limits and acceptable use
-- [Support](https://parryai.app/support): Help, contact, subscriptions, and account deletion for parry
+- [Support](https://parryai.app/support): Help, contact, subscriptions, Pro purchase restore, and data deletion for parry
 
 ## Support
 - Email: support@parryai.app
