@@ -12,7 +12,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="prose-legal mx-auto max-w-3xl">
       <p class="eyebrow mb-5">Legal</p>
       <h1 class="font-display mb-3 text-4xl font-semibold tracking-tight md:text-5xl" style="letter-spacing: -0.025em;">Usage Policy</h1>
-      <p class="mb-12 text-sm text-text-tertiary">Last updated: June 2026</p>
+      <p class="mb-12 text-sm text-text-tertiary">Last updated: October 2026</p>
 
       <h2>About this policy</h2>
       <p>
@@ -34,7 +34,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <h3>1.1 Free tier</h3>
       <ul>
         <li><strong>5 generations per day</strong>, resetting at midnight UTC.</li>
-        <li><strong>Up to 3 generations per minute</strong> (short-burst protection).</li>
+        <li><strong>Up to 5 generations per minute</strong> (short-burst protection).</li>
         <li><strong>1 custom tone preset</strong> (in addition to the 5 built-in tones: Casual, Professional, Witty, Supportive, Assertive).</li>
         <li>Text, voice, and image / screenshot input.</li>
         <li>No account required. Anonymous by default.</li>
@@ -43,7 +43,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <h3>1.2 Pro tier (subscription)</h3>
       <ul>
         <li><strong>200 generations per day</strong>, resetting at midnight UTC.</li>
-        <li><strong>Up to 30 generations per hour</strong>, on a rolling 60-minute window.</li>
         <li><strong>Up to 5 generations per minute</strong> (short-burst protection).</li>
         <li><strong>Up to 4 custom tone presets</strong>, in addition to the 5 built-in tones.</li>
         <li>Text, voice, and image / screenshot input (same as Free).</li>
@@ -62,7 +61,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <h3>1.4 Why these limits exist</h3>
       <p>
-        Each generation hits Anthropic's API and costs us a small but non-zero amount per request. Without limits, parry would be expensive to run and would feel slow for everyone. Daily caps keep costs predictable for us and pricing fair for you. Burst caps prevent automated abuse. The hourly Pro cap exists so that no single user can exhaust shared service capacity in a few seconds.
+        Each generation hits Anthropic's API and costs us a small but non-zero amount per request. Without limits, parry would be expensive to run and would feel slow for everyone. Daily caps keep costs predictable for us and pricing fair for you. Burst caps prevent automated abuse.
       </p>
 
       <h3>1.5 What happens when you reach a limit</h3>
