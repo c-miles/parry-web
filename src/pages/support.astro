@@ -27,18 +27,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </p>
 
       <h2>Subscriptions and refunds</h2>
-      {/* TODO(android): the billing copy here is iOS-only (Apple ID >
+      {/* TODO(android): the billing copy here is iOS-only (Apple Account >
           Subscriptions; refunds via reportaproblem.apple.com). When parry
           ships on Google Play, add the Android equivalent (manage/cancel and
           refunds via Google Play). The data-deletion section below carries
           the same iOS-only cancellation note. */}
       <p>
-        Manage or cancel a parry Pro subscription in iOS Settings, under Apple ID, Subscriptions. Refunds are handled by Apple, not by parry. Request one at <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener noreferrer">reportaproblem.apple.com</a>.
+        Manage or cancel a parry Pro subscription in iOS Settings: tap your name, then Subscriptions. Refunds are handled by Apple, not by parry. Request one at <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener noreferrer">reportaproblem.apple.com</a>.
       </p>
 
       <h2>Restoring a Pro purchase</h2>
       <p>
-        Reinstalled parry, or switched to a new phone? Your Pro subscription is tied to your Apple ID's purchase receipt, not an account, so there is nothing to sign back into. Open the upgrade screen in parry and tap <strong>Restore Purchases</strong>. Your Pro status, your custom tones, and the day's usage count come right back.
+        Reinstalled parry, or switched to a new phone? Your Pro subscription is tied to your Apple Account's purchase receipt, not an account, so there is nothing to sign back into. Open the upgrade screen in parry and tap <strong>Restore Purchases</strong>. Your Pro status, your custom tones, and the day's usage count come right back.
       </p>
 
       <h2>Data deletion</h2>
@@ -55,7 +55,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         This permanently removes your custom tones and your usage history (the metadata we log for each suggestion, such as the tone and timestamp). It cannot be undone. One thing it does not reset: your daily usage count, which is kept as an anonymous tally so that limits can't be refreshed by deleting and reinstalling.
       </p>
       <p>
-        Deleting your data does not cancel a paid subscription, since Apple manages billing. Cancel that separately in iOS Settings, under Apple ID, Subscriptions.
+        Deleting your data does not cancel a paid subscription, since Apple manages billing. Cancel that separately in iOS Settings: tap your name, then Subscriptions.
       </p>
       <p>
         Stuck, or can't reach Settings? Email <a href="mailto:support@parryai.app">support@parryai.app</a> and we'll help you get your data deleted.

@@ -16,7 +16,7 @@ parry helps you describe a situation, paste a message, drop a screenshot, or spe
 - Anthropic may retain them up to 30 days for safety review, then deletes them
 - Your messages are never used to train AI models
 - No accounts: no sign-in or registration exists, even for Pro. Anonymous by default
-- Pro is tied to the Apple ID purchase receipt. Restore Purchases brings back Pro, custom tones, and the day's usage count on any reinstall or new device
+- Pro is tied to the Apple Account purchase receipt. Restore Purchases brings back Pro, custom tones, and the day's usage count on any reinstall or new device
 - Data deletion is built into the app (Settings, Delete data)
 
 ## Pricing
