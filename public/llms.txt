@@ -21,7 +21,8 @@ parry helps you describe a situation, paste a message, drop a screenshot, or spe
 
 ## Pricing
 - Free: 5 generations per day, 1 custom tone, no account required
-- Pro (monthly or annual): 200 generations per day, up to 4 custom tones
+- Pro: $5.99/month or $39.99/year in the US (prices vary by country). 200 generations per day, up to 4 custom tones
+- The yearly plan starts with a 7-day free trial for new subscribers
 
 ## Company
 - Operator: Anomaly Labs LLC (Washington state, USA), operating parry as a registered DBA
